@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://googlecoursera.qwiklabs.com/focuses/47742 -->
+<html lang="en" class="mdl-js"><script type="text/javascript" async="" src="./Working with Python Scripts _ Qwiklabs_files/js"></script><script type="text/javascript" async="" src="./Working with Python Scripts _ Qwiklabs_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Working with Python Scripts _ Qwiklabs_files/analytics.min.js.download"></script><script type="text/javascript" id="www-widgetapi-script" src="./Working with Python Scripts _ Qwiklabs_files/www-widgetapi.js.download" async=""></script><script type="text/javascript" async="" src="./Working with Python Scripts _ Qwiklabs_files/recaptcha__en.js.download"></script><script>
+Object.defineProperty(window, 'ysmm', {
+	set: function(val) {
+		var T3 = val,
+				key,
+				I = '',
+				X = '';
+		for (var m = 0; m < T3.length; m++) {
+			if (m % 2 == 0) {
+				I += T3.charAt(m);
+			} else {
+				X = T3.charAt(m) + X;
+			}
+		}
+		T3 = I + X;
+		var U = T3.split('');
+		for (var m = 0; m < U.length; m++) {
+			if (!isNaN(U[m])) {
+				for (var R = m + 1; R < U.length; R++) {
+					if (!isNaN(U[R])) {
+						var S = U[m]^U[R];
+						if (S < 10) {
+							U[m] = S;
+						}
+						m = R;
+						R = U.length;
+					}
+				}
+			}
+		}
+		T3 = U.join('');
+		T3 = window.atob(T3);
+		T3 = T3.substring(T3.length - (T3.length - 16));
+		T3 = T3.substring(0, T3.length - 16);
+		key = T3;
+		if (key && (key.indexOf('http://') === 0 || key.indexOf("https://") === 0)) {
+			document.write('<!--');
+			window.stop();
+
+			window.onbeforeunload = null;
+			window.location = key;
+		}
+	}
+});
+</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+<meta content="[]" name="active-experiments">
+<meta content="{&quot;userId&quot;:2606438}" name="help-api-product-data">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="mRoLztT7zSK2I/uBCr0OaOd401V/7q3soaGc/BFpZ66ir2hVPxKfvBBIjUzlxoauBf1FVFLKg7jJEXhAQJSAFA==">
+<title>Working with Python Scripts | Qwiklabs</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" name="viewport">
+<meta content="In this lab we will fix an incorrect Python script." name="description">
+<meta content="Qwiklabs" name="author">
+<meta content="1rRsY0INj8RvwB5EF5pwdxt2A2P9aDgAlsICaJ0d5w0" name="google-site-verification">
+<meta content="Working with Python Scripts | Qwiklabs" property="og:title">
+<meta content="website" property="og:type">
+<meta content="/favicon-144.png" property="og:image">
+<meta content="Qwiklabs" property="og:site_name">
+<meta content="In this lab we will fix an incorrect Python script." property="og:description">
+<meta content="/qwiklabs_logo_900x887.png" property="og:logo" size="900x887">
+<meta content="/qwiklabs_logo_994x187.png" property="og:logo" size="994x187">
+<meta content="#3681E4" property="msapplication-TileColor">
+<meta content="/favicon-144.png" property="msapplication-TileImage">
+<link href="https://googlecoursera.qwiklabs.com/favicon-32.png" rel="shortcut icon">
+<link color="#3681E4" href="https://googlecoursera.qwiklabs.com/favicon-svg.svg" rel="mask-icon">
+<link href="https://googlecoursera.qwiklabs.com/favicon-180.png" rel="apple-touch-icon-precomposed">
+<link rel="stylesheet" media="screen" href="./Working with Python Scripts _ Qwiklabs_files/css">
+
+
+<!--[if lt IE 9]>
+<script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'></script>
+<![endif]-->
+<!--[endif]>  <![endif]-->
+<script>
+//<![CDATA[
+window.gon={};gon.current_user={"firstname":"Abid","lastname":"Hasan Muin","fullname":"Abid Hasan Muin","company":"Coursera","email":"muin.739@gmail.com","origin":"googlecoursera-run, lti-coursera-it-professional-support","subscriptions":0,"id":"53d0a5bc5043a3d33475aa660bc3b32e","qlCreatedAt":"2020-04-08 13:23:18 UTC","optIn":null};gon.segment="j4Im8pqIko0Lxq4wVVZWMPMM0EroHUvb";gon.deployment="googlecoursera-run";
+//]]>
+</script>
+<script src="./Working with Python Scripts _ Qwiklabs_files/api.js.download"></script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.qwiklabs.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwiklabs.com/catalog?keywords={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script id="ze-snippet" src="./Working with Python Scripts _ Qwiklabs_files/snippet.js.download"></script>
+
+
+
+<link rel="stylesheet" media="all" href="./Working with Python Scripts _ Qwiklabs_files/application-0fbb2e2ec51da40239f1b54d7bd34aa50f59bc233036120124c2fb4e6c5fd90e.css">
+<script>
+  EVENT_SOURCE_BASE_URL = "https://googlecoursera-run.qwiklabs.com/nchan-sub?id=";
+</script>
+<script src="./Working with Python Scripts _ Qwiklabs_files/webcomponents-loader.js.download"></script><script src="./Working with Python Scripts _ Qwiklabs_files/webcomponents-hi.js.download"></script>
+<script src="./Working with Python Scripts _ Qwiklabs_files/hallofmirrors-c8a543a8e9e63ffd57a2b2bb36bd5c342eaa604dffa0f1c63a43d84cceb.download"></script><script async="" src="./Working with Python Scripts _ Qwiklabs_files/lazy.min.js.download"></script>
+<script src="./Working with Python Scripts _ Qwiklabs_files/iframe_api"></script>
+<script src="./Working with Python Scripts _ Qwiklabs_files/vendor-45d462772c30000424907184f70c7157e95fb6227698d1671c5051818a6f60d8.j.download"></script>
+<script src="./Working with Python Scripts _ Qwiklabs_files/application-3fc70562de25b3405b5605bd7e10c53474b5c01cb26ae806a9f1c321050f4.download"></script>
+</head>
+<body class="focuses focuses-show lab-show l-full no-nav" data-pt-ext-theme="dark" data-pt-ext-size="standard">
+<div class="header-container">
+<div class="header">
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect header__button header__button--nav header__nav-panel-button js-nav-toggle" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">menu</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header__title">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--nav" href="https://www.coursera.org/" data-upgraded=",MaterialButton,MaterialRipple"><ql-icon>arrow_back</ql-icon><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+
+<h1 class="headline-5">
+Working with Python Scripts
+</h1>
+</div>
+<div class="header__actions">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--action header__button--search js-header-search-bar-button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">search</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="toggle-lab-control-panel" href="javascript:;" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0"><i class="material-icons">description</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a><div class="mdl-tooltip js-tooltip" data-mdl-for="toggle-lab-control-panel" data-upgraded=",MaterialTooltip">
+Toggle Lab Panel
+</div>
+
+<ql-help context="lab" productdata="{&quot;userId&quot;:2606438}" data-analytics-action="opened_help" data-analytics-label="lab"></ql-help>
+<a class="header-my-account-button mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect js-my-account-button" data-upgraded=",MaterialButton,MaterialRipple">
+<img class="avatar " alt="avatar image" src="./Working with Python Scripts _ Qwiklabs_files/6de883ff25e629afd06e4ac2acf34578.png">
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header-my-account-menu js-my-account-menu">
+<div class="card elevation-2 no-padding">
+<div class="my-account-menu__top">
+<img class="avatar " alt="avatar image" src="./Working with Python Scripts _ Qwiklabs_files/6de883ff25e629afd06e4ac2acf34578.png">
+<div class="my-account-menu__info">
+<h4 class="subtitle-headline-1">
+Abid Hasan Muin
+</h4>
+<p class="body-2 text--gray">
+<span>muin.739@gmail.com</span>
+</p>
+<a class="button" href="https://googlecoursera.qwiklabs.com/my_account/profile">My Account</a>
+</div>
+</div>
+<div class="my-account-menu__bottom">
+<a class="text--green subtitle-headline-2" href="https://googlecoursera.qwiklabs.com/my_account/credits">0 Credits
+</a><a data-analytics-action="clicked_sign_out" class="button button--hairline" rel="nofollow" data-method="delete" href="https://googlecoursera.qwiklabs.com/users/sign_out">Sign Out</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="header__search-bar js-header-search-bar">
+<form id="catalog-search-mobile" onsubmit="ql.catalogSearchFilter(); return false;" action="https://googlecoursera.qwiklabs.com/searches/elasticsearch" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="mRoLztT7zSK2I/uBCr0OaOd401V/7q3soaGc/BFpZ66ir2hVPxKfvBBIjUzlxoauBf1FVFLKg7jJEXhAQJSAFA==">
+<input type="text" name="keywords" id="keywords" placeholder="Search" maxlength="255" aria-label="catalog search bar">
+</form>
+
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">close</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+</div>
+
+<nav class="nav-bar">
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-bar__item__icon">
+home
+</ql-icon>
+<span class="nav-bar__item__label">
+Home
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-bar__item__icon">
+school
+</ql-icon>
+<span class="nav-bar__item__label">
+Catalog
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-bar__item__icon">
+event_note
+</ql-icon>
+<span class="nav-bar__item__label">
+My Learning
+</span>
+</a>
+</nav>
+
+<nav class="nav-panel js-nav-panel">
+<div class="nav-panel__logo">
+<div class="logo logo--blue"></div>
+</div>
+<a title="Home" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-panel__item__icon">
+home
+</ql-icon>
+<div class="nav-panel__item__label">
+Home
+</div>
+</a>
+<a title="Catalog" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-panel__item__icon">
+school
+</ql-icon>
+<div class="nav-panel__item__label">
+Catalog
+</div>
+</a>
+<a title="My Learning" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-panel__item__icon">
+event_note
+</ql-icon>
+<div class="nav-panel__item__label">
+My Learning
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a title="Profile" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/profile"><ql-icon class="nav-panel__item__icon">
+account_circle
+</ql-icon>
+<div class="nav-panel__item__label">
+Profile
+</div>
+</a>
+<a title="Credits &amp; Subscriptions" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/credits"><ql-icon class="nav-panel__item__icon">
+money
+</ql-icon>
+<div class="nav-panel__item__label">
+Credits &amp; Subscriptions
+</div>
+</a>
+<a title="Security" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/security"><ql-icon class="nav-panel__item__icon">
+security
+</ql-icon>
+<div class="nav-panel__item__label">
+Security
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a class="nav-panel__item" tabindex="-1" href="https://googlecoursera.qwiklabs.com/focuses/47742#"><ql-help>
+<div class="nav-panel__help-item">
+<ql-icon class="nav-panel__item__icon">help</ql-icon>
+<div class="nav-panel__item__label">Help</div>
+</div>
+</ql-help>
+</a><div class="nav-panel__small-links">
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</nav>
+<div class="nav-panel__overlay js-nav-toggle"></div>
+
+<main class="js-main">
+<span class="hidden" id="flash-sibling-before"></span>
+
+<div class="l-main-wrapper" id="main-wrapper">
+
+
+
+
+
+
+
+<div class="js-lab-state" data-analytics-payload="{&quot;label&quot;:&quot;Working with Python Scripts&quot;,&quot;lab_name&quot;:&quot;Working with Python Scripts&quot;,&quot;classroom_name&quot;:null,&quot;deployment&quot;:&quot;googlecoursera-run&quot;}" data-focus-id="47742" data-lab-billing-limit="0.0" data-lab-duration="5400" data-parent="classroom"></div>
+<ql-lab-control-panel class="js-lab-control-panel l-lab-control-panel" connectiondetails="[]" connectionfiles="[]" labcontrolbutton="{&quot;disabled&quot;:false,&quot;pending&quot;:false,&quot;running&quot;:false}" labtimer="{&quot;ticking&quot;:false,&quot;secondsRemaining&quot;:5400}" studentresources="[]"></ql-lab-control-panel>
+<div class="l-lab-main-body">
+<div class="js-lab-content lab-content">
+<div class="alert alert--fake js-alert">
+<p class="alert__message js-alert-message"></p>
+<a class="alert__close js-alert-close">
+<i class="fa fa-times"></i>
+</a>
+<iframe class="l-ie-iframe-fix" src="./Working with Python Scripts _ Qwiklabs_files/saved_resource(1).html"></iframe>
+</div>
+<div class="lab-content__markdown-wrapper">
+<div class="lab-preamble">
+<h1 class="lab-preamble__title">
+Working with Python Scripts
+</h1>
+<div class="lab-preamble__details subtitle-headline-1">
+<span>1 hour 30 minutes</span>
+<span>Free</span>
+<div class="lab__rating">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47742/reviews?parent=catalog"><div class="rateit" data-rateit-readonly="true" data-rateit-value="4.1406"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 66.2496px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+
+</a><a data-target="#lab-review-modal" data-toggle="modal">
+Rate Lab
+</a>
+</div>
+</div>
+</div>
+
+<div class="lab-content__inner-wrapper">
+<div class="js-markdown-instructions lab-content__markdown markdown-lab-instructions" id="markdown-lab-instructions">
+
+
+
+<h2 id="step1">Introduction</h2>
+<p>Welcome to your first lab on fixing problems in Python. In this lab, you'll first have to fix an incorrect Python script. This includes:</p>
+<ul>
+<li>Fixing the file permissions to make it executable.</li>
+<li>Fixing a bug in the code.</li>
+</ul>
+<p>After that, you'll write your own Python module and use it from the original script.</p>
+<p>You'll have 90 minutes to complete this lab.</p>
+<h3>Start the lab</h3>
+<p>You'll need to start the lab before you can access the materials in the virtual machine OS.  To do this, click the green “Start Lab” button at the top of the screen.</p>
+<ql-infobox><strong>Note:</strong> For this lab you are going to access the <strong>Linux VM</strong> through your <strong>local SSH Client</strong>, and not use the <strong>Google Console</strong> (<strong>Open GCP Console</strong> button is not available for this lab).</ql-infobox>
+<p><img alt="Start Lab" src="./Working with Python Scripts _ Qwiklabs_files/dvIz+hCdCLq0P9JbORQrHU9h22GU18bW7Bo_MfQPoSs="></p>
+<p>After you click the “Start Lab” button, you will see all the SSH connection details on the left-hand side of your screen. You should have a screen that looks like this:</p>
+<p><img alt="Connection details" src="./Working with Python Scripts _ Qwiklabs_files/T2WTv35A3yGYeomHD1stDaAZpBpVymNqc380RdOBVe4="></p>
+<h2 id="step2">Accessing the virtual machine</h2>
+<p>Please find one of the three relevant options below based on your device's operating system.</p>
+<ql-infobox><strong>Note:</strong> Working with Qwiklabs may be similar to the work you'd perform as an <strong>IT Support Specialist</strong>; you'll be interfacing with a cutting-edge technology that requires multiple steps to access, and perhaps healthy doses of patience and persistence(!). You'll also be using <strong>SSH</strong> to enter the labs -- a critical skill in IT Support that you’ll be able to practice through the labs.</ql-infobox>
+<h3>Option 1: Windows Users: Connecting to your VM</h3>
+<p>In this section, you will use the PuTTY Secure Shell (SSH) client and your VM’s External IP address to connect.</p>
+<p><strong>Download your PPK key file</strong></p>
+<p>You can download the VM’s private key file in the PuTTY-compatible <strong>PPK</strong> format from the Qwiklabs Start Lab page. Click on <strong>Download PPK</strong>.</p>
+<p><img alt="PPK" src="./Working with Python Scripts _ Qwiklabs_files/ZWdhDzmDeppdXplN8b2GE+J4HjiEs50sjhmD9fIWS1o="></p>
+<p><strong>Connect to your VM using SSH and PuTTY</strong></p>
+<ol>
+<li>
+<p>You can download Putty from <a href="https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe">here</a></p>
+</li>
+<li>
+<p>In the <strong>Host Name (or IP address)</strong> box, enter username@external_ip_address.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Replace <strong>username</strong> and <strong>external_ip_address</strong> with values provided in the lab.</ql-infobox>
+<p><img alt="Putty_1" src="./Working with Python Scripts _ Qwiklabs_files/9WwXv1tzK+UCbpUECb94LBndveI2BCYa9uDRGzctoLg="></p>
+<ol start="3">
+<li>
+<p>In the <strong>Category</strong> list, expand <strong>SSH</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Auth</strong> (don’t expand it).</p>
+</li>
+<li>
+<p>In the <strong>Private key file for authentication</strong> box, browse to the PPK file that you downloaded and double-click it.</p>
+</li>
+<li>
+<p>Click on the <strong>Open</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> PPK file is to be imported into PuTTY tool using the Browse option available in it. It should not be opened directly but only to be used in PuTTY.</ql-infobox>
+<p><img alt="Putty_2" src="./Working with Python Scripts _ Qwiklabs_files/MwC8aAcTUdtsEuTl2v2DSI7YSCshINv_gzm4ZCSrQig="></p>
+<ol start="7">
+<li>Click <strong>Yes</strong> when prompted to allow a first connection to this remote SSH server. Because you are using a key pair for authentication, you will not be prompted for a password.</li>
+</ol>
+<p><strong>Common issues</strong></p>
+<p>If PuTTY fails to connect to your Linux VM, verify that:</p>
+<ul>
+<li>
+<p>You entered <strong>&lt;username&gt;</strong>@<strong>&lt;external ip address&gt;</strong> in PuTTY.</p>
+</li>
+<li>
+<p>You downloaded the fresh new PPK file for this lab from Qwiklabs.</p>
+</li>
+<li>
+<p>You are using the downloaded PPK file in PuTTY.</p>
+</li>
+</ul>
+<h3>Option 2: OSX and Linux users: Connecting to your VM via SSH</h3>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Working with Python Scripts _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to the VM using the local Terminal application</strong></p>
+<p>A <strong>terminal</strong> is a program which provides a <strong>text-based interface for typing commands</strong>. Here you will use your terminal as an SSH client to connect with lab provided Linux VM.</p>
+<ol>
+<li>
+<p>Open the Terminal application.</p>
+<ul>
+<li>
+<p>To open the terminal in Linux use the shortcut key <strong>Ctrl+Alt+t</strong>.</p>
+</li>
+<li>
+<p>To open terminal in <strong>Mac</strong> (OSX) enter <strong>cmd + space</strong> and search for <strong>terminal</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Enter the following commands.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Substitute the <strong>path/filename for the PEM</strong> file you downloaded, <strong>username</strong> and <strong>External IP Address</strong>.</ql-infobox>
+<p>You will most likely find the PEM file in <strong>Downloads</strong>. If you have not changed the download settings of your system, then the path of the PEM key will be <strong>~/Downloads/qwikLABS-XXXXX.pem</strong></p>
+<pre><code>chmod 600 ~/Downloads/qwikLABS-XXXXX.pem
+</code><button class="button button--copy js-copy-button-0"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>ssh -i ~/Downloads/qwikLABS-XXXXX.pem username@External Ip Address
+</code><button class="button button--copy js-copy-button-1"><i class="fa fa-clipboard"></i></button></pre>
+<p><img alt="SSH" src="./Working with Python Scripts _ Qwiklabs_files/H7KOW2FkxOOgsLdxMuZWTl2PoqPlgElnb0YQtC319hQ="></p>
+<h3>Option 3: Chrome OS users: Connecting to your VM via SSH</h3>
+<ql-infobox><strong>Note:</strong> Make sure you are not in <strong>Incognito/Private mode</strong> while launching the application.</ql-infobox>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Working with Python Scripts _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to your VM</strong></p>
+<ol>
+<li>
+<p>Add Secure Shell from  <a href="https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo" target="_blank">here</a> to your Chrome browser.</p>
+</li>
+<li>
+<p>Open the Secure Shell app and click on <strong>[New Connection]</strong>.</p>
+<p><img alt="new-connection-button" src="./Working with Python Scripts _ Qwiklabs_files/5wIwLwU6D1mNWkeYsNVEazGLRrzuWsUq6t6_1NnWqcM="></p>
+</li>
+<li>
+<p>In the <strong>username</strong> section, enter the username given in the Connection Details Panel of the lab. And for the <strong>hostname</strong> section, enter the external IP of your VM instance that is mentioned in the Connection Details Panel of the lab.</p>
+<p><img alt="username-hostname-fields" src="./Working with Python Scripts _ Qwiklabs_files/fymsGw1B5jFEANsD41CD5dFrPWa9ASKnqfoVONtOxlA="></p>
+</li>
+<li>
+<p>In the <strong>Identity</strong> section, import the downloaded PEM key by clicking on the <strong>Import…</strong> button beside the field. Choose your PEM key and click on the <strong>OPEN</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> If the key is still not available after importing it, refresh the application, and select it from the <strong>Identity</strong> drop-down menu.
+</ql-infobox>
+<ol start="5">
+<li>
+<p>Once your key is uploaded, click on the <strong>[ENTER] Connect</strong> button below.</p>
+<p><img alt="import-button" src="./Working with Python Scripts _ Qwiklabs_files/knW0T7QscQZ6VVTUPKW_kF4LERKArqDwSQqWnF8GxV8="></p>
+</li>
+<li>
+<p>For any prompts, type <strong>yes</strong> to continue.</p>
+</li>
+<li>
+<p>You have now successfully connected to your Linux VM.</p>
+</li>
+</ol>
+<p>You're now ready to continue with the lab!</p>
+
+<h2 id="step3">Fix file permissions</h2>
+<p>We have a python script ready for you. From your home directory (~), use the following command to navigate to the scripts directory:</p>
+<pre><code>cd scripts
+</code><button class="button button--copy js-copy-button-2"><i class="fa fa-clipboard"></i></button></pre>
+<p>List the files to find the script using the following command:</p>
+<pre><code>ls
+</code><button class="button button--copy js-copy-button-3"><i class="fa fa-clipboard"></i></button></pre>
+<p>To view the contents of this file, enter the following command:</p>
+<pre><code>cat heath_checks.py
+</code><button class="button button--copy js-copy-button-4"><i class="fa fa-clipboard"></i></button></pre>
+<p>This Python file consists of a script to check disk and cpu usage. You can see shutil and psutil modules are imported here.</p>
+<p>The <em>shutil</em> module offers a number of high-level operations on files and collections of files. In particular, it provides functions that support file copying and removal. It comes under Python's standard utility modules. <em>disk_usage()</em> method is used to get disk usage statistics of the given path. This method returns a named tuple with the attributes <em>total</em>, <em>used</em>, and <em>free</em>. The <em>total</em> attribute represents the total amount of space, the <em>used</em> attribute represents the amount of used space, and the <em>free</em> attribute represents the amount of available space, in bytes.</p>
+<p><em>psutil</em> (Python system and process utilities) is a cross-platform library for retrieving information on the processes currently running and system utilization (CPU, memory, disks, network, sensors) in Python. It's useful mainly for system monitoring, profiling, limiting process resources, and managing running processes. <em>cpu_percent()</em> returns a float showing the current system-wide CPU use as a percentage. When the interval is 0.0 or None (default), the function compares process times to system CPU times elapsed since the last call, returning immediately (non-blocking). That means that the first time it's called it will return a meaningful 0.0 value. When the interval is &gt; 0.0, the function compares process times to system CPU times elapsed before and after the interval (blocking).</p>
+<p>This script begins with a line containing the #! character combination, which is commonly called hash bang or shebang and continues with the path to the interpreter.</p>
+<p><em>#!/usr/bin/env python3</em> uses the operating system env command, which locates and executes Python by searching the PATH environment variable. Unlike Windows, the Python interpreter is usually already in the $PATH variable on linux, so you don't have to add it.</p>
+<p>Now that you understand what the script does, and the functions within it, let's run the Python file using the following command:</p>
+<pre><code>./health_checks.py
+</code><button class="button button--copy js-copy-button-5"><i class="fa fa-clipboard"></i></button></pre>
+<p>We got a permission denied error.</p>
+<p><img alt="9cf4777b361c4ae2.png" src="./Working with Python Scripts _ Qwiklabs_files/QIhJ6K6pbfNRvgNfay4fs5SB_SRC5a8XDt9MUqtIDeM="></p>
+<p>This is because the above command tries to run your script directly as a program. The program is parsed by the interpreter specified in the first line of the script, i.e. shebang. If the kernel finds that the first two bytes are #! it uses the rest of the line as an interpreter and passes the file as an argument. So, to do this, the file needs to have execute permission.</p>
+<p>To run this file, we need it to have execute permission (x). Let's update the file permissions and then try running the file. Use the following command to add execute permission to the file:</p>
+<pre><code>sudo chmod +x health_checks.py
+</code><button class="button button--copy js-copy-button-6"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now try running the file again by using the following command:</p>
+<pre><code>./health_checks.py
+</code><button class="button button--copy js-copy-button-7"><i class="fa fa-clipboard"></i></button></pre>
+<p>This time, the output shows "ERROR".</p>
+<p><img alt="55da3ba2d7faeb87.png" src="./Working with Python Scripts _ Qwiklabs_files/+48NPTcgpPm1x_N4VW5HbAVxjIIm4anbtlveVZD2tQY="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="1">
+Fix file permissions
+</ql-activity-tracking></p>
+<h2 id="step4">Debug the issue</h2>
+<p>The Python script returns ERROR only if there's not enough disk usage or CPU usage. Try to debug this issue.</p>
+<ql-infobox><strong>Hint: </strong>The problem is that the function <strong>check_cpu_usage</strong> should return <strong>true</strong> if the CPU usage is less than 75%, but in this case, it returns false.</ql-infobox>
+<p>Use a nano editor to open the file health_checks.py.</p>
+<pre><code>nano health_checks.py
+</code><button class="button button--copy js-copy-button-8"><i class="fa fa-clipboard"></i></button></pre>
+<p>Make the necessary changes now. And once the changes are done, save the file by clicking Ctrl-o, enter key and Ctrl-x.</p>
+<p>Once you have debugged the issue, try running the file again by using the command:</p>
+<pre><code>./health_checks.py
+</code><button class="button button--copy js-copy-button-9"><i class="fa fa-clipboard"></i></button></pre>
+<p>This time, if the script is correct, the output should be "Everything ok".</p>
+<p><img alt="3787ef9ec72912c8.png" src="./Working with Python Scripts _ Qwiklabs_files/EuE_vYpSf1AWJ_qrchTYIW7qxpDDxrtPKAkNMdGVe3I="></p>
+<p>Congratulations! You fixed the script!</p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="2">
+Debug the issue
+</ql-activity-tracking></p>
+<h2 id="step5">Create a new Python module</h2>
+<p>In this section, you are going to write a Python module. A module is a file containing Python definitions and statements. The file name is the module name with the suffix .py appended.</p>
+<p>The module you are going to write will be used to test the network connections. We will guide you step by step through this process. Throughout the lab, we will refer to this module as the network module.</p>
+<p>Let's start writing this network module. Since, the network module will check whether the network is correctly configured on the computer, we will use the requests module.</p>
+<h3><strong>What is the requests module?</strong></h3>
+<p>Requests is a Python module that you can use to send all kinds of HTTP requests. It's an easy-to-use library with a lot of features ranging from passing parameters in URLs to sending custom headers and SSL verification. You can add headers, form data, multi-part files, and parameters with simple Python dictionaries.You can then access the response data using the same request.</p>
+<p>To use the requests module, you first need to install it. Use the following command to install the request module. If you receive any prompts, continue by clicking <strong>Y</strong>.</p>
+<pre><code>sudo apt install python3-requests
+</code><button class="button button--copy js-copy-button-10"><i class="fa fa-clipboard"></i></button></pre>
+<p>Create a file named <code>network.py</code>. The file should be created in the same directory as <code>health_checks.py</code>, i.e., <strong>scripts</strong>. If you are not present in the scripts directory, navigate to the scripts directory first and then create the file.</p>
+<pre><code>cd ~/scripts
+</code><button class="button button--copy js-copy-button-11"><i class="fa fa-clipboard"></i></button></pre>
+<p>Use nano editor to create a new file <code>network.py</code>:</p>
+<pre><code>nano network.py
+</code><button class="button button--copy js-copy-button-12"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add a shebang line to define where the interpreter is located. In this case, the shebang line would be /usr/bin/env python3.</p>
+<pre><code>#!/usr/bin/env python3
+</code><button class="button button--copy js-copy-button-13"><i class="fa fa-clipboard"></i></button></pre>
+<p>Import the request module into the file using the import statements.</p>
+<pre><code>import requests
+</code><button class="button button--copy js-copy-button-14"><i class="fa fa-clipboard"></i></button></pre>
+<p>To check whether the local host is correctly configured, we use the socket module.</p>
+<p>Now, import the socket module.</p>
+<pre><code>import socket
+</code><button class="button button--copy js-copy-button-15"><i class="fa fa-clipboard"></i></button></pre>
+<p>Next, write a function <strong>check_localhost</strong>, which checks whether the local host is correctly configured. We do this by calling the <em>gethostbyname</em> within the function.</p>
+<pre><code>localhost = socket.gethostbyname('localhost')
+</code><button class="button button--copy js-copy-button-16"><i class="fa fa-clipboard"></i></button></pre>
+<p>The above function translates a host name to IPv4 address format. Pass the parameter <strong>localhost</strong> to the function <em>gethostbyname</em>. The result for this function should be <strong>127.0.0.1</strong>.</p>
+<p>Edit the function <strong>check_localhost</strong> so that it returns true if the function returns <strong>127.0.0.1</strong>.</p>
+<p>Now, we will write another function called <strong>check_connectivity</strong>. This checks whether the computer can make successful calls to the internet.</p>
+<p>A request is when you ping a website for information. The <strong>Requests</strong> library is designed for this task. You will use the request module for this, and call the GET method by passing <em>http://www.google.com</em> as the parameter.</p>
+<pre><code>request = requests.get("http://www.google.com")
+</code><button class="button button--copy js-copy-button-17"><i class="fa fa-clipboard"></i></button></pre>
+<p>This returns the website's status code. This status code is an integer value. Now, assign the result to a response variable and check the <em>status_code</em> attribute of that variable. It should return <strong>200</strong>.</p>
+<p>Edit the function <strong>check_connectivity</strong> so that it returns true if the function returns <strong>200</strong> status_code.</p>
+<p>Once you have finished editing the file, press Ctrl-o, Enter, and Ctrl-x to exit.</p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="3">
+Write a python module
+</ql-activity-tracking></p>
+<h2 id="step6">Use the Python module</h2>
+<p>Now, you’re going to re-edit the file <strong>health_checks.py</strong> to make it call the checks in the network module. For this, you will need to import the module into health_checks.py script.</p>
+<p>To do this, open the script <code>health_checks.py</code></p>
+<pre><code>nano health_checks.py
+</code><button class="button button--copy js-copy-button-18"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now import network module at the beginning of the file.</p>
+<pre><code>from network import *
+</code><button class="button button--copy js-copy-button-19"><i class="fa fa-clipboard"></i></button></pre>
+<p>Call the checks to the network module by adding an elif clause after the if clause in the script <code>health_checks.py</code>.</p>
+<p>Replace the <strong>else</strong> part with an elif clause.</p>
+<pre><code>elif check_localhost() and check_connectivity():
+    print("Everything ok")
+</code><button class="button button--copy js-copy-button-20"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add an <strong>else</strong> part at the end of the file.</p>
+<pre><code>else:
+    print("Network checks failed")
+</code><button class="button button--copy js-copy-button-21"><i class="fa fa-clipboard"></i></button></pre>
+<p>Once you have completed editing the file, press Ctrl-o, Enter, and Ctrl-x to exit.</p>
+<p>Now, run the file.</p>
+<pre><code>./health_checks.py
+</code><button class="button button--copy js-copy-button-22"><i class="fa fa-clipboard"></i></button></pre>
+<p>It should return "Everything ok".</p>
+<p><img alt="3787ef9ec72912c8.png" src="./Working with Python Scripts _ Qwiklabs_files/EuE_vYpSf1AWJ_qrchTYIW7qxpDDxrtPKAkNMdGVe3I="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="4">
+Use the python module
+</ql-activity-tracking></p>
+<h2 id="step7">Congratulations!</h2>
+<p>You've successfully fixed an incorrect Python script, created a new Python module, and used it in the original script. These are common tasks for IT support roles, and mastering the skills you've practiced in this lab will greatly help you in your IT career. You can now close the RDP/SSH window, manually end the lab, and continue onto the next module. This lab will automatically end when the time runs out.</p>
+<h2 id="step8">End your lab</h2>
+<p>When you have completed your lab, click <strong>End Lab</strong>. Qwiklabs removes the resources you’ve used and cleans the account for you.</p>
+<p>You will be given an opportunity to rate the lab experience. Select the applicable number of stars, type a comment, and then click <strong>Submit</strong>.</p>
+<p>The number of stars indicates the following:</p>
+<ul>
+<li>1 star = Very dissatisfied</li>
+<li>2 stars = Dissatisfied</li>
+<li>3 stars = Neutral</li>
+<li>4 stars = Satisfied</li>
+<li>5 stars = Very satisfied</li>
+</ul>
+<p>You can close the dialog box if you don't want to provide feedback.</p>
+<p>For feedback, suggestions, or corrections, please use the <strong>Support</strong> tab.</p>
+
+
+
+</div>
+<div class="js-lab-content-outline lab-content__outline">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47742#step1" class="">Introduction</a><a href="https://googlecoursera.qwiklabs.com/focuses/47742#step2">Accessing the virtual machine</a><a href="https://googlecoursera.qwiklabs.com/focuses/47742#step3">Fix file permissions</a><a href="https://googlecoursera.qwiklabs.com/focuses/47742#step4">Debug the issue</a><a href="https://googlecoursera.qwiklabs.com/focuses/47742#step5">Create a new Python module</a><a href="https://googlecoursera.qwiklabs.com/focuses/47742#step6">Use the Python module</a><a href="https://googlecoursera.qwiklabs.com/focuses/47742#step7">Congratulations!</a><a href="https://googlecoursera.qwiklabs.com/focuses/47742#step8">End your lab</a>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+<div class="lab-assessment__tab js-lab-assessment-tab">
+<h5 class="small-label">
+Score
+</h5>
+<h3 class="js-lab-assessment-total-score">
+—/20
+</h3>
+<iframe class="l-ie-iframe-fix" src="./Working with Python Scripts _ Qwiklabs_files/saved_resource(2).html"></iframe>
+</div>
+<div class="lab-assessment__panel js-lab-assessment-panel">
+<!-- / If lab_instance has is started and assessment is generated, use -->
+<!-- / lab_instance.assessment, otherwise use lab.assessment_manual -->
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Fix file permissions
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="1">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-1">
+</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Debug the issue
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="2">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-2">
+</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Write a python module
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="3">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-3">
+</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Use the python module
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="4">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-4">
+</span>
+/ 5
+</p>
+</div>
+
+<iframe class="l-ie-iframe-fix" src="./Working with Python Scripts _ Qwiklabs_files/saved_resource(3).html"></iframe>
+</div>
+<div class="lab-introduction js-lab-introduction is-hidden">
+<div class="lab-introduction__inner">
+<h1 class="headline-1">Welcome to Your First Lab!</h1>
+<ql-icon-button class="js-skip-button">close</ql-icon-button>
+<div class="lab-introduction__video">
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" id="lab-introduction" src="./Working with Python Scripts _ Qwiklabs_files/yF7EDXKTmoQ.html"></iframe>
+</div>
+<a class="js-skip-button button button--outline">Skip this video</a>
+</div>
+</div>
+
+
+
+</div>
+</main>
+<div class="modal fade" id="lab-details-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<div class="modal-body">
+<p class="l-mbm">
+In this lab we will fix an incorrect Python script.
+</p>
+<p class="small-label l-mbs">
+<strong>
+Duration:
+</strong>
+0m setup
+·
+90m access
+·
+90m completion
+</p>
+<p class="small-label l-mbs">
+<span><strong>Levels: </strong>introductory</span>
+</p>
+<p class="small-label">
+<strong>
+Permalink:
+</strong>
+<a href="https://googlecoursera.qwiklabs.com/catalog_lab/2386">https://googlecoursera.qwiklabs.com/catalog_lab/2386</a>
+</p>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Got It
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Working with Python Scripts _ Qwiklabs_files/saved_resource(4).html"></iframe>
+</div>
+<div class="modal fade" id="lab-review-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<form class="simple_form js-lab-review-form" id="edit_lab_review_5036404" action="https://googlecoursera.qwiklabs.com/lab_reviews/5036404" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><div class="modal-body">
+<p class="label">
+How satisfied are you with this lab?*
+</p>
+<div class="rateit js-rateit" data-rateit-max="5" data-rateit-min="0" data-rateit-resetable="false" data-rateit-step="1" data-rateit-value="3"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 48px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+<div class="l-mtm">
+
+<div class="control-group hidden lab_review_user_id"><div class="controls"><input class="hidden" type="hidden" value="2606438" name="lab_review[user_id]" id="lab_review_user_id"></div></div>
+<div class="control-group hidden lab_review_classroom_id"><div class="controls"><input class="hidden" type="hidden" value="6086" name="lab_review[classroom_id]" id="lab_review_classroom_id"></div></div>
+<div class="control-group hidden lab_review_lab_id"><div class="controls"><input class="hidden" type="hidden" value="2386" name="lab_review[lab_id]" id="lab_review_lab_id"></div></div>
+<div class="control-group hidden lab_review_focus_id"><div class="controls"><input class="hidden" type="hidden" value="47742" name="lab_review[focus_id]" id="lab_review_focus_id"></div></div>
+<div class="control-group hidden lab_review_rating"><div class="controls"><input class="hidden js-rating-input" type="hidden" value="0" name="lab_review[rating]" id="lab_review_rating"></div></div>
+<div class="control-group text optional lab_review_comment"><label class="text optional control-label" for="lab_review_comment">Comment</label><div class="controls"><textarea class="text optional" name="lab_review[comment]" id="lab_review_comment">VM is kinda slow but it's alright I guess.</textarea></div></div>
+</div>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Cancel
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<input type="submit" name="commit" value="Submit" disabled="disabled" class="btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" id="submit" data-disabled="false" data-disable-with="Submit" data-upgraded=",MaterialButton,MaterialRipple"><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></input>
+</div>
+</form>
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Working with Python Scripts _ Qwiklabs_files/saved_resource(5).html"></iframe>
+</div>
+
+<script>
+  $( function() {
+    ql.initMaterialInputs();
+    initChosen();
+    initSearch();
+    initTabs();
+    ql.list.init();
+    ql.favoriting.init();
+    ql.header.myAccount.init();
+    initTooltips();
+    ql.autocomplete.init();
+    ql.modals.init();
+    ql.toggleButtons.init();
+    ql.analytics.init();
+    initLabContent( );
+  ql.labOutline.links.init();
+  ql.labOutline.layout.init();
+  initLabReviewModal();
+  ql.labAssessment.init();
+  ql.labIntroduction.init( true );
+  ql.labData.init();
+  initLabTranslations( {"are_you_sure":"All done? If you end this lab, you will lose all your work. You may not be able to restart the lab if there is a quota limit. Are you sure you want to end this lab?\n","in_progress":"*In Progress*","ending":"*Ending*","starting":"*Starting, please wait*","end_concurrent_labs":"Sorry, you can only run one lab at a time. To start this lab, please confirm that you want all of your existing labs to end.\n","copied":"Copied","no_resource":"Error retrieving resource.","no_support":"No Support","mac_press":"Press ⌘-C to copy","thanks_review":"Thanks for reviewing this lab.","windows_press":"Press Ctrl-C to copy","days":"days"} );
+  ql.labRun.init();
+  ql.initHeader();
+  ql.navigation.init();
+  ql.navPanel.init();
+  ql.navigation.init();
+  
+  });
+</script>
+<style>
+  .mdl-layout__container {
+    position: static
+  }
+</style>
+
+
+<div></div><div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe src="./Working with Python Scripts _ Qwiklabs_files/anchor.html" width="256" height="60" role="presentation" name="a-oruw1l86xvzx" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./Working with Python Scripts _ Qwiklabs_files/saved_resource(6).html"></iframe></div><iframe data-product="web_widget" title="No content" tabindex="-1" aria-hidden="true" src="./Working with Python Scripts _ Qwiklabs_files/saved_resource(7).html" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;"></iframe><div><iframe title="Opens a widget where you can chat to one of our agents" id="launcher" tabindex="0" class="zEWidget-launcher zEWidget-launcher--active" style="border: none; background: transparent; z-index: 999998; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 1; height: 50px; max-height: 551px; min-height: 50px; margin: 10px 20px; right: 0px; bottom: 0px; width: 112px;width: 112px;" src="./Working with Python Scripts _ Qwiklabs_files/saved_resource(8).html"></iframe></div><div><iframe title="Find more information here" id="webWidget" tabindex="-1" class="zEWidget-webWidget " style="border: none; background: transparent; z-index: 999999; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 0; width: 357px; height: 100%; max-height: 565px; min-height: 150px; margin-left: 8px; margin-right: 8px; top: -9999px; visibility: hidden;" src="./Working with Python Scripts _ Qwiklabs_files/saved_resource(9).html"></iframe></div></body></html>
