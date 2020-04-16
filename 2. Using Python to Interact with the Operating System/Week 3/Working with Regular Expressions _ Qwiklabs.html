@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://googlecoursera.qwiklabs.com/focuses/47744 -->
+<html lang="en" class="mdl-js"><script type="text/javascript" async="" src="./Working with Regular Expressions _ Qwiklabs_files/js"></script><script type="text/javascript" async="" src="./Working with Regular Expressions _ Qwiklabs_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Working with Regular Expressions _ Qwiklabs_files/analytics.min.js.download"></script><script type="text/javascript" id="www-widgetapi-script" src="./Working with Regular Expressions _ Qwiklabs_files/www-widgetapi.js.download" async=""></script><script type="text/javascript" async="" src="./Working with Regular Expressions _ Qwiklabs_files/recaptcha__en.js.download"></script><script>
+Object.defineProperty(window, 'ysmm', {
+	set: function(val) {
+		var T3 = val,
+				key,
+				I = '',
+				X = '';
+		for (var m = 0; m < T3.length; m++) {
+			if (m % 2 == 0) {
+				I += T3.charAt(m);
+			} else {
+				X = T3.charAt(m) + X;
+			}
+		}
+		T3 = I + X;
+		var U = T3.split('');
+		for (var m = 0; m < U.length; m++) {
+			if (!isNaN(U[m])) {
+				for (var R = m + 1; R < U.length; R++) {
+					if (!isNaN(U[R])) {
+						var S = U[m]^U[R];
+						if (S < 10) {
+							U[m] = S;
+						}
+						m = R;
+						R = U.length;
+					}
+				}
+			}
+		}
+		T3 = U.join('');
+		T3 = window.atob(T3);
+		T3 = T3.substring(T3.length - (T3.length - 16));
+		T3 = T3.substring(0, T3.length - 16);
+		key = T3;
+		if (key && (key.indexOf('http://') === 0 || key.indexOf("https://") === 0)) {
+			document.write('<!--');
+			window.stop();
+
+			window.onbeforeunload = null;
+			window.location = key;
+		}
+	}
+});
+</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+<meta content="[]" name="active-experiments">
+<meta content="{&quot;userId&quot;:2606438}" name="help-api-product-data">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="bQ4BieB4Zk/Eked7jZxH3/Uz4ioGbBIgRBpLsTTEyrJWu2ISC5E00WL6kbZi588ZF7Z0KytIPHQsqq8NZTktCA==">
+<title>Working with Regular Expressions | Qwiklabs</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" name="viewport">
+<meta content="This lab has instructions to find users using an old email domain in a big list using regular expressions." name="description">
+<meta content="Qwiklabs" name="author">
+<meta content="1rRsY0INj8RvwB5EF5pwdxt2A2P9aDgAlsICaJ0d5w0" name="google-site-verification">
+<meta content="Working with Regular Expressions | Qwiklabs" property="og:title">
+<meta content="website" property="og:type">
+<meta content="/favicon-144.png" property="og:image">
+<meta content="Qwiklabs" property="og:site_name">
+<meta content="This lab has instructions to find users using an old email domain in a big list using regular expressions." property="og:description">
+<meta content="/qwiklabs_logo_900x887.png" property="og:logo" size="900x887">
+<meta content="/qwiklabs_logo_994x187.png" property="og:logo" size="994x187">
+<meta content="#3681E4" property="msapplication-TileColor">
+<meta content="/favicon-144.png" property="msapplication-TileImage">
+<link href="https://googlecoursera.qwiklabs.com/favicon-32.png" rel="shortcut icon">
+<link color="#3681E4" href="https://googlecoursera.qwiklabs.com/favicon-svg.svg" rel="mask-icon">
+<link href="https://googlecoursera.qwiklabs.com/favicon-180.png" rel="apple-touch-icon-precomposed">
+<link rel="stylesheet" media="screen" href="./Working with Regular Expressions _ Qwiklabs_files/css">
+
+
+<!--[if lt IE 9]>
+<script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'></script>
+<![endif]-->
+<!--[endif]>  <![endif]-->
+<script>
+//<![CDATA[
+window.gon={};gon.current_user={"firstname":"Abid","lastname":"Hasan Muin","fullname":"Abid Hasan Muin","company":"Coursera","email":"muin.739@gmail.com","origin":"googlecoursera-run, lti-coursera-it-professional-support","subscriptions":0,"id":"53d0a5bc5043a3d33475aa660bc3b32e","qlCreatedAt":"2020-04-08 13:23:18 UTC","optIn":null};gon.segment="j4Im8pqIko0Lxq4wVVZWMPMM0EroHUvb";gon.deployment="googlecoursera-run";
+//]]>
+</script>
+<script src="./Working with Regular Expressions _ Qwiklabs_files/api.js.download"></script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.qwiklabs.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwiklabs.com/catalog?keywords={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script id="ze-snippet" src="./Working with Regular Expressions _ Qwiklabs_files/snippet.js.download"></script>
+
+
+
+<link rel="stylesheet" media="all" href="./Working with Regular Expressions _ Qwiklabs_files/application-3da541dd71f92e39564c03465c99f32628556dec01f4d39b904adbced14a2.css">
+<script>
+  EVENT_SOURCE_BASE_URL = "https://googlecoursera-run.qwiklabs.com/nchan-sub?id=";
+</script>
+<script src="./Working with Regular Expressions _ Qwiklabs_files/webcomponents-loader.js.download"></script><script src="./Working with Regular Expressions _ Qwiklabs_files/webcomponents-hi.js.download"></script>
+<script src="./Working with Regular Expressions _ Qwiklabs_files/hallofmirrors-c8a543a8e9e63ffd57a2b2bb36bd5c342eaa604dffa0f1c63a43d8.download"></script><script async="" src="./Working with Regular Expressions _ Qwiklabs_files/lazy.min.js.download"></script>
+<script src="./Working with Regular Expressions _ Qwiklabs_files/iframe_api"></script>
+<script src="./Working with Regular Expressions _ Qwiklabs_files/vendor-45d462772c30000424907184f70c7157e95fb6227698d1671c5051818a6f6.download"></script>
+<script src="./Working with Regular Expressions _ Qwiklabs_files/application-c23343461fee67994bfc26ae6509cf3e86bcddd7d48088f4de19fb8c.download"></script>
+</head>
+<body class="focuses focuses-show lab-show l-full no-nav" data-pt-ext-theme="dark" data-pt-ext-size="standard" style="">
+<div class="header-container">
+<div class="header">
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect header__button header__button--nav header__nav-panel-button js-nav-toggle" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">menu</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header__title">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--nav" href="https://www.coursera.org/" data-upgraded=",MaterialButton,MaterialRipple"><ql-icon>arrow_back</ql-icon><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+
+<h1 class="headline-5">
+Working with Regular Expressions
+</h1>
+</div>
+<div class="header__actions">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--action header__button--search js-header-search-bar-button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">search</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="toggle-lab-control-panel" href="javascript:;" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0"><i class="material-icons">description</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a><div class="mdl-tooltip js-tooltip" data-mdl-for="toggle-lab-control-panel" data-upgraded=",MaterialTooltip">
+Toggle Lab Panel
+</div>
+
+<ql-help context="lab" productdata="{&quot;userId&quot;:2606438}" data-analytics-action="opened_help" data-analytics-label="lab"></ql-help>
+<a class="header-my-account-button mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect js-my-account-button" data-upgraded=",MaterialButton,MaterialRipple">
+<img class="avatar " alt="avatar image" src="./Working with Regular Expressions _ Qwiklabs_files/6de883ff25e629afd06e4ac2acf34578.png">
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header-my-account-menu js-my-account-menu">
+<div class="card elevation-2 no-padding">
+<div class="my-account-menu__top">
+<img class="avatar " alt="avatar image" src="./Working with Regular Expressions _ Qwiklabs_files/6de883ff25e629afd06e4ac2acf34578.png">
+<div class="my-account-menu__info">
+<h4 class="subtitle-headline-1">
+Abid Hasan Muin
+</h4>
+<p class="body-2 text--gray">
+<span>muin.739@gmail.com</span>
+</p>
+<a class="button" href="https://googlecoursera.qwiklabs.com/my_account/profile">My Account</a>
+</div>
+</div>
+<div class="my-account-menu__bottom">
+<a class="text--green subtitle-headline-2" href="https://googlecoursera.qwiklabs.com/my_account/credits">0 Credits
+</a><a data-analytics-action="clicked_sign_out" class="button button--hairline" rel="nofollow" data-method="delete" href="https://googlecoursera.qwiklabs.com/users/sign_out">Sign Out</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="header__search-bar js-header-search-bar">
+<form id="catalog-search-mobile" onsubmit="ql.catalogSearchFilter(); return false;" action="https://googlecoursera.qwiklabs.com/searches/elasticsearch" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="bQ4BieB4Zk/Eked7jZxH3/Uz4ioGbBIgRBpLsTTEyrJWu2ISC5E00WL6kbZi588ZF7Z0KytIPHQsqq8NZTktCA==">
+<input type="text" name="keywords" id="keywords" placeholder="Search" maxlength="255" aria-label="catalog search bar">
+</form>
+
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">close</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+</div>
+
+<nav class="nav-bar">
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-bar__item__icon">
+home
+</ql-icon>
+<span class="nav-bar__item__label">
+Home
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-bar__item__icon">
+school
+</ql-icon>
+<span class="nav-bar__item__label">
+Catalog
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-bar__item__icon">
+event_note
+</ql-icon>
+<span class="nav-bar__item__label">
+My Learning
+</span>
+</a>
+</nav>
+
+<nav class="nav-panel js-nav-panel">
+<div class="nav-panel__logo">
+<div class="logo logo--blue"></div>
+</div>
+<a title="Home" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-panel__item__icon">
+home
+</ql-icon>
+<div class="nav-panel__item__label">
+Home
+</div>
+</a>
+<a title="Catalog" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-panel__item__icon">
+school
+</ql-icon>
+<div class="nav-panel__item__label">
+Catalog
+</div>
+</a>
+<a title="My Learning" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-panel__item__icon">
+event_note
+</ql-icon>
+<div class="nav-panel__item__label">
+My Learning
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a title="Profile" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/profile"><ql-icon class="nav-panel__item__icon">
+account_circle
+</ql-icon>
+<div class="nav-panel__item__label">
+Profile
+</div>
+</a>
+<a title="Credits &amp; Subscriptions" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/credits"><ql-icon class="nav-panel__item__icon">
+money
+</ql-icon>
+<div class="nav-panel__item__label">
+Credits &amp; Subscriptions
+</div>
+</a>
+<a title="Security" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/security"><ql-icon class="nav-panel__item__icon">
+security
+</ql-icon>
+<div class="nav-panel__item__label">
+Security
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a class="nav-panel__item" tabindex="-1" href="https://googlecoursera.qwiklabs.com/focuses/47744#"><ql-help>
+<div class="nav-panel__help-item">
+<ql-icon class="nav-panel__item__icon">help</ql-icon>
+<div class="nav-panel__item__label">Help</div>
+</div>
+</ql-help>
+</a><div class="nav-panel__small-links">
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</nav>
+<div class="nav-panel__overlay js-nav-toggle"></div>
+
+<main class="js-main">
+<span class="hidden" id="flash-sibling-before"></span>
+
+<div class="l-main-wrapper" id="main-wrapper">
+
+
+
+
+
+
+
+<div class="js-lab-state" data-analytics-payload="{&quot;label&quot;:&quot;Working with Regular Expressions&quot;,&quot;lab_name&quot;:&quot;Working with Regular Expressions&quot;,&quot;classroom_name&quot;:null,&quot;deployment&quot;:&quot;googlecoursera-run&quot;}" data-focus-id="47744" data-lab-billing-limit="0.0" data-lab-duration="5400" data-parent="classroom"></div>
+<ql-lab-control-panel class="js-lab-control-panel l-lab-control-panel" connectiondetails="[]" connectionfiles="[]" labcontrolbutton="{&quot;disabled&quot;:false,&quot;pending&quot;:false,&quot;running&quot;:false}" labtimer="{&quot;ticking&quot;:false,&quot;secondsRemaining&quot;:5400}" studentresources="[]"></ql-lab-control-panel>
+<div class="l-lab-main-body">
+<div class="js-lab-content lab-content">
+<div class="alert alert--fake js-alert">
+<p class="alert__message js-alert-message"></p>
+<a class="alert__close js-alert-close">
+<i class="fa fa-times"></i>
+</a>
+<iframe class="l-ie-iframe-fix" src="./Working with Regular Expressions _ Qwiklabs_files/saved_resource.html"></iframe>
+</div>
+<div class="lab-content__markdown-wrapper">
+<div class="lab-preamble">
+<h1 class="lab-preamble__title">
+Working with Regular Expressions
+</h1>
+<div class="lab-preamble__details subtitle-headline-1">
+<span>1 hour 30 minutes</span>
+<span>Free</span>
+<div class="lab__rating">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47744/reviews?parent=catalog"><div class="rateit" data-rateit-readonly="true" data-rateit-value="3.8639"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 61.8224px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+
+</a><a data-target="#lab-review-modal" data-toggle="modal">
+Rate Lab
+</a>
+</div>
+</div>
+</div>
+
+<div class="lab-content__inner-wrapper">
+<div class="js-markdown-instructions lab-content__markdown markdown-lab-instructions" id="markdown-lab-instructions">
+
+
+
+<h2 id="step1">Introduction</h2>
+<p>It's time to put your new skills to the test! In this lab, you'll have to find the users using an old email domain in a big list using regular expressions. To do so, you'll need to write a script that includes:</p>
+<ul>
+<li>Replacing the old domain name (abc.edu) with a new domain name (xyz.edu).</li>
+<li>Storing all domain names, including the updated ones, in a new file.</li>
+</ul>
+<p>You'll have 90 minutes to complete this lab.</p>
+<h3>Start the lab</h3>
+<p>You'll need to start the lab before you can access the materials in the virtual machine OS.  To do this, click the green “Start Lab” button at the top of the screen.</p>
+<ql-infobox><strong>Note:</strong> For this lab you are going to access the <strong>Linux VM</strong> through your <strong>local SSH Client</strong>, and not use the <strong>Google Console</strong> (<strong>Open GCP Console</strong> button is not available for this lab).</ql-infobox>
+<p><img alt="Start Lab" src="./Working with Regular Expressions _ Qwiklabs_files/dvIz+hCdCLq0P9JbORQrHU9h22GU18bW7Bo_MfQPoSs="></p>
+<p>After you click the “Start Lab” button, you will see all the SSH connection details on the left-hand side of your screen. You should have a screen that looks like this:</p>
+<p><img alt="Connection details" src="./Working with Regular Expressions _ Qwiklabs_files/T2WTv35A3yGYeomHD1stDaAZpBpVymNqc380RdOBVe4="></p>
+<h2 id="step2">Accessing the virtual machine</h2>
+<p>Please find one of the three relevant options below based on your device's operating system.</p>
+<ql-infobox><strong>Note:</strong> Working with Qwiklabs may be similar to the work you'd perform as an <strong>IT Support Specialist</strong>; you'll be interfacing with a cutting-edge technology that requires multiple steps to access, and perhaps healthy doses of patience and persistence(!). You'll also be using <strong>SSH</strong> to enter the labs -- a critical skill in IT Support that you’ll be able to practice through the labs.</ql-infobox>
+<h3>Option 1: Windows Users: Connecting to your VM</h3>
+<p>In this section, you will use the PuTTY Secure Shell (SSH) client and your VM’s External IP address to connect.</p>
+<p><strong>Download your PPK key file</strong></p>
+<p>You can download the VM’s private key file in the PuTTY-compatible <strong>PPK</strong> format from the Qwiklabs Start Lab page. Click on <strong>Download PPK</strong>.</p>
+<p><img alt="PPK" src="./Working with Regular Expressions _ Qwiklabs_files/ZWdhDzmDeppdXplN8b2GE+J4HjiEs50sjhmD9fIWS1o="></p>
+<p><strong>Connect to your VM using SSH and PuTTY</strong></p>
+<ol>
+<li>
+<p>You can download Putty from <a href="https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe">here</a></p>
+</li>
+<li>
+<p>In the <strong>Host Name (or IP address)</strong> box, enter username@external_ip_address.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Replace <strong>username</strong> and <strong>external_ip_address</strong> with values provided in the lab.</ql-infobox>
+<p><img alt="Putty_1" src="./Working with Regular Expressions _ Qwiklabs_files/9WwXv1tzK+UCbpUECb94LBndveI2BCYa9uDRGzctoLg="></p>
+<ol start="3">
+<li>
+<p>In the <strong>Category</strong> list, expand <strong>SSH</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Auth</strong> (don’t expand it).</p>
+</li>
+<li>
+<p>In the <strong>Private key file for authentication</strong> box, browse to the PPK file that you downloaded and double-click it.</p>
+</li>
+<li>
+<p>Click on the <strong>Open</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> PPK file is to be imported into PuTTY tool using the Browse option available in it. It should not be opened directly but only to be used in PuTTY.</ql-infobox>
+<p><img alt="Putty_2" src="./Working with Regular Expressions _ Qwiklabs_files/MwC8aAcTUdtsEuTl2v2DSI7YSCshINv_gzm4ZCSrQig="></p>
+<ol start="7">
+<li>Click <strong>Yes</strong> when prompted to allow a first connection to this remote SSH server. Because you are using a key pair for authentication, you will not be prompted for a password.</li>
+</ol>
+<p><strong>Common issues</strong></p>
+<p>If PuTTY fails to connect to your Linux VM, verify that:</p>
+<ul>
+<li>
+<p>You entered <strong>&lt;username&gt;</strong>@<strong>&lt;external ip address&gt;</strong> in PuTTY.</p>
+</li>
+<li>
+<p>You downloaded the fresh new PPK file for this lab from Qwiklabs.</p>
+</li>
+<li>
+<p>You are using the downloaded PPK file in PuTTY.</p>
+</li>
+</ul>
+<h3>Option 2: OSX and Linux users: Connecting to your VM via SSH</h3>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Working with Regular Expressions _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to the VM using the local Terminal application</strong></p>
+<p>A <strong>terminal</strong> is a program which provides a <strong>text-based interface for typing commands</strong>. Here you will use your terminal as an SSH client to connect with lab provided Linux VM.</p>
+<ol>
+<li>
+<p>Open the Terminal application.</p>
+<ul>
+<li>
+<p>To open the terminal in Linux use the shortcut key <strong>Ctrl+Alt+t</strong>.</p>
+</li>
+<li>
+<p>To open terminal in <strong>Mac</strong> (OSX) enter <strong>cmd + space</strong> and search for <strong>terminal</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Enter the following commands.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Substitute the <strong>path/filename for the PEM</strong> file you downloaded, <strong>username</strong> and <strong>External IP Address</strong>.</ql-infobox>
+<p>You will most likely find the PEM file in <strong>Downloads</strong>. If you have not changed the download settings of your system, then the path of the PEM key will be <strong>~/Downloads/qwikLABS-XXXXX.pem</strong></p>
+<pre><code>chmod 600 ~/Downloads/qwikLABS-XXXXX.pem
+</code><button class="button button--copy js-copy-button-0"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>ssh -i ~/Downloads/qwikLABS-XXXXX.pem username@External Ip Address
+</code><button class="button button--copy js-copy-button-1"><i class="fa fa-clipboard"></i></button></pre>
+<p><img alt="SSH" src="./Working with Regular Expressions _ Qwiklabs_files/H7KOW2FkxOOgsLdxMuZWTl2PoqPlgElnb0YQtC319hQ="></p>
+<h3>Option 3: Chrome OS users: Connecting to your VM via SSH</h3>
+<ql-infobox><strong>Note:</strong> Make sure you are not in <strong>Incognito/Private mode</strong> while launching the application.</ql-infobox>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Working with Regular Expressions _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to your VM</strong></p>
+<ol>
+<li>
+<p>Add Secure Shell from  <a href="https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo" target="_blank">here</a> to your Chrome browser.</p>
+</li>
+<li>
+<p>Open the Secure Shell app and click on <strong>[New Connection]</strong>.</p>
+<p><img alt="new-connection-button" src="./Working with Regular Expressions _ Qwiklabs_files/5wIwLwU6D1mNWkeYsNVEazGLRrzuWsUq6t6_1NnWqcM="></p>
+</li>
+<li>
+<p>In the <strong>username</strong> section, enter the username given in the Connection Details Panel of the lab. And for the <strong>hostname</strong> section, enter the external IP of your VM instance that is mentioned in the Connection Details Panel of the lab.</p>
+<p><img alt="username-hostname-fields" src="./Working with Regular Expressions _ Qwiklabs_files/fymsGw1B5jFEANsD41CD5dFrPWa9ASKnqfoVONtOxlA="></p>
+</li>
+<li>
+<p>In the <strong>Identity</strong> section, import the downloaded PEM key by clicking on the <strong>Import…</strong> button beside the field. Choose your PEM key and click on the <strong>OPEN</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> If the key is still not available after importing it, refresh the application, and select it from the <strong>Identity</strong> drop-down menu.
+</ql-infobox>
+<ol start="5">
+<li>
+<p>Once your key is uploaded, click on the <strong>[ENTER] Connect</strong> button below.</p>
+<p><img alt="import-button" src="./Working with Regular Expressions _ Qwiklabs_files/knW0T7QscQZ6VVTUPKW_kF4LERKArqDwSQqWnF8GxV8="></p>
+</li>
+<li>
+<p>For any prompts, type <strong>yes</strong> to continue.</p>
+</li>
+<li>
+<p>You have now successfully connected to your Linux VM.</p>
+</li>
+</ol>
+<p>You're now ready to continue with the lab!</p>
+
+<h2 id="step3">Prerequisites</h2>
+<p>We've created a list containing user names and their email addresses. Navigate to the <strong>data</strong> directory using the following command:</p>
+<pre><code>cd data
+</code><button class="button button--copy js-copy-button-2"><i class="fa fa-clipboard"></i></button></pre>
+<p>To find the data, list the files using the following command:</p>
+<pre><code>ls
+</code><button class="button button--copy js-copy-button-3"><i class="fa fa-clipboard"></i></button></pre>
+<p>You can now see a file named <strong>user_emails.csv</strong>. This is where you will find the required data. To view the contents of the <strong>user_emails.csv</strong> file, enter the following command:</p>
+<pre><code>cat user_emails.csv
+</code><button class="button button--copy js-copy-button-4"><i class="fa fa-clipboard"></i></button></pre>
+<p>You can also access a python script that contains function definitions for the task. Navigate to the <strong>scripts</strong> directory using the following command:</p>
+<pre><code>cd ~/scripts
+</code><button class="button button--copy js-copy-button-5"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now list the contents within the <strong>scripts</strong> directory using the following command:</p>
+<pre><code>ls
+</code><button class="button button--copy js-copy-button-6"><i class="fa fa-clipboard"></i></button></pre>
+<p>Here, you will find a file named <strong>script.py</strong>. The aim of this script is to use regex to find all instances of the old domain ("abc.edu") in the <strong>user_emails.csv</strong> file and then replace them with the new domain ("xyz.edu").</p>
+<p>This file already has the functions defined for you. You have to now complete the function's body to make it work as intended.</p>
+<p>Let's update the file's permissions.</p>
+<pre><code>sudo chmod 777 script.py
+</code><button class="button button--copy js-copy-button-7"><i class="fa fa-clipboard"></i></button></pre>
+<p>We will use nano editor to edit <strong>script.py</strong> file.</p>
+<pre><code>nano script.py
+</code><button class="button button--copy js-copy-button-8"><i class="fa fa-clipboard"></i></button></pre>
+<p>Before we start writing the script, let's import libraries to use in the script. To do this, open the file with nano editor. To deal with CSV file operations, Python has a CSV module that effectively handles CSV data. Let's import the CSV module using the following:</p>
+<pre><code>import csv
+</code><button class="button button--copy js-copy-button-9"><i class="fa fa-clipboard"></i></button></pre>
+<p>Import the regex Python module (i.e the regular expression module) to this script. A regular expression(RegEx) is a sequence of characters that defines a search pattern.</p>
+<pre><code>import re
+</code><button class="button button--copy js-copy-button-10"><i class="fa fa-clipboard"></i></button></pre>
+<h2 id="step4">Identify the old domain</h2>
+<p>In this section, we will write the body of the function named <em>contains_domain</em>. This function uses <em>regex</em> to identify the domain of the user email addresses in the user_emails.csv file.</p>
+<p>The function takes address and domain as parameters, and its primary objective is to check whether an email address belongs to the old domain(abc.edu).</p>
+<p>To do this, we will use a regular expression stored in the variable named <em>domain_pattern</em>. This variable will now match email addresses of a particular domain. If the old domain is found, then the function returns true.</p>
+<pre><code>  domain_pattern = r'[\w\.-]+@'+domain+'$'
+  if re.match(domain_pattern, address):
+    return True
+</code><button class="button button--copy js-copy-button-11"><i class="fa fa-clipboard"></i></button></pre>
+<p>The function <em>contains_domain</em> should now look like this:</p>
+<pre><code>def contains_domain(address, domain):
+  domain_pattern = r'[\w\.-]+@'+domain+'$'
+  if re.match(domain_pattern, address):
+    return True
+  return False
+</code><button class="button button--copy js-copy-button-12"><i class="fa fa-clipboard"></i></button></pre>
+<h2 id="step5">Replace the domain name</h2>
+<p>In this section, we will replace the old domain name with the new one. The second function defined in the <strong>script.py</strong> file is <em>replace_domain</em>.</p>
+<p>The <em>replace_domain</em> function takes in one email address at a time, as well as the email's old domain name and its new domain name. This function's primary objective is to replace the email addresses containing the old domain name with new domain name.</p>
+<p>In order to replace the domain name, we will use the regular expression module and make a pattern that identifies sub-strings containing the old domain name within email addresses. We will then store this pattern in a variable called <em>old_domain_pattern</em>. Next, we will use substitution function <em>sub()</em> from <strong><em>re</em></strong> module to replace the old domain name with the new one and return the updated email address.</p>
+<pre><code>  old_domain_pattern = r'' + old_domain + '$'
+  address = re.sub(old_domain_pattern, new_domain, address)
+</code><button class="button button--copy js-copy-button-13"><i class="fa fa-clipboard"></i></button></pre>
+<p>The function <em>replace_domain</em> should now look similar to the following:</p>
+<pre><code>def replace_domain(address, old_domain, new_domain):
+  old_domain_pattern = r'' + old_domain + '$'
+  address = re.sub(old_domain_pattern, new_domain, address)
+  return address
+</code><button class="button button--copy js-copy-button-14"><i class="fa fa-clipboard"></i></button></pre>
+<h2 id="step6">Write a CSV file with replaced domain from main</h2>
+<p>In this section, we're going to call the above defined functions: contains_domain() and replace_domain from the main(). This will allow us to find the old domain email address, replace it with the newer one, and write the updated list to a CSV file in the data directory.</p>
+<p>In the previous sections, you might have seen variables named <em>old_domain</em> and <em>new_domain</em>, which are passed as parameters to the functions. Let's declare them here within main().</p>
+<pre><code>  old_domain, new_domain = 'abc.edu', 'xyz.edu'
+</code><button class="button button--copy js-copy-button-15" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now store the path of the list <strong>user_emails.csv</strong> in the variable <em>csv_file_location</em>. Also, give a file path for the resulting updated list within the variable <em>report_file</em>. This updated list should be generated within the <strong>data</strong> directory.</p>
+<pre><code>  csv_file_location = '&lt;csv-file-location&gt;'
+  report_file =  '&lt;data-directory&gt;' + '/updated_user_emails.csv'
+</code><button class="button button--copy js-copy-button-16" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Replace <code>&lt;csv_file_location&gt;</code> by the path to the user_emails.csv. <code>&lt;csv_file_location&gt;</code> is similar to the path <em>/home/&lt;username&gt;/data/user_emails.csv</em>. For variable report_file, replace &lt;data_directory&gt; by the path to <em>/data</em> directory.  <code>&lt;data_directory&gt;</code> is similar to the path <em>/home/&lt;username&gt;/data.</em> Replace <code>&lt;username&gt;</code> with the one mentioned in the Connection Details Panel on the left-hand side.</p>
+<p>Then, initialize an empty list where you will store the user email addresses. This is then passed to the function <em>contains_domain</em>, where a regular expression is used to match them and finally replace the domains using the <em>replace_domain</em> function.</p>
+<p>Next, initialize the two different lists, <strong>old_domain_email_list</strong> and <strong>new_domain_email_list</strong>. The <strong>old_domain_email_list</strong> will contain all the email addresses with the old domain that the regex would match within the function <strong>contains_domain</strong>. Since the function <em>contains_domain</em> takes in email address passed as parameter, we will iterate over the <strong>user_email_list</strong> to pass email addresses one by one. For every matched email address, we will append it to the list old_domain_email_list.</p>
+<pre><code>  user_email_list = []
+  old_domain_email_list = []
+  new_domain_email_list = []
+</code><button class="button button--copy js-copy-button-17" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>The CSV module imported earlier implements classes to read and write tabular data in CSV format. The CSV library provides functionality to both read from and write to CSV files. In this case, we are first going to read data from the list (which is a CSV file). The data is read from the <strong>user_emails.csv</strong> file and passed to the <strong>user_data_list</strong>. So the <strong>user_data_list</strong> now contains the same information as that present in <strong>user_emails.csv</strong> file. While we do this, we will also add all the email addresses into the <strong>user_email_list</strong> that we initialized in the previous step.</p>
+<pre><code>  with open(csv_file_location, 'r') as f:
+    user_data_list = list(csv.reader(f))
+    user_email_list = [data[1].strip() for data in user_data_list[1:]]
+</code><button class="button button--copy js-copy-button-18" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>The list <strong>old_domain_email_list</strong> should contain all the email addresses with the old domain. This will be checked by the function <em>contains_domain</em>. The function <em>replace_domain</em> will then take in the email addresses (with old domain) and replace them with the new domains.</p>
+<pre><code>    for email_address in user_email_list:
+      if contains_domain(email_address, old_domain):
+        old_domain_email_list.append(email_address)
+        replaced_email = replace_domain(email_address, old_domain, new_domain)
+        new_domain_email_list.append(replaced_email)
+</code><button class="button button--copy js-copy-button-19" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now, let's define the headers for our output file through the <strong>user_data_list</strong>, which contains all the data read from user_emails.csv file.</p>
+<pre><code>    email_key = ' ' + 'Email Address'
+    email_index = user_data_list[0].index(email_key)
+</code><button class="button button--copy js-copy-button-20" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Next, replace the email addresses within the <strong>user_data_list</strong> (which initially had all the user names and respective email addresses read from the user_emails.csv file) by iterating over the <strong>new_domain_email_list</strong>, and replacing the corresponding values in <strong>user_data_list</strong>.</p>
+<p>Finally, close the file using the close() method. A closed file no longer be read or written. It is good practice to use the close() method to close a file.</p>
+<pre><code>    for user in user_data_list[1:]:
+      for old_domain, new_domain in zip(old_domain_email_list, new_domain_email_list):
+        if user[email_index] == ' ' + old_domain:
+          user[email_index] = ' ' + new_domain
+    f.close()
+</code><button class="button button--copy js-copy-button-21" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now write the list to an output file, which we declared at the beginning of the script within the variable <strong>report_file</strong>.</p>
+<pre><code>  with open(report_file, 'w+') as output_file:
+    writer = csv.writer(output_file)
+    writer.writerows(user_data_list)
+    output_file.close()
+</code><button class="button button--copy js-copy-button-22" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Finally, call the main() method.</p>
+<pre><code>main()
+</code><button class="button button--copy js-copy-button-23"><i class="fa fa-clipboard"></i></button></pre>
+<p>The script should now look like this:</p>
+<pre><code>#!/usr/bin/env python3
+
+import re
+import csv
+
+
+def contains_domain(address, domain):
+  """Returns True if the email address contains the given,domain,in the domain position, false if not."""
+  domain = r'[\w\.-]+@'+domain+'$'
+  if re.match(domain,address):
+    return True
+  return False
+
+
+def replace_domain(address, old_domain, new_domain):
+  """Replaces the old domain with the new domain in the received address."""
+  old_domain_pattern = r'' + old_domain + '$'
+  address = re.sub(old_domain_pattern, new_domain, address)
+  return address
+
+def main():
+  """Processes the list of emails, replacing any instances of the old domain with the new domain."""
+  old_domain, new_domain = 'abc.edu', 'xyz.edu'
+  csv_file_location = '&lt;csv_file_location&gt;'
+  report_file = '&lt;path_to_home_directory&gt;' + '/updated_user_emails.csv'
+  user_email_list = []
+  old_domain_email_list = []
+  new_domain_email_list = []
+
+  with open(csv_file_location, 'r') as f:
+    user_data_list = list(csv.reader(f))
+    user_email_list = [data[1].strip() for data in user_data_list[1:]]
+
+    for email_address in user_email_list:
+      if contains_domain(email_address, old_domain):
+        old_domain_email_list.append(email_address)
+        replaced_email = replace_domain(email_address,old_domain,new_domain)
+        new_domain_email_list.append(replaced_email)
+
+    email_key = ' ' + 'Email Address'
+    email_index = user_data_list[0].index(email_key)
+
+    for user in user_data_list[1:]:
+      for old_domain, new_domain in zip(old_domain_email_list, new_domain_email_list):
+        if user[email_index] == ' ' + old_domain:
+          user[email_index] = ' ' + new_domain
+  f.close()
+
+  with open(report_file, 'w+') as output_file:
+    writer = csv.writer(output_file)
+    writer.writerows(user_data_list)
+    output_file.close()
+
+main()
+</code><button class="button button--copy js-copy-button-24"><i class="fa fa-clipboard"></i></button></pre>
+<p>Save the file by clicking <strong>Ctrl-o</strong>, <strong>Enter</strong> key, and <strong>Ctrl-x</strong>.</p>
+<p>Now run the file.</p>
+<pre><code>./script.py
+</code><button class="button button--copy js-copy-button-25"><i class="fa fa-clipboard"></i></button></pre>
+<p>On a successful run, this should generate a new file named <strong>updated_user_emails</strong> within the <strong>data</strong> directory.</p>
+<p>To view the newly generated file, enter the following command:</p>
+<pre><code>ls ~/data
+</code><button class="button button--copy js-copy-button-26" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>You should now be able to see a new file named <strong>updated_user_emails.csv</strong>. To view the contents of this file, enter the following command:</p>
+<pre><code>cat ~/data/updated_user_emails.csv
+</code><button class="button button--copy js-copy-button-27" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Great job! You have successfully replaced the old domain names with the new ones and generated a new file containing all the user names with their respective email addresses.</p>
+<p>The report file should be similar to the one below image:</p>
+<p><img alt="d6dd96363ba2b959.png" src="./Working with Regular Expressions _ Qwiklabs_files/hOWpZe7Hddf0VHrHPihnphMPCpzgIMbruG+0hwdn918="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="1" labinstanceid="12736605">
+Replace domain name
+</ql-activity-tracking></p>
+<h2 id="step7">Congratulations!</h2>
+<p>You successfully wrote a Python script that achieves two tasks. First, it changed the domain name to the new domain name. Second, it stored all the updated domain names in a new file.</p>
+<p>Creating reports using Python with CSV and using regular expressions to find a pattern in a string are very useful tools in IT support. You'll likely complete similar tasks regularly throughout your career, so feel free to go through this lab as many times as you need. Remember, practice makes perfect.</p>
+<p>You can now close the RDP/SSH window. You can manually end the lab, or it will automatically end when the time runs out.</p>
+<h2 id="step8">End your lab</h2>
+<p>When you have completed your lab, click <strong>End Lab</strong>. Qwiklabs removes the resources you’ve used and cleans the account for you.</p>
+<p>You will be given an opportunity to rate the lab experience. Select the applicable number of stars, type a comment, and then click <strong>Submit</strong>.</p>
+<p>The number of stars indicates the following:</p>
+<ul>
+<li>1 star = Very dissatisfied</li>
+<li>2 stars = Dissatisfied</li>
+<li>3 stars = Neutral</li>
+<li>4 stars = Satisfied</li>
+<li>5 stars = Very satisfied</li>
+</ul>
+<p>You can close the dialog box if you don't want to provide feedback.</p>
+<p>For feedback, suggestions, or corrections, please use the <strong>Support</strong> tab.</p>
+
+
+
+</div>
+<div class="js-lab-content-outline lab-content__outline">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47744#step1" class="">Introduction</a><a href="https://googlecoursera.qwiklabs.com/focuses/47744#step2" class="">Accessing the virtual machine</a><a href="https://googlecoursera.qwiklabs.com/focuses/47744#step3" class="">Prerequisites</a><a href="https://googlecoursera.qwiklabs.com/focuses/47744#step4" class="">Identify the old domain</a><a href="https://googlecoursera.qwiklabs.com/focuses/47744#step5" class="">Replace the domain name</a><a href="https://googlecoursera.qwiklabs.com/focuses/47744#step6" class="">Write a CSV file with replaced domain from main</a><a href="https://googlecoursera.qwiklabs.com/focuses/47744#step7" class="">Congratulations!</a><a href="https://googlecoursera.qwiklabs.com/focuses/47744#step8" class="">End your lab</a>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+<div class="lab-assessment__tab js-lab-assessment-tab">
+<h5 class="small-label">
+Score
+</h5>
+<h3 class="js-lab-assessment-total-score">—/5</h3>
+<iframe class="l-ie-iframe-fix" src="./Working with Regular Expressions _ Qwiklabs_files/saved_resource(1).html"></iframe>
+</div>
+<div class="lab-assessment__panel js-lab-assessment-panel">
+<!-- / If lab_instance has is started and assessment is generated, use -->
+<!-- / lab_instance.assessment, otherwise use lab.assessment_manual -->
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Replace domain name
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="1">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-1">—</span>
+/ 5
+</p>
+</div>
+
+<iframe class="l-ie-iframe-fix" src="./Working with Regular Expressions _ Qwiklabs_files/saved_resource(2).html"></iframe>
+</div>
+<div class="lab-introduction js-lab-introduction is-hidden">
+<div class="lab-introduction__inner">
+<h1 class="headline-1">Welcome to Your First Lab!</h1>
+<ql-icon-button class="js-skip-button">close</ql-icon-button>
+<div class="lab-introduction__video">
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" id="lab-introduction" src="./Working with Regular Expressions _ Qwiklabs_files/yF7EDXKTmoQ.html"></iframe>
+</div>
+<a class="js-skip-button button button--outline">Skip this video</a>
+</div>
+</div>
+
+
+
+</div>
+</main>
+<div class="modal fade" id="lab-details-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<div class="modal-body">
+<p class="l-mbm">
+This lab has instructions to find users using an old email domain in a big list using regular expressions.
+</p>
+<p class="small-label l-mbs">
+<strong>
+Duration:
+</strong>
+0m setup
+·
+90m access
+·
+90m completion
+</p>
+<p class="small-label l-mbs">
+<span><strong>Levels: </strong>introductory</span>
+</p>
+<p class="small-label">
+<strong>
+Permalink:
+</strong>
+<a href="https://googlecoursera.qwiklabs.com/catalog_lab/2379">https://googlecoursera.qwiklabs.com/catalog_lab/2379</a>
+</p>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Got It
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Working with Regular Expressions _ Qwiklabs_files/saved_resource(3).html"></iframe>
+</div>
+<div class="modal fade" id="lab-review-modal" style="display: none;">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<form class="simple_form js-lab-review-form" id="new_lab_review" action="https://googlecoursera.qwiklabs.com/lab_reviews" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><div class="modal-body">
+<p class="label">
+How satisfied are you with this lab?*
+</p>
+<div class="rateit js-rateit" data-rateit-max="5" data-rateit-min="0" data-rateit-resetable="false" data-rateit-step="1" data-rateit-value="0"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 0px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+<div class="l-mtm">
+
+<div class="control-group hidden lab_review_user_id"><div class="controls"><input class="hidden" type="hidden" value="2606438" name="lab_review[user_id]" id="lab_review_user_id"></div></div>
+<div class="control-group hidden lab_review_classroom_id"><div class="controls"><input class="hidden" type="hidden" value="6088" name="lab_review[classroom_id]" id="lab_review_classroom_id"></div></div>
+<div class="control-group hidden lab_review_lab_id"><div class="controls"><input class="hidden" type="hidden" value="2379" name="lab_review[lab_id]" id="lab_review_lab_id"></div></div>
+<div class="control-group hidden lab_review_focus_id"><div class="controls"><input class="hidden" type="hidden" value="47744" name="lab_review[focus_id]" id="lab_review_focus_id"></div></div>
+<div class="control-group hidden lab_review_rating"><div class="controls"><input class="hidden js-rating-input" type="hidden" name="lab_review[rating]" id="lab_review_rating"></div></div>
+<div class="control-group text optional lab_review_comment"><label class="text optional control-label" for="lab_review_comment">Comment</label><div class="controls"><textarea class="text optional" name="lab_review[comment]" id="lab_review_comment"></textarea></div></div>
+</div>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Cancel
+<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating" style="width: 181.305px; height: 181.305px; transform: translate(-50%, -50%) translate(48px, 24px);"></span></span></a>
+<input type="submit" name="commit" value="Submit" disabled="disabled" class="btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" id="submit" data-disabled="false" data-disable-with="Submit" data-upgraded=",MaterialButton,MaterialRipple"><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></input>
+</div>
+</form>
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Working with Regular Expressions _ Qwiklabs_files/saved_resource(4).html"></iframe>
+</div>
+
+<script>
+  $( function() {
+    ql.initMaterialInputs();
+    initChosen();
+    initSearch();
+    initTabs();
+    ql.list.init();
+    ql.favoriting.init();
+    ql.header.myAccount.init();
+    initTooltips();
+    ql.autocomplete.init();
+    ql.modals.init();
+    ql.toggleButtons.init();
+    ql.analytics.init();
+    initLabContent( );
+  ql.labOutline.links.init();
+  ql.labOutline.layout.init();
+  initLabReviewModal();
+  ql.labAssessment.init();
+  ql.labIntroduction.init( true );
+  ql.labData.init();
+  initLabTranslations( {"are_you_sure":"All done? If you end this lab, you will lose all your work. You may not be able to restart the lab if there is a quota limit. Are you sure you want to end this lab?\n","in_progress":"*In Progress*","ending":"*Ending*","starting":"*Starting, please wait*","end_concurrent_labs":"Sorry, you can only run one lab at a time. To start this lab, please confirm that you want all of your existing labs to end.\n","copied":"Copied","no_resource":"Error retrieving resource.","no_support":"No Support","mac_press":"Press ⌘-C to copy","thanks_review":"Thanks for reviewing this lab.","windows_press":"Press Ctrl-C to copy","days":"days"} );
+  ql.labRun.init();
+  ql.initHeader();
+  ql.navigation.init();
+  ql.navPanel.init();
+  ql.navigation.init();
+  
+  });
+</script>
+<style>
+  .mdl-layout__container {
+    position: static
+  }
+</style>
+
+
+<iframe data-product="web_widget" title="No content" tabindex="-1" aria-hidden="true" src="./Working with Regular Expressions _ Qwiklabs_files/saved_resource(5).html" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;"></iframe><div></div><div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe src="./Working with Regular Expressions _ Qwiklabs_files/anchor.html" width="256" height="60" role="presentation" name="a-hbtn4ygzfpu6" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./Working with Regular Expressions _ Qwiklabs_files/saved_resource(6).html"></iframe></div><div><iframe title="Opens a widget where you can chat to one of our agents" id="launcher" tabindex="0" class="zEWidget-launcher zEWidget-launcher--active" style="border: none; background: transparent; z-index: 999998; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 1; height: 50px; max-height: 551px; min-height: 50px; margin: 10px 20px; right: 0px; bottom: 0px; width: 112px;width: 112px;width: 112px;width: 112px;width: 112px;" src="./Working with Regular Expressions _ Qwiklabs_files/saved_resource(7).html"></iframe></div><div><iframe title="Find more information here" id="webWidget" tabindex="-1" class="zEWidget-webWidget " style="border: none; background: transparent; z-index: 999999; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 0; width: 357px; height: 100%; max-height: 565px; min-height: 150px; margin-left: 8px; margin-right: 8px; top: -9999px; visibility: hidden;" src="./Working with Regular Expressions _ Qwiklabs_files/saved_resource(8).html"></iframe></div></body></html>
