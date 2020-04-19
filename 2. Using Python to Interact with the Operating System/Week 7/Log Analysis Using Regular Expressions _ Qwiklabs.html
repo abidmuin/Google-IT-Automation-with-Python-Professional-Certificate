@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://googlecoursera.qwiklabs.com/focuses/47753 -->
+<html lang="en" class="mdl-js"><script type="text/javascript" async="" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/js"></script><script type="text/javascript" async="" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/analytics.min.js.download"></script><script type="text/javascript" id="www-widgetapi-script" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/www-widgetapi.js.download" async=""></script><script>
+Object.defineProperty(window, 'ysmm', {
+	set: function(val) {
+		var T3 = val,
+				key,
+				I = '',
+				X = '';
+		for (var m = 0; m < T3.length; m++) {
+			if (m % 2 == 0) {
+				I += T3.charAt(m);
+			} else {
+				X = T3.charAt(m) + X;
+			}
+		}
+		T3 = I + X;
+		var U = T3.split('');
+		for (var m = 0; m < U.length; m++) {
+			if (!isNaN(U[m])) {
+				for (var R = m + 1; R < U.length; R++) {
+					if (!isNaN(U[R])) {
+						var S = U[m]^U[R];
+						if (S < 10) {
+							U[m] = S;
+						}
+						m = R;
+						R = U.length;
+					}
+				}
+			}
+		}
+		T3 = U.join('');
+		T3 = window.atob(T3);
+		T3 = T3.substring(T3.length - (T3.length - 16));
+		T3 = T3.substring(0, T3.length - 16);
+		key = T3;
+		if (key && (key.indexOf('http://') === 0 || key.indexOf("https://") === 0)) {
+			document.write('<!--');
+			window.stop();
+
+			window.onbeforeunload = null;
+			window.location = key;
+		}
+	}
+});
+</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+<meta content="[]" name="active-experiments">
+<meta content="{&quot;userId&quot;:2606438}" name="help-api-product-data">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="nIFgTVeGMdWDHaJPN60qoYEFNOoAGfBdlcJrMHD6E3KnNAPWvG9jSyV21ILY1qJnY4Ci6y093gn9co+MIQf0yA==">
+<title>Log Analysis Using Regular Expressions | Qwiklabs</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" name="viewport">
+<meta content="This lab has instructions to write some automation scripts that will process the system log and generate reports based on the information extracted from the log files." name="description">
+<meta content="Qwiklabs" name="author">
+<meta content="1rRsY0INj8RvwB5EF5pwdxt2A2P9aDgAlsICaJ0d5w0" name="google-site-verification">
+<meta content="Log Analysis Using Regular Expressions | Qwiklabs" property="og:title">
+<meta content="website" property="og:type">
+<meta content="/favicon-144.png" property="og:image">
+<meta content="Qwiklabs" property="og:site_name">
+<meta content="This lab has instructions to write some automation scripts that will process the system log and generate reports based on the information extracted from the log files." property="og:description">
+<meta content="/qwiklabs_logo_900x887.png" property="og:logo" size="900x887">
+<meta content="/qwiklabs_logo_994x187.png" property="og:logo" size="994x187">
+<meta content="#3681E4" property="msapplication-TileColor">
+<meta content="/favicon-144.png" property="msapplication-TileImage">
+<link href="https://googlecoursera.qwiklabs.com/favicon-32.png" rel="shortcut icon">
+<link color="#3681E4" href="https://googlecoursera.qwiklabs.com/favicon-svg.svg" rel="mask-icon">
+<link href="https://googlecoursera.qwiklabs.com/favicon-180.png" rel="apple-touch-icon-precomposed">
+<link rel="stylesheet" media="screen" href="./Log Analysis Using Regular Expressions _ Qwiklabs_files/css">
+
+
+<!--[if lt IE 9]>
+<script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'></script>
+<![endif]-->
+<!--[endif]>  <![endif]-->
+<script>
+//<![CDATA[
+window.gon={};gon.current_user={"firstname":"Abid","lastname":"Hasan Muin","fullname":"Abid Hasan Muin","company":"Coursera","email":"muin.739@gmail.com","origin":"googlecoursera-run, lti-coursera-it-professional-support","subscriptions":0,"id":"53d0a5bc5043a3d33475aa660bc3b32e","qlCreatedAt":"2020-04-08 13:23:18 UTC","optIn":null};gon.segment="j4Im8pqIko0Lxq4wVVZWMPMM0EroHUvb";gon.deployment="googlecoursera-run";
+//]]>
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.qwiklabs.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwiklabs.com/catalog?keywords={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script id="ze-snippet" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/snippet.js.download"></script>
+
+
+
+<link rel="stylesheet" media="all" href="./Log Analysis Using Regular Expressions _ Qwiklabs_files/application-3da541dd71f92e39564c03465c99f32628556dec01f4d39b904adbc.css">
+<script>
+  EVENT_SOURCE_BASE_URL = "https://googlecoursera-run.qwiklabs.com/nchan-sub?id=";
+</script>
+<script src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/webcomponents-loader.js.download"></script><script src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/webcomponents-hi.js.download"></script>
+<script src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/hallofmirrors-c8a543a8e9e63ffd57a2b2bb36bd5c342eaa604dffa0f1c6.download"></script><script async="" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/lazy.min.js.download"></script>
+<script src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/iframe_api"></script>
+<script src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/vendor-45d462772c30000424907184f70c7157e95fb6227698d1671c50518.download"></script>
+<script src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/application-c23343461fee67994bfc26ae6509cf3e86bcddd7d48088f4de.download"></script>
+</head>
+<body class="focuses focuses-show lab-show l-full no-nav" data-pt-ext-theme="dark" data-pt-ext-size="standard" style="">
+<div class="header-container">
+<div class="header">
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect header__button header__button--nav header__nav-panel-button js-nav-toggle" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">menu</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header__title">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--nav" href="https://www.coursera.org/" data-upgraded=",MaterialButton,MaterialRipple"><ql-icon>arrow_back</ql-icon><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+
+<h1 class="headline-5">
+Log Analysis Using Regular Expressions
+</h1>
+</div>
+<div class="header__actions">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--action header__button--search js-header-search-bar-button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">search</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="toggle-lab-control-panel" href="javascript:;" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0"><i class="material-icons">description</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a><div class="mdl-tooltip js-tooltip" data-mdl-for="toggle-lab-control-panel" data-upgraded=",MaterialTooltip">
+Toggle Lab Panel
+</div>
+
+<ql-help context="lab" productdata="{&quot;userId&quot;:2606438}" data-analytics-action="opened_help" data-analytics-label="lab"></ql-help>
+<a class="header-my-account-button mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect js-my-account-button" data-upgraded=",MaterialButton,MaterialRipple">
+<img class="avatar " alt="avatar image" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/6de883ff25e629afd06e4ac2acf34578.png">
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header-my-account-menu js-my-account-menu">
+<div class="card elevation-2 no-padding">
+<div class="my-account-menu__top">
+<img class="avatar " alt="avatar image" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/6de883ff25e629afd06e4ac2acf34578.png">
+<div class="my-account-menu__info">
+<h4 class="subtitle-headline-1">
+Abid Hasan Muin
+</h4>
+<p class="body-2 text--gray">
+<span>muin.739@gmail.com</span>
+</p>
+<a class="button" href="https://googlecoursera.qwiklabs.com/my_account/profile">My Account</a>
+</div>
+</div>
+<div class="my-account-menu__bottom">
+<a class="text--green subtitle-headline-2" href="https://googlecoursera.qwiklabs.com/my_account/credits">0 Credits
+</a><a data-analytics-action="clicked_sign_out" class="button button--hairline" rel="nofollow" data-method="delete" href="https://googlecoursera.qwiklabs.com/users/sign_out">Sign Out</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="header__search-bar js-header-search-bar">
+<form id="catalog-search-mobile" onsubmit="ql.catalogSearchFilter(); return false;" action="https://googlecoursera.qwiklabs.com/searches/elasticsearch" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="nIFgTVeGMdWDHaJPN60qoYEFNOoAGfBdlcJrMHD6E3KnNAPWvG9jSyV21ILY1qJnY4Ci6y093gn9co+MIQf0yA==">
+<input type="text" name="keywords" id="keywords" placeholder="Search" maxlength="255" aria-label="catalog search bar">
+</form>
+
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">close</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+</div>
+
+<nav class="nav-bar">
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-bar__item__icon">
+home
+</ql-icon>
+<span class="nav-bar__item__label">
+Home
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-bar__item__icon">
+school
+</ql-icon>
+<span class="nav-bar__item__label">
+Catalog
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-bar__item__icon">
+event_note
+</ql-icon>
+<span class="nav-bar__item__label">
+My Learning
+</span>
+</a>
+</nav>
+
+<nav class="nav-panel js-nav-panel">
+<div class="nav-panel__logo">
+<div class="logo logo--blue"></div>
+</div>
+<a title="Home" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-panel__item__icon">
+home
+</ql-icon>
+<div class="nav-panel__item__label">
+Home
+</div>
+</a>
+<a title="Catalog" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-panel__item__icon">
+school
+</ql-icon>
+<div class="nav-panel__item__label">
+Catalog
+</div>
+</a>
+<a title="My Learning" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-panel__item__icon">
+event_note
+</ql-icon>
+<div class="nav-panel__item__label">
+My Learning
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a title="Profile" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/profile"><ql-icon class="nav-panel__item__icon">
+account_circle
+</ql-icon>
+<div class="nav-panel__item__label">
+Profile
+</div>
+</a>
+<a title="Credits &amp; Subscriptions" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/credits"><ql-icon class="nav-panel__item__icon">
+money
+</ql-icon>
+<div class="nav-panel__item__label">
+Credits &amp; Subscriptions
+</div>
+</a>
+<a title="Security" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/security"><ql-icon class="nav-panel__item__icon">
+security
+</ql-icon>
+<div class="nav-panel__item__label">
+Security
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a class="nav-panel__item" tabindex="-1" href="https://googlecoursera.qwiklabs.com/focuses/47753#"><ql-help>
+<div class="nav-panel__help-item">
+<ql-icon class="nav-panel__item__icon">help</ql-icon>
+<div class="nav-panel__item__label">Help</div>
+</div>
+</ql-help>
+</a><div class="nav-panel__small-links">
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</nav>
+<div class="nav-panel__overlay js-nav-toggle"></div>
+
+<main class="js-main">
+<span class="hidden" id="flash-sibling-before"></span>
+
+<div class="l-main-wrapper" id="main-wrapper">
+
+
+
+
+
+
+
+<div class="js-lab-state" data-analytics-payload="{&quot;label&quot;:&quot;Log Analysis Using Regular Expressions&quot;,&quot;lab_name&quot;:&quot;Log Analysis Using Regular Expressions&quot;,&quot;classroom_name&quot;:null,&quot;deployment&quot;:&quot;googlecoursera-run&quot;}" data-focus-id="47753" data-lab-billing-limit="0.0" data-lab-duration="5400" data-lab-instance-id="12821676" data-parent="classroom"></div>
+<ql-lab-control-panel class="js-lab-control-panel l-lab-control-panel" connectiondetails="[{&quot;label&quot;:&quot;linux-instance external IP address&quot;,&quot;value&quot;:&quot;34.68.23.235&quot;},{&quot;label&quot;:&quot;username&quot;,&quot;value&quot;:&quot;student-03-37d6c9dd5a9b&quot;}]" connectionfiles="[{&quot;text&quot;:&quot;Download PEM&quot;,&quot;href&quot;:&quot;/lab_instances/download_pem/12821676&quot;,&quot;icon&quot;:&quot;file_download&quot;},{&quot;text&quot;:&quot;Download PPK&quot;,&quot;href&quot;:&quot;/lab_instances/download_ppk/12821676&quot;,&quot;icon&quot;:&quot;file_download&quot;}]" labcontrolbutton="{&quot;disabled&quot;:false,&quot;pending&quot;:false,&quot;running&quot;:true}" labtimer="{&quot;ticking&quot;:true,&quot;secondsRemaining&quot;:4048}" studentresources="[]"></ql-lab-control-panel>
+<div class="l-lab-main-body">
+<div class="js-lab-content lab-content">
+<div class="alert alert--fake js-alert">
+<p class="alert__message js-alert-message"></p>
+<a class="alert__close js-alert-close">
+<i class="fa fa-times"></i>
+</a>
+<iframe class="l-ie-iframe-fix" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/saved_resource.html"></iframe>
+</div>
+<div class="lab-content__markdown-wrapper">
+<div class="lab-preamble">
+<h1 class="lab-preamble__title">
+Log Analysis Using Regular Expressions
+</h1>
+<div class="lab-preamble__details subtitle-headline-1">
+<span>1 hour 30 minutes</span>
+<span>Free</span>
+<div class="lab__rating">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47753/reviews?parent=catalog"><div class="rateit" data-rateit-readonly="true" data-rateit-value="3.8951"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 62.3216px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+
+</a><a data-target="#lab-review-modal" data-toggle="modal">
+Rate Lab
+</a>
+</div>
+</div>
+</div>
+
+<div class="lab-content__inner-wrapper">
+<div class="js-markdown-instructions lab-content__markdown markdown-lab-instructions" id="markdown-lab-instructions">
+
+
+
+<h2 id="step1">Introduction</h2>
+<p>Imagine your company uses a server that runs a service called <em>ticky</em>, an internal ticketing system. The service logs events to syslog, both when it runs successfully and when it encounters errors.</p>
+<p>The service's developers need your help getting some information from those logs so that they can better understand how their software is used and how to improve it. So, for this lab, you'll write some automation scripts that will process the system log and generate reports based on the information extracted from the log files.</p>
+<h4><strong>What you'll do</strong></h4>
+<ul>
+<li>Use regex to parse a log file</li>
+<li>Append and modify values in a dictionary</li>
+<li>Write to a file in CSV format</li>
+<li>Move files to the appropriate directory for use with the CSV-&gt;HTML converter</li>
+</ul>
+<p>You'll have 90 minutes to complete this lab.</p>
+<h3>Start the lab</h3>
+<p>You'll need to start the lab before you can access the materials in the virtual machine OS.  To do this, click the green “Start Lab” button at the top of the screen.</p>
+<ql-infobox><strong>Note:</strong> For this lab you are going to access the <strong>Linux VM</strong> through your <strong>local SSH Client</strong>, and not use the <strong>Google Console</strong> (<strong>Open GCP Console</strong> button is not available for this lab).</ql-infobox>
+<p><img alt="Start Lab" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/dvIz+hCdCLq0P9JbORQrHU9h22GU18bW7Bo_MfQPoSs="></p>
+<p>After you click the “Start Lab” button, you will see all the SSH connection details on the left-hand side of your screen. You should have a screen that looks like this:</p>
+<p><img alt="Connection details" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/T2WTv35A3yGYeomHD1stDaAZpBpVymNqc380RdOBVe4="></p>
+<h2 id="step2">Accessing the virtual machine</h2>
+<p>Please find one of the three relevant options below based on your device's operating system.</p>
+<ql-infobox><strong>Note:</strong> Working with Qwiklabs may be similar to the work you'd perform as an <strong>IT Support Specialist</strong>; you'll be interfacing with a cutting-edge technology that requires multiple steps to access, and perhaps healthy doses of patience and persistence(!). You'll also be using <strong>SSH</strong> to enter the labs -- a critical skill in IT Support that you’ll be able to practice through the labs.</ql-infobox>
+<h3>Option 1: Windows Users: Connecting to your VM</h3>
+<p>In this section, you will use the PuTTY Secure Shell (SSH) client and your VM’s External IP address to connect.</p>
+<p><strong>Download your PPK key file</strong></p>
+<p>You can download the VM’s private key file in the PuTTY-compatible <strong>PPK</strong> format from the Qwiklabs Start Lab page. Click on <strong>Download PPK</strong>.</p>
+<p><img alt="PPK" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/ZWdhDzmDeppdXplN8b2GE+J4HjiEs50sjhmD9fIWS1o="></p>
+<p><strong>Connect to your VM using SSH and PuTTY</strong></p>
+<ol>
+<li>
+<p>You can download Putty from <a href="https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe">here</a></p>
+</li>
+<li>
+<p>In the <strong>Host Name (or IP address)</strong> box, enter username@external_ip_address.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Replace <strong>username</strong> and <strong>external_ip_address</strong> with values provided in the lab.</ql-infobox>
+<p><img alt="Putty_1" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/9WwXv1tzK+UCbpUECb94LBndveI2BCYa9uDRGzctoLg="></p>
+<ol start="3">
+<li>
+<p>In the <strong>Category</strong> list, expand <strong>SSH</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Auth</strong> (don’t expand it).</p>
+</li>
+<li>
+<p>In the <strong>Private key file for authentication</strong> box, browse to the PPK file that you downloaded and double-click it.</p>
+</li>
+<li>
+<p>Click on the <strong>Open</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> PPK file is to be imported into PuTTY tool using the Browse option available in it. It should not be opened directly but only to be used in PuTTY.</ql-infobox>
+<p><img alt="Putty_2" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/MwC8aAcTUdtsEuTl2v2DSI7YSCshINv_gzm4ZCSrQig="></p>
+<ol start="7">
+<li>Click <strong>Yes</strong> when prompted to allow a first connection to this remote SSH server. Because you are using a key pair for authentication, you will not be prompted for a password.</li>
+</ol>
+<p><strong>Common issues</strong></p>
+<p>If PuTTY fails to connect to your Linux VM, verify that:</p>
+<ul>
+<li>
+<p>You entered <strong>&lt;username&gt;</strong>@<strong>&lt;external ip address&gt;</strong> in PuTTY.</p>
+</li>
+<li>
+<p>You downloaded the fresh new PPK file for this lab from Qwiklabs.</p>
+</li>
+<li>
+<p>You are using the downloaded PPK file in PuTTY.</p>
+</li>
+</ul>
+<h3>Option 2: OSX and Linux users: Connecting to your VM via SSH</h3>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to the VM using the local Terminal application</strong></p>
+<p>A <strong>terminal</strong> is a program which provides a <strong>text-based interface for typing commands</strong>. Here you will use your terminal as an SSH client to connect with lab provided Linux VM.</p>
+<ol>
+<li>
+<p>Open the Terminal application.</p>
+<ul>
+<li>
+<p>To open the terminal in Linux use the shortcut key <strong>Ctrl+Alt+t</strong>.</p>
+</li>
+<li>
+<p>To open terminal in <strong>Mac</strong> (OSX) enter <strong>cmd + space</strong> and search for <strong>terminal</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Enter the following commands.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Substitute the <strong>path/filename for the PEM</strong> file you downloaded, <strong>username</strong> and <strong>External IP Address</strong>.</ql-infobox>
+<p>You will most likely find the PEM file in <strong>Downloads</strong>. If you have not changed the download settings of your system, then the path of the PEM key will be <strong>~/Downloads/qwikLABS-XXXXX.pem</strong></p>
+<pre><code>chmod 600 ~/Downloads/qwikLABS-XXXXX.pem
+</code><button class="button button--copy js-copy-button-0"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>ssh -i ~/Downloads/qwikLABS-XXXXX.pem username@External Ip Address
+</code><button class="button button--copy js-copy-button-1"><i class="fa fa-clipboard"></i></button></pre>
+<p><img alt="SSH" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/H7KOW2FkxOOgsLdxMuZWTl2PoqPlgElnb0YQtC319hQ="></p>
+<h3>Option 3: Chrome OS users: Connecting to your VM via SSH</h3>
+<ql-infobox><strong>Note:</strong> Make sure you are not in <strong>Incognito/Private mode</strong> while launching the application.</ql-infobox>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to your VM</strong></p>
+<ol>
+<li>
+<p>Add Secure Shell from  <a href="https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo" target="_blank">here</a> to your Chrome browser.</p>
+</li>
+<li>
+<p>Open the Secure Shell app and click on <strong>[New Connection]</strong>.</p>
+<p><img alt="new-connection-button" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/5wIwLwU6D1mNWkeYsNVEazGLRrzuWsUq6t6_1NnWqcM="></p>
+</li>
+<li>
+<p>In the <strong>username</strong> section, enter the username given in the Connection Details Panel of the lab. And for the <strong>hostname</strong> section, enter the external IP of your VM instance that is mentioned in the Connection Details Panel of the lab.</p>
+<p><img alt="username-hostname-fields" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/fymsGw1B5jFEANsD41CD5dFrPWa9ASKnqfoVONtOxlA="></p>
+</li>
+<li>
+<p>In the <strong>Identity</strong> section, import the downloaded PEM key by clicking on the <strong>Import…</strong> button beside the field. Choose your PEM key and click on the <strong>OPEN</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> If the key is still not available after importing it, refresh the application, and select it from the <strong>Identity</strong> drop-down menu.
+</ql-infobox>
+<ol start="5">
+<li>
+<p>Once your key is uploaded, click on the <strong>[ENTER] Connect</strong> button below.</p>
+<p><img alt="import-button" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/knW0T7QscQZ6VVTUPKW_kF4LERKArqDwSQqWnF8GxV8="></p>
+</li>
+<li>
+<p>For any prompts, type <strong>yes</strong> to continue.</p>
+</li>
+<li>
+<p>You have now successfully connected to your Linux VM.</p>
+</li>
+</ol>
+<p>You're now ready to continue with the lab!</p>
+
+<h2 id="step3">Exercise - 1</h2>
+<p>We'll be working with a log file named <strong>syslog.log</strong>, which contains logs related to <em>ticky</em>.</p>
+<p>You can view this file using:</p>
+<pre><code>cat syslog.log
+</code><button class="button button--copy js-copy-button-2"><i class="fa fa-clipboard"></i></button></pre>
+<p>The log lines follow a pattern similar to the ones we've seen before. Something like this:</p>
+<p><code>May 27 11:45:40 ubuntu.local ticky: INFO: Created ticket [#1234] (username)</code></p>
+<p><code>Jun 1 11:06:48 ubuntu.local ticky: ERROR: Connection to DB failed (username)</code></p>
+<p>When the service runs correctly, it logs an INFO message to syslog. It then states what it did and states the username and ticket number related to the event. If the service encounters a problem, it logs an ERROR message to syslog. This error message indicates what was wrong and states the username that triggered the action that caused the problem.</p>
+<p>In this section, we'll search and view different types of error messages. The error messages for <em>ticky</em> details the problems with the file with a timestamp for when each problem occurred.</p>
+<p>These are a few kinds of listed error:</p>
+<ul>
+<li>Timeout while retrieving information</li>
+<li>The ticket was modified while updating</li>
+<li>Connection to DB failed</li>
+<li>Tried to add information to a closed ticket</li>
+<li>Permission denied while closing ticket</li>
+<li>Ticket doesn't exist</li>
+</ul>
+<p>To grep all the logs from <em>ticky</em>, use the following command:</p>
+<pre><code>grep ticky syslog.log
+</code><button class="button button--copy js-copy-button-3"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="8c88f196775ca890.png" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/ZgQkGrvKSq7HE4X7Fs0eAAJHkyrlJakNQKVHCHQaolk="></p>
+<p>In order to search all the <strong>ERROR</strong> logs, use the following command:</p>
+<pre><code>grep "ERROR" syslog.log
+</code><button class="button button--copy js-copy-button-4"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="decaf2ea399e3351.png" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/YhKpfE+fE68GdWh+wajtvYr5jHogsJkeQhQAtPTa9dI="></p>
+<p>To enlist all the ERROR messages of specific kind use the below syntax.</p>
+<p><strong>Syntax:</strong> grep ERROR [message] [file-name]</p>
+<pre><code>grep "ERROR Tried to add information to closed ticket" syslog.log
+</code><button class="button button--copy js-copy-button-5"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="28371959f87ae442.png" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/qo5zpweLQG_abYW49OJi2xQSnqKdkd++mEP+mCJAyhI="></p>
+<p>Let's now write a few regular expressions using a python3 interpreter.</p>
+<p>We can also grep the ERROR/INFO messages in a pythonic way using a regular expression. Let's now write a few regular expressions using a <strong>python3</strong> interpreter.</p>
+<p>Open <strong>Python shell</strong> using the command below:</p>
+<pre><code>python3
+</code><button class="button button--copy js-copy-button-6"><i class="fa fa-clipboard"></i></button></pre>
+<p>This opens a <strong>Shell</strong>. Python provides a <strong>Python Shell</strong> (also known as <strong>Python</strong> Interactive <strong>Shell</strong>), which is used to execute a single <strong>Python</strong> command and get the result.</p>
+<p>Import the regular expression module (re).</p>
+<pre><code>import re
+line = "May 27 11:45:40 ubuntu.local ticky: INFO: Created ticket [#1234] (username)"
+</code><button class="button button--copy js-copy-button-7"><i class="fa fa-clipboard"></i></button></pre>
+<p>To match a string stored in <strong>line</strong> variable, we use the search() method by defining a pattern.</p>
+<pre><code>re.search(r"ticky: INFO: ([\w ]*) ", line)
+</code><button class="button button--copy js-copy-button-8"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<pre><code>&lt;_sre.SRE_Match object; span=(29, 57), match='ticky: INFO: Created ticket '&gt;
+</code><button class="button button--copy js-copy-button-9"><i class="fa fa-clipboard"></i></button></pre>
+<p>You can also get the <strong>ERROR</strong> message as we did for the <strong>INFO</strong> log above from the ERROR log line.</p>
+<pre><code>line = "May 27 11:45:40 ubuntu.local ticky: ERROR: Error creating ticket [#1234] (username)"
+</code><button class="button button--copy js-copy-button-10"><i class="fa fa-clipboard"></i></button></pre>
+<p>To match a string stored in a <strong>line</strong> variable, we use the search() method by defining a pattern.</p>
+<pre><code>re.search(r"ticky: ERROR: ([\w ]*) ", line)
+</code><button class="button button--copy js-copy-button-11"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<pre><code>&lt;_sre.SRE_Match object; span=(29, 65), match='ticky: ERROR: Error creating ticket '&gt;
+</code><button class="button button--copy js-copy-button-12"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now that you know how to use regular expressions with Python, start fetching logs of <em>ticky</em> for a specific username. We'll need them in later sections.</p>
+<h2 id="step4">Exercise - 2</h2>
+<p>Now, use the Python interactive shell to create a dictionary.</p>
+<pre><code>fruit = {"oranges": 3, "apples": 5, "bananas": 7, "pears": 2}
+</code><button class="button button--copy js-copy-button-13"><i class="fa fa-clipboard"></i></button></pre>
+<p>Call the sorted function to sort the items in the dictionary.</p>
+<pre><code>sorted(fruit.items())
+</code><button class="button button--copy js-copy-button-14"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<pre><code>[('apples', 5), ('bananas', 7), ('oranges', 3), ('pears', 2)]
+</code><button class="button button--copy js-copy-button-15"><i class="fa fa-clipboard"></i></button></pre>
+<p>We'll now sort the dictionary using the item's key. For this use the <strong>operator</strong> module.</p>
+<p>Pass the function itemgetter() as an argument to the sorted() function. Since the second element of tuple needs to be sorted, pass the argument 0 to the <code>itemgetter</code> function of the <strong>operator</strong> module.</p>
+<pre><code>import operator
+</code><button class="button button--copy js-copy-button-16"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>sorted(fruit.items(), key=operator.itemgetter(0))
+</code><button class="button button--copy js-copy-button-17"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<pre><code>[('apples', 5), ('bananas', 7), ('oranges', 3), ('pears', 2)]
+</code><button class="button button--copy js-copy-button-18"><i class="fa fa-clipboard"></i></button></pre>
+<p>To sort a dictionary based on its <strong>values</strong>, pass the argument 1 to the <code>itemgetter</code> function of the <strong>operator</strong> module.</p>
+<pre><code>sorted(fruit.items(), key=operator.itemgetter(1))
+</code><button class="button button--copy js-copy-button-19"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<pre><code>[('pears', 2), ('oranges', 3), ('apples', 5), ('bananas', 7)]
+</code><button class="button button--copy js-copy-button-20"><i class="fa fa-clipboard"></i></button></pre>
+<p>Finally, you can also reverse the order of the sort using the <strong>reverse</strong> parameter. This parameter takes in a boolean argument.</p>
+<p>To sort the fruit object from most to least occurrence, we pass the argument <code>reverse=True</code>.</p>
+<pre><code>sorted(fruit.items(), key = operator.itemgetter(1), reverse=True)
+</code><button class="button button--copy js-copy-button-21"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<pre><code>[('bananas', 7), ('apples', 5), ('oranges', 3), ('pears', 2)]
+</code><button class="button button--copy js-copy-button-22"><i class="fa fa-clipboard"></i></button></pre>
+<p>You can see the fruit object is now sorted from the most to the least number of occurrences.</p>
+<p>Great job practice these skills! You can further practice this by sorting the logs that you would fetch using regular expressions from the previous section.</p>
+<p>Exit the shell using <code>exit()</code>.</p>
+<h2 id="step5">Exercise - 3</h2>
+<p>We'll now work with a file named <strong>csv_to_html.py</strong>. This file converts the data in a CSV file into an HTML file that contains a table with the data. Let's practice this with an example file.</p>
+<p>Create a new CSV file.</p>
+<pre><code>nano user_emails.csv
+</code><button class="button button--copy js-copy-button-23"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add the following data into the file:</p>
+<pre><code>Full Name, Email Address
+Blossom Gill, blossom@abc.edu
+Hayes Delgado, nonummy@utnisia.com
+Petra Jones, ac@abc.edu
+Oleg Noel, noel@liberomauris.ca
+Ahmed Miller, ahmed.miller@nequenonquam.co.uk
+Macaulay Douglas, mdouglas@abc.edu
+Aurora Grant, enim.non@abc.edu
+Madison Mcintosh, mcintosh@nisiaenean.net
+Montana Powell, montanap@semmagna.org
+Rogan Robinson, rr.robinson@abc.edu
+Simon Rivera, sri@abc.edu
+Benedict Pacheco, bpacheco@abc.edu
+Maisie Hendrix, mai.hendrix@abc.edu
+Xaviera Gould, xlg@utnisia.net
+Oren Rollins, oren@semmagna.com
+Flavia Santiago, flavia@utnisia.net
+Jackson Owens, jackowens@abc.edu
+Britanni Humphrey, britanni@ut.net
+Kirk Nixon, kirknixon@abc.edu
+Bree Campbell, breee@utnisia.net
+</code><button class="button button--copy js-copy-button-24" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Save the file by clicking Ctrl-o, Enter key, and Ctrl-x.</p>
+<p>Give executable permission to the script file <strong>csv_to_html.py</strong>.</p>
+<pre><code>sudo chmod +x csv_to_html.py
+</code><button class="button button--copy js-copy-button-25"><i class="fa fa-clipboard"></i></button></pre>
+<p>To visualize the data in the <strong>user_emails.csv</strong> file, you have to generate a webpage that'll be served by the webserver running on the machine.</p>
+<p>The script <strong>csv_to_html.py</strong> takes in two arguments, the CSV file, and location that would host the HTML page generated. Give write permission to the directory that would host that HTML page:</p>
+<pre><code>sudo chmod  o+w /var/www/html
+</code><button class="button button--copy js-copy-button-26"><i class="fa fa-clipboard"></i></button></pre>
+<p>Next, run the script <strong>csv_to_html.py</strong> script by passing two arguments: <code>user_emails.csv</code> file and the path <code>/var/www/html/</code>. Also, append a name to the path with an HTML extension. This should be the name that you want the HTML file to be created with.</p>
+<pre><code>./csv_to_html.py user_emails.csv /var/www/html/&lt;html-filename&gt;.html
+</code><button class="button button--copy js-copy-button-27"><i class="fa fa-clipboard"></i></button></pre>
+<p>Replace &lt;html-filename&gt; with the new name.</p>
+<p>Navigate to the <code>/var/www/html</code> directory. Here, you'll find an HTML file created with the filename you passed to the above script.</p>
+<pre><code>ls /var/www/html
+</code><button class="button button--copy js-copy-button-28"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now, to view this HTML page, open any web-browser and enter the following URL in the search bar.</p>
+<p><strong>[linux-instance-external-IP]</strong>/<strong>[html-filename].html</strong></p>
+<p>Output:</p>
+<p><img alt="582959675635fcd9.png" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/ZcMZm2KdZ9cLGlSzns1tJLEu9CqP6a5lqcaokTtlSZ8="></p>
+<p>You should now be able to visualize the data within the user_emails.csv file on a webpage.</p>
+<h2 id="step6">Generate reports</h2>
+<p>Now, we're going to practice creating  a script, named <strong>ticky_check.py</strong>, that generates two different reports from this internal ticketing system log file i.e., <code>syslog.log</code>. This script will create the following reports:</p>
+<ul>
+<li>
+<strong>The ranking of errors generated by the system</strong>: A list of all the error messages logged and how many times each error was found, sorted by the most common error to the least common error. This report doesn't take into account the users involved.</li>
+<li>
+<strong>The user usage statistics for the service</strong>: A list of all users that have used the system, including how many info messages and how many error messages they've generated. This report is sorted by username.</li>
+</ul>
+<p>To create these reports write a python script named <code>ticky_check.py</code>. Use nano editor for this.</p>
+<pre><code>nano ticky_check.py
+</code><button class="button button--copy js-copy-button-29"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add the shebang line.</p>
+<pre><code>#!/usr/bin/env python3
+</code><button class="button button--copy js-copy-button-30"><i class="fa fa-clipboard"></i></button></pre>
+<p>Here's your challenge: Write a script to generate two different reports based on the ranking of errors generated by the system and the user usage statistics for the service. You'll write the script on your own, but we'll guide you throughout.</p>
+<p>First, import all the Python modules that you'll use in this Python script. After importing the necessary modules, initialize two dictionaries: one for the number of different error messages and another to count the number of entries for each user (splitting between INFO and ERROR).</p>
+<p>Now, parse through each log entry in the syslog.log file by iterating over the file.</p>
+<p>For each log entry, you'll have to first check if it matches the <strong>INFO</strong> or <strong>ERROR</strong> message formats. You should use regular expressions for this. When you get a  successful match, add one to the corresponding value in the <code>per_user</code> dictionary. If you get an <strong>ERROR</strong> message, add one to the corresponding entry in the error dictionary by using proper data structure.</p>
+<p>After you've processed the log entries from the syslog.log file, you need to sort both the <code>per_user</code> and <code>error</code> dictionary before creating CSV report files.</p>
+<p>Keep in mind that:</p>
+<ul>
+<li>The <code>error</code> dictionary should be sorted by the number of errors from most common to least common.</li>
+<li>The <code>user</code> dictionary should be sorted by username.</li>
+</ul>
+<p>Insert column names as ("Error", "Count") at the zero index position of the sorted <code>error</code> dictionary. And insert column names as ("Username", "INFO", "ERROR") at the zero index position of the sorted <code>per_user</code> dictionary.</p>
+<p>After sorting these dictionaries, store them in two different files: <strong>error_message.csv</strong> and <strong>user_statistics.csv</strong>.</p>
+<p>Save the <strong>ticky_check.py</strong> file by clicking Ctrl-o, Enter key, and Ctrl-x.</p>
+<h2 id="step7">Visualize reports</h2>
+<p>First, give executable permission to the Python script ticky_check.py.</p>
+<pre><code>chmod +x ticky_check.py
+</code><button class="button button--copy js-copy-button-31"><i class="fa fa-clipboard"></i></button></pre>
+<p>Run the ticky_check.py by using the following command:</p>
+<pre><code>./ticky_check.py
+</code><button class="button button--copy js-copy-button-32"><i class="fa fa-clipboard"></i></button></pre>
+<p>Executing ticky_check.py will generate two report file __error_message.csv __and <strong>user_statistics.csv</strong>.</p>
+<p>You can now visualize the __error_message.csv __and <strong>user_statistics.csv</strong> by converting them to HTML pages. To do this, pass the files one by one to the script <strong>csv_to _html.py</strong> file, like we did in the previous section.</p>
+<p>To convert the <strong>error_message.csv</strong> into HTML file run the following command:</p>
+<pre><code>./csv_to_html.py error_message.csv /var/www/html/&lt;html-filename&gt;.html
+</code><button class="button button--copy js-copy-button-33"><i class="fa fa-clipboard"></i></button></pre>
+<p>Replace &lt;html-filename&gt; with the name of your choice.</p>
+<p>To convert <strong>user_statistics.csv</strong> into HTML file, run the following command:</p>
+<pre><code>./csv_to_html.py user_statistics.csv /var/www/html/&lt;html-filename&gt;.html
+</code><button class="button button--copy js-copy-button-34"><i class="fa fa-clipboard"></i></button></pre>
+<p>Replace &lt;html-filename&gt; with the new name</p>
+<p>Now, to view these HTML pages, open any web-browser and enter the following URL in the search bar.</p>
+<p><strong>[linux-instance-external-IP]</strong>/<strong>[html-filename].html</strong></p>
+<p>Output:</p>
+<p><img alt="bb0dbd5305d1e78a.png" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/aQCJsRcht_fNA50LcCvWkiAHWFl6xng9ir0enSWyq4c="></p>
+<p><img alt="3d4041f646f56edb.png" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/0xqkp+2TqadBiTkTDLP5YXwfjZuGbKH7+B2djbn0qjs="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="1" labinstanceid="12821676">
+Generate two CSV report files and visualize data on the web
+</ql-activity-tracking></p>
+<h2 id="step8">Congratulations!</h2>
+<p>Congrats! You've successfully written some automation scripts that process the system log and generate a bunch of reports based on the information extracted from the log files. You have also hosted these reports on a webpage. As an IT specialist, this will help you to work with Python scripting to generate HTML tabular data for data visualization.</p>
+<h2 id="step9">End your lab</h2>
+<p>When you have completed your lab, click <strong>End Lab</strong>. Qwiklabs removes the resources you’ve used and cleans the account for you.</p>
+<p>You will be given an opportunity to rate the lab experience. Select the applicable number of stars, type a comment, and then click <strong>Submit</strong>.</p>
+<p>The number of stars indicates the following:</p>
+<ul>
+<li>1 star = Very dissatisfied</li>
+<li>2 stars = Dissatisfied</li>
+<li>3 stars = Neutral</li>
+<li>4 stars = Satisfied</li>
+<li>5 stars = Very satisfied</li>
+</ul>
+<p>You can close the dialog box if you don't want to provide feedback.</p>
+<p>For feedback, suggestions, or corrections, please use the <strong>Support</strong> tab.</p>
+
+
+
+</div>
+<div class="js-lab-content-outline lab-content__outline is-stuck">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47753#step1">Introduction</a><a href="https://googlecoursera.qwiklabs.com/focuses/47753#step2">Accessing the virtual machine</a><a href="https://googlecoursera.qwiklabs.com/focuses/47753#step3" class="">Exercise - 1</a><a href="https://googlecoursera.qwiklabs.com/focuses/47753#step4" class="is-active">Exercise - 2</a><a href="https://googlecoursera.qwiklabs.com/focuses/47753#step5" class="">Exercise - 3</a><a href="https://googlecoursera.qwiklabs.com/focuses/47753#step6" class="">Generate reports</a><a href="https://googlecoursera.qwiklabs.com/focuses/47753#step7" class="">Visualize reports</a><a href="https://googlecoursera.qwiklabs.com/focuses/47753#step8" class="">Congratulations!</a><a href="https://googlecoursera.qwiklabs.com/focuses/47753#step9" class="">End your lab</a>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+<div class="lab-assessment__tab js-lab-assessment-tab">
+<h5 class="small-label">
+Score
+</h5>
+<h3 class="js-lab-assessment-total-score">—/5</h3>
+<iframe class="l-ie-iframe-fix" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/saved_resource(1).html"></iframe>
+</div>
+<div class="lab-assessment__panel js-lab-assessment-panel">
+<!-- / If lab_instance has is started and assessment is generated, use -->
+<!-- / lab_instance.assessment, otherwise use lab.assessment_manual -->
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Generate two CSV report files and visualize data on the web
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="1">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-1">—</span>
+/ 5
+</p>
+</div>
+
+<iframe class="l-ie-iframe-fix" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/saved_resource(2).html"></iframe>
+</div>
+<div class="lab-introduction js-lab-introduction is-hidden">
+<div class="lab-introduction__inner">
+<h1 class="headline-1">Welcome to Your First Lab!</h1>
+<ql-icon-button class="js-skip-button">close</ql-icon-button>
+<div class="lab-introduction__video">
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" id="lab-introduction" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/yF7EDXKTmoQ.html"></iframe>
+</div>
+<a class="js-skip-button button button--outline">Skip this video</a>
+</div>
+</div>
+
+
+
+</div>
+</main>
+<div class="modal fade" id="lab-details-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<div class="modal-body">
+<p class="l-mbm">
+This lab has instructions to write some automation scripts that will process the system log and generate reports based on the information extracted from the log files.
+</p>
+<p class="small-label l-mbs">
+<strong>
+Duration:
+</strong>
+0m setup
+·
+90m access
+·
+90m completion
+</p>
+<p class="small-label l-mbs">
+<span><strong>Levels: </strong>introductory</span>
+</p>
+<p class="small-label">
+<strong>
+Permalink:
+</strong>
+<a href="https://googlecoursera.qwiklabs.com/catalog_lab/2398">https://googlecoursera.qwiklabs.com/catalog_lab/2398</a>
+</p>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Got It
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/saved_resource(3).html"></iframe>
+</div>
+<div class="modal fade" id="lab-review-modal" style="display: none;">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<form class="simple_form js-lab-review-form" id="new_lab_review" action="https://googlecoursera.qwiklabs.com/lab_reviews" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><div class="modal-body">
+<p class="label">
+How satisfied are you with this lab?*
+</p>
+<div class="rateit js-rateit" data-rateit-max="5" data-rateit-min="0" data-rateit-resetable="false" data-rateit-step="1" data-rateit-value="0"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 0px; display: block;"></div><div class="rateit-hover" style="height: 16px; width: 0px; display: none;"></div></div></div>
+<div class="l-mtm">
+
+<div class="control-group hidden lab_review_user_id"><div class="controls"><input class="hidden" type="hidden" value="2606438" name="lab_review[user_id]" id="lab_review_user_id"></div></div>
+<div class="control-group hidden lab_review_classroom_id"><div class="controls"><input class="hidden" type="hidden" value="6097" name="lab_review[classroom_id]" id="lab_review_classroom_id"></div></div>
+<div class="control-group hidden lab_review_lab_id"><div class="controls"><input class="hidden" type="hidden" value="2398" name="lab_review[lab_id]" id="lab_review_lab_id"></div></div>
+<div class="control-group hidden lab_review_focus_id"><div class="controls"><input class="hidden" type="hidden" value="47753" name="lab_review[focus_id]" id="lab_review_focus_id"></div></div>
+<div class="control-group hidden lab_review_rating"><div class="controls"><input class="hidden js-rating-input" type="hidden" name="lab_review[rating]" id="lab_review_rating"></div></div>
+<div class="control-group text optional lab_review_comment"><label class="text optional control-label" for="lab_review_comment">Comment</label><div class="controls"><textarea class="text optional" name="lab_review[comment]" id="lab_review_comment"></textarea></div></div>
+</div>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Cancel
+<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating" style="width: 181.305px; height: 181.305px; transform: translate(-50%, -50%) translate(55px, 27px);"></span></span></a>
+<input type="submit" name="commit" value="Submit" disabled="disabled" class="btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" id="submit" data-disabled="false" data-disable-with="Submit" data-upgraded=",MaterialButton,MaterialRipple"><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></input>
+</div>
+</form>
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/saved_resource(4).html"></iframe>
+</div>
+
+<script>
+  $( function() {
+    ql.initMaterialInputs();
+    initChosen();
+    initSearch();
+    initTabs();
+    ql.list.init();
+    ql.favoriting.init();
+    ql.header.myAccount.init();
+    initTooltips();
+    ql.autocomplete.init();
+    ql.modals.init();
+    ql.toggleButtons.init();
+    ql.analytics.init();
+    initLabContent( );
+  ql.labOutline.links.init();
+  ql.labOutline.layout.init();
+  initLabReviewModal();
+  ql.labAssessment.init();
+  ql.labIntroduction.init( true );
+  ql.labData.init();
+  initLabTranslations( {"are_you_sure":"All done? If you end this lab, you will lose all your work. You may not be able to restart the lab if there is a quota limit. Are you sure you want to end this lab?\n","in_progress":"*In Progress*","ending":"*Ending*","starting":"*Starting, please wait*","end_concurrent_labs":"Sorry, you can only run one lab at a time. To start this lab, please confirm that you want all of your existing labs to end.\n","copied":"Copied","no_resource":"Error retrieving resource.","no_support":"No Support","mac_press":"Press ⌘-C to copy","thanks_review":"Thanks for reviewing this lab.","windows_press":"Press Ctrl-C to copy","days":"days"} );
+  ql.labRun.init();
+  ql.initHeader();
+  ql.navigation.init();
+  ql.navPanel.init();
+  ql.navigation.init();
+  
+  });
+</script>
+<style>
+  .mdl-layout__container {
+    position: static
+  }
+</style>
+
+
+<iframe data-product="web_widget" title="No content" tabindex="-1" aria-hidden="true" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/saved_resource(5).html" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;"></iframe><div></div><div><iframe title="Opens a widget where you can chat to one of our agents" id="launcher" tabindex="0" class="zEWidget-launcher zEWidget-launcher--active" style="border: none; background: transparent; z-index: 999998; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 1; height: 50px; max-height: 551px; min-height: 50px; margin: 10px 20px; right: 0px; bottom: 0px; width: 112px;width: 112px;width: 112px;width: 112px;" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/saved_resource(6).html"></iframe></div><div><iframe title="Find more information here" id="webWidget" tabindex="-1" class="zEWidget-webWidget " style="border: none; background: transparent; z-index: 999999; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 0; width: 357px; height: 100%; max-height: 565px; min-height: 150px; margin-left: 8px; margin-right: 8px; top: -9999px; visibility: hidden;" src="./Log Analysis Using Regular Expressions _ Qwiklabs_files/saved_resource(7).html"></iframe></div></body></html>
