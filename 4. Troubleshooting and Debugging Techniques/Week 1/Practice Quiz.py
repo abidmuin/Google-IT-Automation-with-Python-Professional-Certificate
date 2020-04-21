@@ -31,7 +31,7 @@ print(compare_strings("Learn to count: 1, 2, 3.",
 print(compare_strings("They found some body.", "They found somebody."))  # False
 """
 
-
+"""
 def find_item(list, item):
     # Returns True if the item is in the list, False if not.
     if len(list) == 0:
@@ -64,3 +64,4 @@ print(find_item(list_of_names, "Alex"))  # True
 print(find_item(list_of_names, "Andrew"))  # False
 print(find_item(list_of_names, "Drew"))  # True
 print(find_item(list_of_names, "Jared"))  # False
+"""
