@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://googlecoursera.qwiklabs.com/focuses/47759 -->
+<html lang="en" class="mdl-js"><script type="text/javascript" async="" src="./Finish a Puppet deployment _ Qwiklabs_files/js"></script><script type="text/javascript" async="" src="./Finish a Puppet deployment _ Qwiklabs_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Finish a Puppet deployment _ Qwiklabs_files/analytics.min.js.download"></script><script type="text/javascript" id="www-widgetapi-script" src="./Finish a Puppet deployment _ Qwiklabs_files/www-widgetapi.js.download" async=""></script><script>
+Object.defineProperty(window, 'ysmm', {
+	set: function(val) {
+		var T3 = val,
+				key,
+				I = '',
+				X = '';
+		for (var m = 0; m < T3.length; m++) {
+			if (m % 2 == 0) {
+				I += T3.charAt(m);
+			} else {
+				X = T3.charAt(m) + X;
+			}
+		}
+		T3 = I + X;
+		var U = T3.split('');
+		for (var m = 0; m < U.length; m++) {
+			if (!isNaN(U[m])) {
+				for (var R = m + 1; R < U.length; R++) {
+					if (!isNaN(U[R])) {
+						var S = U[m]^U[R];
+						if (S < 10) {
+							U[m] = S;
+						}
+						m = R;
+						R = U.length;
+					}
+				}
+			}
+		}
+		T3 = U.join('');
+		T3 = window.atob(T3);
+		T3 = T3.substring(T3.length - (T3.length - 16));
+		T3 = T3.substring(0, T3.length - 16);
+		key = T3;
+		if (key && (key.indexOf('http://') === 0 || key.indexOf("https://") === 0)) {
+			document.write('<!--');
+			window.stop();
+
+			window.onbeforeunload = null;
+			window.location = key;
+		}
+	}
+});
+</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+<meta content="[]" name="active-experiments">
+<meta content="{&quot;userId&quot;:2606438}" name="help-api-product-data">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="RoS4FD2eIXaLVCJzwYh1cy7hpxNYhPlXn1XCT/jf3iF9MduP1ndz6C0/VL4u8/21zGQxEnWg1wP35SbzqSI5mw==">
+<title>Finish a Puppet deployment | Qwiklabs</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" name="viewport">
+<meta content="This lab has instructions to automatically manage the computers in your company&#39;s fleet, including a bunch of different machines with different operating systems." name="description">
+<meta content="Qwiklabs" name="author">
+<meta content="1rRsY0INj8RvwB5EF5pwdxt2A2P9aDgAlsICaJ0d5w0" name="google-site-verification">
+<meta content="Finish a Puppet deployment | Qwiklabs" property="og:title">
+<meta content="website" property="og:type">
+<meta content="/favicon-144.png" property="og:image">
+<meta content="Qwiklabs" property="og:site_name">
+<meta content="This lab has instructions to automatically manage the computers in your company&#39;s fleet, including a bunch of different machines with different operating systems." property="og:description">
+<meta content="/qwiklabs_logo_900x887.png" property="og:logo" size="900x887">
+<meta content="/qwiklabs_logo_994x187.png" property="og:logo" size="994x187">
+<meta content="#3681E4" property="msapplication-TileColor">
+<meta content="/favicon-144.png" property="msapplication-TileImage">
+<link href="https://googlecoursera.qwiklabs.com/favicon-32.png" rel="shortcut icon">
+<link color="#3681E4" href="https://googlecoursera.qwiklabs.com/favicon-svg.svg" rel="mask-icon">
+<link href="https://googlecoursera.qwiklabs.com/favicon-180.png" rel="apple-touch-icon-precomposed">
+<link rel="stylesheet" media="screen" href="./Finish a Puppet deployment _ Qwiklabs_files/css">
+
+
+<!--[if lt IE 9]>
+<script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'></script>
+<![endif]-->
+<!--[endif]>  <![endif]-->
+<script>
+//<![CDATA[
+window.gon={};gon.current_user={"firstname":"Abid","lastname":"Hasan Muin","fullname":"Abid Hasan Muin","company":"Coursera","email":"muin.739@gmail.com","origin":"googlecoursera-run, lti-coursera-it-professional-support","subscriptions":0,"id":"53d0a5bc5043a3d33475aa660bc3b32e","qlCreatedAt":"2020-04-08 13:23:18 UTC","optIn":null};gon.segment="j4Im8pqIko0Lxq4wVVZWMPMM0EroHUvb";gon.deployment="googlecoursera-run";
+//]]>
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.qwiklabs.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwiklabs.com/catalog?keywords={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script id="ze-snippet" src="./Finish a Puppet deployment _ Qwiklabs_files/snippet.js.download"></script>
+
+
+
+<link rel="stylesheet" media="all" href="./Finish a Puppet deployment _ Qwiklabs_files/application-4c3d1e8bc7757ea71809ef44e35c5d8018fb66ce6a4a777389558445ba2ce8a2.css">
+<script>
+  EVENT_SOURCE_BASE_URL = "https://googlecoursera-run.qwiklabs.com/nchan-sub?id=";
+</script>
+<script src="./Finish a Puppet deployment _ Qwiklabs_files/webcomponents-loader.js.download"></script><script src="./Finish a Puppet deployment _ Qwiklabs_files/webcomponents-hi.js.download"></script>
+<script src="./Finish a Puppet deployment _ Qwiklabs_files/hallofmirrors-eae6675400af78e1654e424d2281253062e59cd03fa85f6c1e9b71fcef236ded.js.download"></script><script async="" src="./Finish a Puppet deployment _ Qwiklabs_files/lazy.min.js.download"></script>
+<script src="./Finish a Puppet deployment _ Qwiklabs_files/iframe_api"></script>
+<script src="./Finish a Puppet deployment _ Qwiklabs_files/vendor-45d462772c30000424907184f70c7157e95fb6227698d1671c5051818a6f60d8.js.download"></script>
+<script src="./Finish a Puppet deployment _ Qwiklabs_files/application-c23343461fee67994bfc26ae6509cf3e86bcddd7d48088f4de19fb8c0ed6eb13.js.download"></script>
+</head>
+<body class="focuses focuses-show lab-show l-full no-nav" data-pt-ext-theme="dark" data-pt-ext-size="standard">
+<div class="header-container">
+<div class="header">
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect header__button header__button--nav header__nav-panel-button js-nav-toggle" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">menu</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header__title">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--nav" href="https://www.coursera.org/" data-upgraded=",MaterialButton,MaterialRipple"><ql-icon>arrow_back</ql-icon><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+
+<h1 class="headline-5">
+Finish a Puppet deployment
+</h1>
+</div>
+<div class="header__actions">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--action header__button--search js-header-search-bar-button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">search</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="toggle-lab-control-panel" href="javascript:;" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0"><i class="material-icons">description</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a><div class="mdl-tooltip js-tooltip" data-mdl-for="toggle-lab-control-panel" data-upgraded=",MaterialTooltip">
+Toggle Lab Panel
+</div>
+
+<ql-help context="lab" productdata="{&quot;userId&quot;:2606438}" data-analytics-action="opened_help" data-analytics-label="lab"></ql-help>
+<a class="header-my-account-button mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect js-my-account-button" data-upgraded=",MaterialButton,MaterialRipple">
+<img class="avatar " alt="avatar image" src="./Finish a Puppet deployment _ Qwiklabs_files/6de883ff25e629afd06e4ac2acf34578.png">
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header-my-account-menu js-my-account-menu">
+<div class="card elevation-2 no-padding">
+<div class="my-account-menu__top">
+<img class="avatar " alt="avatar image" src="./Finish a Puppet deployment _ Qwiklabs_files/6de883ff25e629afd06e4ac2acf34578.png">
+<div class="my-account-menu__info">
+<h4 class="subtitle-headline-1">
+Abid Hasan Muin
+</h4>
+<p class="body-2 text--gray">
+<span>muin.739@gmail.com</span>
+</p>
+<a class="button" href="https://googlecoursera.qwiklabs.com/my_account/profile">My Account</a>
+</div>
+</div>
+<div class="my-account-menu__bottom">
+<a class="text--green subtitle-headline-2" href="https://googlecoursera.qwiklabs.com/my_account/credits">0 Credits
+</a><a data-analytics-action="clicked_sign_out" class="button button--hairline" rel="nofollow" data-method="delete" href="https://googlecoursera.qwiklabs.com/users/sign_out">Sign Out</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="header__search-bar js-header-search-bar">
+<form id="catalog-search-mobile" onsubmit="ql.catalogSearchFilter(); return false;" action="https://googlecoursera.qwiklabs.com/searches/elasticsearch" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="RoS4FD2eIXaLVCJzwYh1cy7hpxNYhPlXn1XCT/jf3iF9MduP1ndz6C0/VL4u8/21zGQxEnWg1wP35SbzqSI5mw==">
+<input type="text" name="keywords" id="keywords" placeholder="Search" maxlength="255" aria-label="catalog search bar">
+</form>
+
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">close</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+</div>
+
+<nav class="nav-bar">
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-bar__item__icon">
+home
+</ql-icon>
+<span class="nav-bar__item__label">
+Home
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-bar__item__icon">
+school
+</ql-icon>
+<span class="nav-bar__item__label">
+Catalog
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-bar__item__icon">
+event_note
+</ql-icon>
+<span class="nav-bar__item__label">
+My Learning
+</span>
+</a>
+</nav>
+
+<nav class="nav-panel js-nav-panel">
+<div class="nav-panel__logo">
+<div class="logo logo--blue"></div>
+</div>
+<a title="Home" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-panel__item__icon">
+home
+</ql-icon>
+<div class="nav-panel__item__label">
+Home
+</div>
+</a>
+<a title="Catalog" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-panel__item__icon">
+school
+</ql-icon>
+<div class="nav-panel__item__label">
+Catalog
+</div>
+</a>
+<a title="My Learning" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-panel__item__icon">
+event_note
+</ql-icon>
+<div class="nav-panel__item__label">
+My Learning
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a title="Profile" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/profile"><ql-icon class="nav-panel__item__icon">
+account_circle
+</ql-icon>
+<div class="nav-panel__item__label">
+Profile
+</div>
+</a>
+<a title="Credits &amp; Subscriptions" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/credits"><ql-icon class="nav-panel__item__icon">
+money
+</ql-icon>
+<div class="nav-panel__item__label">
+Credits &amp; Subscriptions
+</div>
+</a>
+<a title="Security" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/security"><ql-icon class="nav-panel__item__icon">
+security
+</ql-icon>
+<div class="nav-panel__item__label">
+Security
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a class="nav-panel__item" tabindex="-1" href="https://googlecoursera.qwiklabs.com/focuses/47759#"><ql-help>
+<div class="nav-panel__help-item">
+<ql-icon class="nav-panel__item__icon">help</ql-icon>
+<div class="nav-panel__item__label">Help</div>
+</div>
+</ql-help>
+</a><div class="nav-panel__small-links">
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</nav>
+<div class="nav-panel__overlay js-nav-toggle"></div>
+
+<main class="js-main">
+<span class="hidden" id="flash-sibling-before"></span>
+
+<div class="l-main-wrapper" id="main-wrapper">
+
+
+
+
+
+
+
+<div class="js-lab-state" data-analytics-payload="{&quot;label&quot;:&quot;Finish a Puppet deployment&quot;,&quot;lab_name&quot;:&quot;Finish a Puppet deployment&quot;,&quot;classroom_name&quot;:null,&quot;deployment&quot;:&quot;googlecoursera-run&quot;}" data-focus-id="47759" data-lab-billing-limit="0.0" data-lab-duration="5400" data-parent="classroom"></div>
+<ql-lab-control-panel class="js-lab-control-panel l-lab-control-panel" connectiondetails="[]" connectionfiles="[]" labcontrolbutton="{&quot;disabled&quot;:false,&quot;pending&quot;:false,&quot;running&quot;:false}" labtimer="{&quot;ticking&quot;:false,&quot;secondsRemaining&quot;:5400}" studentresources="[]"></ql-lab-control-panel>
+<div class="l-lab-main-body">
+<div class="js-lab-content lab-content">
+<div class="alert alert--fake js-alert">
+<p class="alert__message js-alert-message"></p>
+<a class="alert__close js-alert-close">
+<i class="fa fa-times"></i>
+</a>
+<iframe class="l-ie-iframe-fix" src="./Finish a Puppet deployment _ Qwiklabs_files/saved_resource.html"></iframe>
+</div>
+<div class="lab-content__markdown-wrapper">
+<div class="lab-preamble">
+<h1 class="lab-preamble__title">
+Finish a Puppet deployment
+</h1>
+<div class="lab-preamble__details subtitle-headline-1">
+<span>1 hour 30 minutes</span>
+<span>Free</span>
+<div class="lab__rating">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47759/reviews?parent=catalog"><div class="rateit" data-rateit-readonly="true" data-rateit-value="4.2003"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 67.2048px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+
+</a><a data-target="#lab-review-modal" data-toggle="modal">
+Rate Lab
+</a>
+</div>
+</div>
+</div>
+
+<div class="lab-content__inner-wrapper">
+<div class="js-markdown-instructions lab-content__markdown markdown-lab-instructions" id="markdown-lab-instructions">
+
+
+
+<h2 id="step1">Introduction</h2>
+<p>You want to automatically manage the computers in your company's fleet, including a number of different machines with different operating systems. You've decided to use Puppet to automate the configurations on these machines. Part of the setup is already done, but there are more rules that need to be added, and more operating systems to consider.</p>
+<h3>Prerequisite</h3>
+<p>Understands the basics of Puppet, including:</p>
+<ul>
+<li>How to create Puppet classes and rules</li>
+<li>How Puppet interacts with different OSs</li>
+<li>How to use the DSL to create complex rules</li>
+</ul>
+<p>You'll have 90 minutes to complete this lab.</p>
+<h3>Start the lab</h3>
+<p>You'll need to start the lab before you can access the materials in the virtual machine OS.  To do this, click the green “Start Lab” button at the top of the screen.</p>
+<ql-infobox><strong>Note:</strong> For this lab you are going to access the <strong>Linux VM</strong> through your <strong>local SSH Client</strong>, and not use the <strong>Google Console</strong> (<strong>Open GCP Console</strong> button is not available for this lab).</ql-infobox>
+<p><img alt="Start Lab" src="./Finish a Puppet deployment _ Qwiklabs_files/dvIz+hCdCLq0P9JbORQrHU9h22GU18bW7Bo_MfQPoSs="></p>
+<p>After you click the “Start Lab” button, you will see all the SSH connection details on the left-hand side of your screen. You should have a screen that looks like this:</p>
+<p><img alt="Connection details" src="./Finish a Puppet deployment _ Qwiklabs_files/T2WTv35A3yGYeomHD1stDaAZpBpVymNqc380RdOBVe4="></p>
+<h2 id="step2">Accessing the virtual machine</h2>
+<p>Please find one of the three relevant options below based on your device's operating system.</p>
+<ql-infobox><strong>Note:</strong> Working with Qwiklabs may be similar to the work you'd perform as an <strong>IT Support Specialist</strong>; you'll be interfacing with a cutting-edge technology that requires multiple steps to access, and perhaps healthy doses of patience and persistence(!). You'll also be using <strong>SSH</strong> to enter the labs -- a critical skill in IT Support that you’ll be able to practice through the labs.</ql-infobox>
+<h3>Option 1: Windows Users: Connecting to your VM</h3>
+<p>In this section, you will use the PuTTY Secure Shell (SSH) client and your VM’s External IP address to connect.</p>
+<p><strong>Download your PPK key file</strong></p>
+<p>You can download the VM’s private key file in the PuTTY-compatible <strong>PPK</strong> format from the Qwiklabs Start Lab page. Click on <strong>Download PPK</strong>.</p>
+<p><img alt="PPK" src="./Finish a Puppet deployment _ Qwiklabs_files/ZWdhDzmDeppdXplN8b2GE+J4HjiEs50sjhmD9fIWS1o="></p>
+<p><strong>Connect to your VM using SSH and PuTTY</strong></p>
+<ol>
+<li>
+<p>You can download Putty from <a href="https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe">here</a></p>
+</li>
+<li>
+<p>In the <strong>Host Name (or IP address)</strong> box, enter username@external_ip_address.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Replace <strong>username</strong> and <strong>external_ip_address</strong> with values provided in the lab.</ql-infobox>
+<p><img alt="Putty_1" src="./Finish a Puppet deployment _ Qwiklabs_files/9WwXv1tzK+UCbpUECb94LBndveI2BCYa9uDRGzctoLg="></p>
+<ol start="3">
+<li>
+<p>In the <strong>Category</strong> list, expand <strong>SSH</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Auth</strong> (don’t expand it).</p>
+</li>
+<li>
+<p>In the <strong>Private key file for authentication</strong> box, browse to the PPK file that you downloaded and double-click it.</p>
+</li>
+<li>
+<p>Click on the <strong>Open</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> PPK file is to be imported into PuTTY tool using the Browse option available in it. It should not be opened directly but only to be used in PuTTY.</ql-infobox>
+<p><img alt="Putty_2" src="./Finish a Puppet deployment _ Qwiklabs_files/MwC8aAcTUdtsEuTl2v2DSI7YSCshINv_gzm4ZCSrQig="></p>
+<ol start="7">
+<li>Click <strong>Yes</strong> when prompted to allow a first connection to this remote SSH server. Because you are using a key pair for authentication, you will not be prompted for a password.</li>
+</ol>
+<p><strong>Common issues</strong></p>
+<p>If PuTTY fails to connect to your Linux VM, verify that:</p>
+<ul>
+<li>
+<p>You entered <strong>&lt;username&gt;</strong>@<strong>&lt;external ip address&gt;</strong> in PuTTY.</p>
+</li>
+<li>
+<p>You downloaded the fresh new PPK file for this lab from Qwiklabs.</p>
+</li>
+<li>
+<p>You are using the downloaded PPK file in PuTTY.</p>
+</li>
+</ul>
+<h3>Option 2: OSX and Linux users: Connecting to your VM via SSH</h3>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Finish a Puppet deployment _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to the VM using the local Terminal application</strong></p>
+<p>A <strong>terminal</strong> is a program which provides a <strong>text-based interface for typing commands</strong>. Here you will use your terminal as an SSH client to connect with lab provided Linux VM.</p>
+<ol>
+<li>
+<p>Open the Terminal application.</p>
+<ul>
+<li>
+<p>To open the terminal in Linux use the shortcut key <strong>Ctrl+Alt+t</strong>.</p>
+</li>
+<li>
+<p>To open terminal in <strong>Mac</strong> (OSX) enter <strong>cmd + space</strong> and search for <strong>terminal</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Enter the following commands.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Substitute the <strong>path/filename for the PEM</strong> file you downloaded, <strong>username</strong> and <strong>External IP Address</strong>.</ql-infobox>
+<p>You will most likely find the PEM file in <strong>Downloads</strong>. If you have not changed the download settings of your system, then the path of the PEM key will be <strong>~/Downloads/qwikLABS-XXXXX.pem</strong></p>
+<pre><code>chmod 600 ~/Downloads/qwikLABS-XXXXX.pem
+</code><button class="button button--copy js-copy-button-0"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>ssh -i ~/Downloads/qwikLABS-XXXXX.pem username@External Ip Address
+</code><button class="button button--copy js-copy-button-1"><i class="fa fa-clipboard"></i></button></pre>
+<p><img alt="SSH" src="./Finish a Puppet deployment _ Qwiklabs_files/H7KOW2FkxOOgsLdxMuZWTl2PoqPlgElnb0YQtC319hQ="></p>
+<h3>Option 3: Chrome OS users: Connecting to your VM via SSH</h3>
+<ql-infobox><strong>Note:</strong> Make sure you are not in <strong>Incognito/Private mode</strong> while launching the application.</ql-infobox>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Finish a Puppet deployment _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to your VM</strong></p>
+<ol>
+<li>
+<p>Add Secure Shell from  <a href="https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo" target="_blank">here</a> to your Chrome browser.</p>
+</li>
+<li>
+<p>Open the Secure Shell app and click on <strong>[New Connection]</strong>.</p>
+<p><img alt="new-connection-button" src="./Finish a Puppet deployment _ Qwiklabs_files/5wIwLwU6D1mNWkeYsNVEazGLRrzuWsUq6t6_1NnWqcM="></p>
+</li>
+<li>
+<p>In the <strong>username</strong> section, enter the username given in the Connection Details Panel of the lab. And for the <strong>hostname</strong> section, enter the external IP of your VM instance that is mentioned in the Connection Details Panel of the lab.</p>
+<p><img alt="username-hostname-fields" src="./Finish a Puppet deployment _ Qwiklabs_files/fymsGw1B5jFEANsD41CD5dFrPWa9ASKnqfoVONtOxlA="></p>
+</li>
+<li>
+<p>In the <strong>Identity</strong> section, import the downloaded PEM key by clicking on the <strong>Import…</strong> button beside the field. Choose your PEM key and click on the <strong>OPEN</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> If the key is still not available after importing it, refresh the application, and select it from the <strong>Identity</strong> drop-down menu.
+</ql-infobox>
+<ol start="5">
+<li>
+<p>Once your key is uploaded, click on the <strong>[ENTER] Connect</strong> button below.</p>
+<p><img alt="import-button" src="./Finish a Puppet deployment _ Qwiklabs_files/knW0T7QscQZ6VVTUPKW_kF4LERKArqDwSQqWnF8GxV8="></p>
+</li>
+<li>
+<p>For any prompts, type <strong>yes</strong> to continue.</p>
+</li>
+<li>
+<p>You have now successfully connected to your Linux VM.</p>
+</li>
+</ol>
+<p>You're now ready to continue with the lab!</p>
+
+<h2 id="step3">Puppet rules</h2>
+<p>The goal of this exercise is for you to see what Puppet looks like in action. During this lab, you'll be connecting to two different VMs. The VM named <strong>puppet</strong> is the Puppet Master that has the Puppet rules that you'll need to edit.  The VM named <strong>linux-instance</strong> is a client VM that you'll use to test that your catalog was applied successfully.</p>
+<p>The manifests used for the production environment are located in  the directory <code>/etc/puppet/code/environments/production/manifests</code>, which contains a site.pp file with the node definitions that will be used for this deployment. On top of that, the modules directory contains a bunch of modules that are already in use. You'll be extending the code of this deployment to add more functionality to it.</p>
+<h2 id="step4">Install packages</h2>
+<p>There's a module named <strong>packages</strong> on the <strong>Puppet VM instance</strong> that takes care of installing the packages that are needed on the machines in the fleet. Use the command to visit the module:</p>
+<pre><code>cd /etc/puppet/code/environments/production/modules/packages
+</code><button class="button button--copy js-copy-button-2"><i class="fa fa-clipboard"></i></button></pre>
+<p>This module already has a resource entry specifying that <strong>python-requests</strong> is installed on all machines. You can see the <code>init.pp</code> file using the <strong>cat</strong> command on the <strong>Puppet VM instance.</strong></p>
+<pre><code>cat manifests/init.pp
+</code><button class="button button--copy js-copy-button-3"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="64012fbfdf58c75d.png" src="./Finish a Puppet deployment _ Qwiklabs_files/cdQHCTWnRfLLM1aAmATEMsYnBooaRkV4bUL4UPqh8nM="></p>
+<p>Now, add an additional resource in the same <code>init.pp</code> file within the path <code>/etc/puppet/code/environments/production/modules/packages</code>, ensuring the <strong>golang</strong> package gets installed on all machines that belong to the <code>Debian</code> family of operating systems (which includes Debian, Ubuntu, LinuxMint, and a bunch of others).</p>
+<p>This resource will be very similar to the previous <strong>python-requests</strong> one. Add edit permission to the file before moving forward using:</p>
+<pre><code>sudo chmod 646 manifests/init.pp
+</code><button class="button button--copy js-copy-button-4"><i class="fa fa-clipboard"></i></button></pre>
+<p>To install the package on Debian systems only, you'll need to use the <strong>os family</strong> fact, like this:</p>
+<pre><code>if $facts[os][family] == "Debian" {
+# Resource entry to install golang package
+}
+</code><button class="button button--copy js-copy-button-5"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now, open the file using nano editor and add the resource entry specifying golang package to be installed on all machines of Debian family after the previous resource entry.</p>
+<p>The snippet would now look like this:</p>
+<pre><code>if $facts[os][family] == "Debian" {
+     package { 'golang':
+       ensure =&gt; installed,
+     }
+  }
+</code><button class="button button--copy js-copy-button-6"><i class="fa fa-clipboard"></i></button></pre>
+<p>The complete <strong>init.pp</strong> file would now look similar to the below file:</p>
+<pre><code>class packages {
+   package { 'python-requests':
+       ensure =&gt; installed,
+   }
+   if $facts[os][family] == "Debian" {
+     package { 'golang':
+       ensure =&gt; installed,
+     }
+  }
+}
+</code><button class="button button--copy js-copy-button-7"><i class="fa fa-clipboard"></i></button></pre>
+<p>After this, we will also need to ensure that the <strong>nodejs</strong> package is installed on machines that belong to the <code>RedHat</code> family. Refer to the below snippet for this.</p>
+<pre><code>if $facts[os][family] == "RedHat" {
+  #Resource entry
+}
+</code><button class="button button--copy js-copy-button-8"><i class="fa fa-clipboard"></i></button></pre>
+<p>Complete the above snippet just like the previous one.</p>
+<p>The complete <strong>init.pp</strong> file should now look like this:</p>
+<pre><code>class packages {
+   package { 'python-requests':
+       ensure =&gt; installed,
+   }
+   if $facts[os][family] == "Debian" {
+     package { 'golang':
+       ensure =&gt; installed,
+     }
+  }
+   if $facts[os][family] == "RedHat" {
+     package { 'nodejs':
+       ensure =&gt; installed,
+     }
+  }
+}
+</code><button class="button button--copy js-copy-button-9"><i class="fa fa-clipboard"></i></button></pre>
+<p>Once you've edited the file and added the necessary resources, you'll want to check that the rules work successfully. We can do this by connecting to another machine in the network and verifying that the right packages are installed.</p>
+<p>We will be connecting to <strong>linux-instance</strong> using its external IP address. To fetch the external IP address of <strong>linux-instance</strong>, use the following command:</p>
+<pre><code>gcloud compute instances describe linux-instance --zone=us-central1-a --format='get(networkInterfaces[0].accessConfigs[0].natIP)'
+</code><button class="button button--copy js-copy-button-10"><i class="fa fa-clipboard"></i></button></pre>
+<p>This command outputs the external IP address of <strong>linux-instance</strong>. Copy the <strong>linux-instance</strong> external IP address, open another terminal and connect to it. Follow the instructions given in the section <code>Accessing the virtual machine</code> by clicking on <code>Accessing the virtual machine</code> from the navigation pane at the right side.</p>
+<p>Now manually run the Puppet client on your <strong>linux-instance</strong> VM instance terminal:</p>
+<pre><code>sudo puppet agent -v --test
+</code><button class="button button--copy js-copy-button-11"><i class="fa fa-clipboard"></i></button></pre>
+<p>This command should run successfully and the catalog should be applied.</p>
+<p>Output:</p>
+<p><img alt="755d544a0cf30013.png" src="./Finish a Puppet deployment _ Qwiklabs_files/Ab_ghqwUbFtwZINFSSNkH_bp0LI3762sc6MQXXopzH0="></p>
+<p>Now verify whether the <strong>golang</strong> package was installed on this instance. This being an machine of the Debian family should have golang installed. Use the following command to verify this:</p>
+<pre><code>apt policy golang
+</code><button class="button button--copy js-copy-button-12"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="d2c0b280a48680a4.png" src="./Finish a Puppet deployment _ Qwiklabs_files/Qsqk33mveAeLkaoC71jrU+ABHhKsgRwLE_nBDBYzmUI="></p>
+<p>With this, you've seen how you can use Puppet's facts and package resources to install specific packages on machines within your fleet.</p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="1">
+Install packages
+</ql-activity-tracking></p>
+<h2 id="step5">Fetch machine information</h2>
+<p>It's now time to navigate to the <strong>machine_info</strong> module in our Puppet environment. In the <strong>Puppet VM terminal,</strong> navigate to the module using the following command:</p>
+<pre><code>cd /etc/puppet/code/environments/production/modules/machine_info
+</code><button class="button button--copy js-copy-button-13"><i class="fa fa-clipboard"></i></button></pre>
+<p>The <strong>machine_info</strong> module gathers some information from the machine using <strong>Puppet</strong> facts and then stores it in a file. Currently, the module is always storing this information in <code>/tmp/machine_info.</code></p>
+<p>Let's check this out:</p>
+<pre><code>cat manifests/init.pp
+</code><button class="button button--copy js-copy-button-14"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="cc4e01e406ef6411.png" src="./Finish a Puppet deployment _ Qwiklabs_files/fbvDKc3+0Szi5QBYDzhO46NlrwipXgolYbeCuaX1N_Y="></p>
+<p>You can view the path in the above file. This path doesn't work for Windows machines. So, you need to adapt this rule for Windows.</p>
+<p>Add edit permission to the file using the following command before we adapt the rule.</p>
+<pre><code>sudo chmod 646 manifests/init.pp
+</code><button class="button button--copy js-copy-button-15"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now we will be using <code>$facts[kernel]</code> fact to check if the kernel is "windows". If so, set a <strong>$info_path</strong> variable to "C:\Windows\Temp\Machine_Info.txt", otherwise set it to "/tmp/machine_info.txt". To do this, open the file using nano editor and add the below rule after the default path within the class <code>machine_info</code>.</p>
+<pre><code>  if $facts[kernel] == "windows" {
+       $info_path = "C:\Windows\Temp\Machine_Info.txt"
+  } else {
+       $info_path = "/tmp/machine_info.txt"
+  }
+</code><button class="button button--copy js-copy-button-16"><i class="fa fa-clipboard"></i></button></pre>
+<p>The file should now look similar to:</p>
+<pre><code>class machine_info {
+   file { '/tmp/machine_info.txt':
+       content =&gt; template('machine_info/info.erb'),
+   }
+   if $facts[kernel] == "windows" {
+       $info_path = "C:\Windows\Temp\Machine_Info.txt"
+   } else {
+       $info_path = "/tmp/machine_info.txt"
+   }
+}
+</code><button class="button button--copy js-copy-button-17"><i class="fa fa-clipboard"></i></button></pre>
+<p>By default the file resources are stored in the path defined in the name of the resource (the string in the first line) within the class. We can also set different paths, by setting the path attribute.</p>
+<p>We will now be renaming the resource to "machine_info" and then use the variable in the path attribute. The variable we are using to store the path in the above rule is <strong>$info_path</strong>.</p>
+<p>Remove the following part from the file <strong>manifests/init.pp</strong>.</p>
+<pre><code>   file { '/tmp/machine_info.txt':
+       content =&gt; template('machine_info/info.erb'),
+   }
+</code><button class="button button--copy js-copy-button-18"><i class="fa fa-clipboard"></i></button></pre>
+<p>And add the following resource after the rule within the class definition:</p>
+<pre><code>   file { 'machine_info':
+        path =&gt; $info_path,
+        content =&gt; template('machine_info/info.erb'),
+    }
+</code><button class="button button--copy js-copy-button-19"><i class="fa fa-clipboard"></i></button></pre>
+<p>The complete manifests/init.pp file should now look like this:</p>
+<pre><code>class machine_info {
+  if $facts[kernel] == "windows" {
+       $info_path = "C:\Windows\Temp\Machine_Info.txt"
+   } else {
+       $info_path = "/tmp/machine_info.txt"
+   }
+ file { 'machine_info':
+       path =&gt; $info_path,
+       content =&gt; template('machine_info/info.erb'),
+   }
+}
+</code><button class="button button--copy js-copy-button-20"><i class="fa fa-clipboard"></i></button></pre>
+<h3>Puppet Templates</h3>
+<p>Templates are documents that combine code, data, and literal text to produce a final rendered output. The goal of a template is to manage a complicated piece of text with simple inputs.</p>
+<p>In Puppet, you'll usually use templates to manage the content of configuration files (via the content attribute of the file resource type).</p>
+<p>Templates are written in a templating language, which is specialized for generating text from data. Puppet supports two templating languages:</p>
+<ul>
+<li>
+<strong>Embedded Puppet (EPP)</strong> uses Puppet expressions in special tags. It's easy for any Puppet user to read, but only works with newer Puppet versions. (≥ 4.0, or late 3.x versions with future parser enabled.)</li>
+<li>
+<strong>Embedded Ruby (ERB)</strong> uses Ruby code in tags. You need to know a small bit of Ruby to read it, but it works with all Puppet versions.</li>
+</ul>
+<p>Now, take a look at the template file using the following command.</p>
+<pre><code>cat templates/info.erb
+</code><button class="button button--copy js-copy-button-21"><i class="fa fa-clipboard"></i></button></pre>
+<p>Puppet templates generally use data taken from Puppet variables. Templates are files that are pre-processed, some values gets replaced with variables. In this case, the file currently includes the values of three facts. We will be adding a new fact in this file now.</p>
+<p>Add edit permissions to the file using <code>templates/info.erb</code> using the following command:</p>
+<pre><code>sudo chmod 646 templates/info.erb
+</code><button class="button button--copy js-copy-button-22"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now open the file using nano editor and add the following fact just after the last fact within the file:</p>
+<pre><code>Network Interfaces: &lt;%= @interfaces %&gt;
+</code><button class="button button--copy js-copy-button-23"><i class="fa fa-clipboard"></i></button></pre>
+<p>The template should now look like this:</p>
+<pre><code>Machine Information
+-------------------
+Disks: &lt;%= @disks %&gt;
+Memory: &lt;%= @memory %&gt;
+Processors: &lt;%= @processors %&gt;
+Network Interfaces: &lt;%= @interfaces %&gt;
+}
+</code><button class="button button--copy js-copy-button-24"><i class="fa fa-clipboard"></i></button></pre>
+<p>To check if this worked correctly, return to <strong>linux-instance</strong> VM terminal and manually run the client on that machine using the following command:</p>
+<pre><code>sudo puppet agent -v --test
+</code><button class="button button--copy js-copy-button-25"><i class="fa fa-clipboard"></i></button></pre>
+<p>This command should run successfully and the catalog should be applied.</p>
+<p>Now verify that the <strong>machine_info</strong> file has the required information using:</p>
+<pre><code>cat /tmp/machine_info.txt
+</code><button class="button button--copy js-copy-button-26"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="3a23a9f08fd62e31.png" src="./Finish a Puppet deployment _ Qwiklabs_files/FvCvzviAtJw+XvK5E2zLiz5xPBqzu3VeK15Ons9EmPQ="></p>
+<p>And with that, you've seen how you can fetch machine information and store it according to the operating system.</p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="2">
+Fetch machine information
+</ql-activity-tracking></p>
+<h2 id="step6">Reboot machine</h2>
+<p>For the last exercise, we will be creating a new module named <strong>reboot</strong>, that checks if a node has been online for more than <strong>30 days</strong>. If so, then reboot the computer.</p>
+<p>To do that, you'll start by creating the module directory.</p>
+<p>Switch back to <strong>puppet</strong> VM terminal and run the following command:</p>
+<pre><code>sudo mkdir -p /etc/puppet/code/environments/production/modules/reboot/manifests
+</code><button class="button button--copy js-copy-button-27"><i class="fa fa-clipboard"></i></button></pre>
+<p>Go to the <code>manifests/</code> directory.</p>
+<pre><code>cd /etc/puppet/code/environments/production/modules/reboot/manifests
+</code><button class="button button--copy js-copy-button-28"><i class="fa fa-clipboard"></i></button></pre>
+<p>Create an <strong>init.pp</strong> file for the reboot module in the <code>manifests/</code> directory.</p>
+<pre><code>sudo touch init.pp
+</code><button class="button button--copy js-copy-button-29"><i class="fa fa-clipboard"></i></button></pre>
+<p>Open <strong>init.pp</strong> with nano editor using sudo.</p>
+<pre><code>sudo nano init.pp
+</code><button class="button button--copy js-copy-button-30"><i class="fa fa-clipboard"></i></button></pre>
+<p>In this file, you'll start by creating a class called <code>reboot</code>.</p>
+<p>The way to reboot a computer depends on the OS that it's running. So, you'll set a variable that has one of the following reboot commands, based on the kernel fact:</p>
+<ul>
+<li>
+<strong>shutdown /r</strong> on windows</li>
+<li>
+<strong>shutdown -r now</strong> on Darwin (macOS)</li>
+<li>
+<strong>reboot</strong> on Linux.</li>
+</ul>
+<p>Hence, add the following snippet in the file <strong>init.pp</strong>:</p>
+<pre><code>class reboot {
+  if $facts[kernel] == "windows" {
+    $cmd = "shutdown /r"
+  } elsif $facts[kernel] == "Darwin" {
+    $cmd = "shutdown -r now"
+  } else {
+    $cmd = "reboot"
+  }
+}
+</code><button class="button button--copy js-copy-button-31"><i class="fa fa-clipboard"></i></button></pre>
+<p>With this variable defined, we will now define an exec resource that calls the command, but only when the <strong>uptime_days</strong> fact is larger than 30 days.</p>
+<p>Add the following snippet after the previous one within the class definition in the file <strong>reboot/manifests/init.pp</strong>:</p>
+<pre><code>if $facts[uptime_days] &gt; 30 {
+        exec { 'reboot':
+           command =&gt; $cmd,
+        }
+    }
+</code><button class="button button--copy js-copy-button-32"><i class="fa fa-clipboard"></i></button></pre>
+<p>The complete <strong>reboot/manifests/init.pp</strong> should now look like this:</p>
+<pre><code>class reboot {
+  if $facts[kernel] == "windows" {
+    $cmd = "shutdown /r"
+  } elsif $facts[kernel] == "Darwin" {
+    $cmd = "shutdown -r now"
+  } else {
+    $cmd = "reboot"
+  }
+  if $facts[uptime_days] &gt; 30 {
+    exec { 'reboot':
+      command =&gt; $cmd,
+     }
+   }
+}
+</code><button class="button button--copy js-copy-button-33"><i class="fa fa-clipboard"></i></button></pre>
+<p>Finally, to get this module executed, make sure to include it in the <code>site.pp</code> file.</p>
+<p>So, edit <code>/etc/puppet/code/environments/production/manifests/site.pp</code> using the following command:</p>
+<pre><code>sudo nano /etc/puppet/code/environments/production/manifests/site.pp 
+</code><button class="button button--copy js-copy-button-34"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add an extra line that includes the reboot module.</p>
+<p>The file <code>/etc/puppet/code/environments/production/manifests/site.pp</code> should now look like this:</p>
+<pre><code>node default {
+   class { 'packages': }
+   class { 'machine_info': }
+   class { 'reboot': }
+}
+</code><button class="button button--copy js-copy-button-35"><i class="fa fa-clipboard"></i></button></pre>
+<p>Run the client on <strong>linux-instance</strong> VM terminal:</p>
+<pre><code>sudo puppet agent -v --test
+</code><button class="button button--copy js-copy-button-36"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="8312e995bf62921d.png" src="./Finish a Puppet deployment _ Qwiklabs_files/NUj3_vE3NVwImJjZWuqGBl22CKAOCPr+VCQ+LWkQs7o="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="3">
+Reboot machine
+</ql-activity-tracking></p>
+<p>And with that, you've added a whole new module to your deployment!</p>
+<h2 id="step7">Congratulations!</h2>
+<p>Woohoo! You've successfully improved the Puppet deployment, by modifying existing modules and adding new ones!</p>
+<h2 id="step8">End your lab</h2>
+<p>When you have completed your lab, click <strong>End Lab</strong>. Qwiklabs removes the resources you’ve used and cleans the account for you.</p>
+<p>You will be given an opportunity to rate the lab experience. Select the applicable number of stars, type a comment, and then click <strong>Submit</strong>.</p>
+<p>The number of stars indicates the following:</p>
+<ul>
+<li>1 star = Very dissatisfied</li>
+<li>2 stars = Dissatisfied</li>
+<li>3 stars = Neutral</li>
+<li>4 stars = Satisfied</li>
+<li>5 stars = Very satisfied</li>
+</ul>
+<p>You can close the dialog box if you don't want to provide feedback.</p>
+<p>For feedback, suggestions, or corrections, please use the <strong>Support</strong> tab.</p>
+
+
+
+</div>
+<div class="js-lab-content-outline lab-content__outline is-stuck">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47759#step1">Introduction</a><a href="https://googlecoursera.qwiklabs.com/focuses/47759#step2">Accessing the virtual machine</a><a href="https://googlecoursera.qwiklabs.com/focuses/47759#step3">Puppet rules</a><a href="https://googlecoursera.qwiklabs.com/focuses/47759#step4">Install packages</a><a href="https://googlecoursera.qwiklabs.com/focuses/47759#step5">Fetch machine information</a><a href="https://googlecoursera.qwiklabs.com/focuses/47759#step6">Reboot machine</a><a href="https://googlecoursera.qwiklabs.com/focuses/47759#step7">Congratulations!</a><a href="https://googlecoursera.qwiklabs.com/focuses/47759#step8" class="is-active">End your lab</a>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+<div class="lab-assessment__tab js-lab-assessment-tab">
+<h5 class="small-label">
+Score
+</h5>
+<h3 class="js-lab-assessment-total-score">
+—/15
+</h3>
+<iframe class="l-ie-iframe-fix" src="./Finish a Puppet deployment _ Qwiklabs_files/saved_resource(1).html"></iframe>
+</div>
+<div class="lab-assessment__panel js-lab-assessment-panel">
+<!-- / If lab_instance has is started and assessment is generated, use -->
+<!-- / lab_instance.assessment, otherwise use lab.assessment_manual -->
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Install packages
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="1">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-1">
+</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Fetch machine information
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="2">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-2">
+</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Reboot machine
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="3">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-3">
+</span>
+/ 5
+</p>
+</div>
+
+<iframe class="l-ie-iframe-fix" src="./Finish a Puppet deployment _ Qwiklabs_files/saved_resource(2).html"></iframe>
+</div>
+<div class="lab-introduction js-lab-introduction is-hidden">
+<div class="lab-introduction__inner">
+<h1 class="headline-1">Welcome to Your First Lab!</h1>
+<ql-icon-button class="js-skip-button">close</ql-icon-button>
+<div class="lab-introduction__video">
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" id="lab-introduction" src="./Finish a Puppet deployment _ Qwiklabs_files/yF7EDXKTmoQ.html"></iframe>
+</div>
+<a class="js-skip-button button button--outline">Skip this video</a>
+</div>
+</div>
+
+
+
+</div>
+</main>
+<div class="modal fade" id="lab-details-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<div class="modal-body">
+<p class="l-mbm">
+This lab has instructions to automatically manage the computers in your company's fleet, including a bunch of different machines with different operating systems.
+</p>
+<p class="small-label l-mbs">
+<strong>
+Duration:
+</strong>
+0m setup
+·
+90m access
+·
+90m completion
+</p>
+<p class="small-label l-mbs">
+<span><strong>Levels: </strong>introductory</span>
+</p>
+<p class="small-label">
+<strong>
+Permalink:
+</strong>
+<a href="https://googlecoursera.qwiklabs.com/catalog_lab/2404">https://googlecoursera.qwiklabs.com/catalog_lab/2404</a>
+</p>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Got It
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Finish a Puppet deployment _ Qwiklabs_files/saved_resource(3).html"></iframe>
+</div>
+<div class="modal fade" id="lab-review-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<form class="simple_form js-lab-review-form" id="edit_lab_review_5275447" action="https://googlecoursera.qwiklabs.com/lab_reviews/5275447" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><div class="modal-body">
+<p class="label">
+How satisfied are you with this lab?*
+</p>
+<div class="rateit js-rateit" data-rateit-max="5" data-rateit-min="0" data-rateit-resetable="false" data-rateit-step="1" data-rateit-value="5"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 80px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+<div class="l-mtm">
+
+<div class="control-group hidden lab_review_user_id"><div class="controls"><input class="hidden" type="hidden" value="2606438" name="lab_review[user_id]" id="lab_review_user_id"></div></div>
+<div class="control-group hidden lab_review_classroom_id"><div class="controls"><input class="hidden" type="hidden" value="6103" name="lab_review[classroom_id]" id="lab_review_classroom_id"></div></div>
+<div class="control-group hidden lab_review_lab_id"><div class="controls"><input class="hidden" type="hidden" value="2404" name="lab_review[lab_id]" id="lab_review_lab_id"></div></div>
+<div class="control-group hidden lab_review_focus_id"><div class="controls"><input class="hidden" type="hidden" value="47759" name="lab_review[focus_id]" id="lab_review_focus_id"></div></div>
+<div class="control-group hidden lab_review_rating"><div class="controls"><input class="hidden js-rating-input" type="hidden" value="2" name="lab_review[rating]" id="lab_review_rating"></div></div>
+<div class="control-group text optional lab_review_comment"><label class="text optional control-label" for="lab_review_comment">Comment</label><div class="controls"><textarea class="text optional" name="lab_review[comment]" id="lab_review_comment"></textarea></div></div>
+</div>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Cancel
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<input type="submit" name="commit" value="Submit" disabled="disabled" class="btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" id="submit" data-disabled="false" data-disable-with="Submit" data-upgraded=",MaterialButton,MaterialRipple"><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></input>
+</div>
+</form>
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Finish a Puppet deployment _ Qwiklabs_files/saved_resource(4).html"></iframe>
+</div>
+
+<script>
+  $( function() {
+    ql.initMaterialInputs();
+    initChosen();
+    initSearch();
+    initTabs();
+    ql.list.init();
+    ql.favoriting.init();
+    ql.header.myAccount.init();
+    initTooltips();
+    ql.autocomplete.init();
+    ql.modals.init();
+    ql.toggleButtons.init();
+    ql.analytics.init();
+    initLabContent( );
+  ql.labOutline.links.init();
+  ql.labOutline.layout.init();
+  initLabReviewModal();
+  ql.labAssessment.init();
+  ql.labIntroduction.init( true );
+  ql.labData.init();
+  initLabTranslations( {"are_you_sure":"All done? If you end this lab, you will lose all your work. You may not be able to restart the lab if there is a quota limit. Are you sure you want to end this lab?\n","in_progress":"*In Progress*","ending":"*Ending*","starting":"*Starting, please wait*","end_concurrent_labs":"Sorry, you can only run one lab at a time. To start this lab, please confirm that you want all of your existing labs to end.\n","copied":"Copied","no_resource":"Error retrieving resource.","no_support":"No Support","mac_press":"Press ⌘-C to copy","thanks_review":"Thanks for reviewing this lab.","windows_press":"Press Ctrl-C to copy","days":"days"} );
+  ql.labRun.init();
+  ql.initHeader();
+  ql.navigation.init();
+  ql.navPanel.init();
+  ql.navigation.init();
+  
+  });
+</script>
+<style>
+  .mdl-layout__container {
+    position: static
+  }
+</style>
+
+
+<div></div><iframe data-product="web_widget" title="No content" tabindex="-1" aria-hidden="true" src="./Finish a Puppet deployment _ Qwiklabs_files/saved_resource(5).html" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;"></iframe><div><iframe title="Opens a widget where you can chat to one of our agents" id="launcher" tabindex="0" class="zEWidget-launcher zEWidget-launcher--active" style="border: none; background: transparent; z-index: 999998; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 1; height: 50px; max-height: 551px; min-height: 50px; margin: 10px 20px; right: 0px; bottom: 0px; width: 112px;width: 112px;" src="./Finish a Puppet deployment _ Qwiklabs_files/saved_resource(6).html"></iframe></div><div><iframe title="Find more information here" id="webWidget" tabindex="-1" class="zEWidget-webWidget " style="border: none; background: transparent; z-index: 999999; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 0; width: 357px; height: 100%; max-height: 565px; min-height: 150px; margin-left: 8px; margin-right: 8px; top: -9999px; visibility: hidden;" src="./Finish a Puppet deployment _ Qwiklabs_files/saved_resource(7).html"></iframe></div></body></html>
