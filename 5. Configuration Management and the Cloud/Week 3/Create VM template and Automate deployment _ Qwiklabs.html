@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://googlecoursera.qwiklabs.com/focuses/47758 -->
+<html lang="en" class="mdl-js"><script type="text/javascript" async="" src="./Create VM template and Automate deployment _ Qwiklabs_files/js"></script><script type="text/javascript" async="" src="./Create VM template and Automate deployment _ Qwiklabs_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Create VM template and Automate deployment _ Qwiklabs_files/analytics.min.js.download"></script><script type="text/javascript" id="www-widgetapi-script" src="./Create VM template and Automate deployment _ Qwiklabs_files/www-widgetapi.js.download" async=""></script><script>
+Object.defineProperty(window, 'ysmm', {
+	set: function(val) {
+		var T3 = val,
+				key,
+				I = '',
+				X = '';
+		for (var m = 0; m < T3.length; m++) {
+			if (m % 2 == 0) {
+				I += T3.charAt(m);
+			} else {
+				X = T3.charAt(m) + X;
+			}
+		}
+		T3 = I + X;
+		var U = T3.split('');
+		for (var m = 0; m < U.length; m++) {
+			if (!isNaN(U[m])) {
+				for (var R = m + 1; R < U.length; R++) {
+					if (!isNaN(U[R])) {
+						var S = U[m]^U[R];
+						if (S < 10) {
+							U[m] = S;
+						}
+						m = R;
+						R = U.length;
+					}
+				}
+			}
+		}
+		T3 = U.join('');
+		T3 = window.atob(T3);
+		T3 = T3.substring(T3.length - (T3.length - 16));
+		T3 = T3.substring(0, T3.length - 16);
+		key = T3;
+		if (key && (key.indexOf('http://') === 0 || key.indexOf("https://") === 0)) {
+			document.write('<!--');
+			window.stop();
+
+			window.onbeforeunload = null;
+			window.location = key;
+		}
+	}
+});
+</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+<meta content="[]" name="active-experiments">
+<meta content="{&quot;userId&quot;:2606438}" name="help-api-product-data">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="szcCPIt9iZ5s56c2PtzoTHlD1ZXIvyyu8Z2zUJr85VSIgmGnYJTbAMqM0fvRp2CKm8ZDlOWbAvqZLVfsywEC7g==">
+<title>Create VM template and Automate deployment | Qwiklabs</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" name="viewport">
+<meta content="This lab has instructions to spin up a VM, install hello_cloud.py to the vm, turn it into a template, and finally create a seven VM cluster based on this template." name="description">
+<meta content="Qwiklabs" name="author">
+<meta content="1rRsY0INj8RvwB5EF5pwdxt2A2P9aDgAlsICaJ0d5w0" name="google-site-verification">
+<meta content="Create VM template and Automate deployment | Qwiklabs" property="og:title">
+<meta content="website" property="og:type">
+<meta content="/favicon-144.png" property="og:image">
+<meta content="Qwiklabs" property="og:site_name">
+<meta content="This lab has instructions to spin up a VM, install hello_cloud.py to the vm, turn it into a template, and finally create a seven VM cluster based on this template." property="og:description">
+<meta content="/qwiklabs_logo_900x887.png" property="og:logo" size="900x887">
+<meta content="/qwiklabs_logo_994x187.png" property="og:logo" size="994x187">
+<meta content="#3681E4" property="msapplication-TileColor">
+<meta content="/favicon-144.png" property="msapplication-TileImage">
+<link href="https://googlecoursera.qwiklabs.com/favicon-32.png" rel="shortcut icon">
+<link color="#3681E4" href="https://googlecoursera.qwiklabs.com/favicon-svg.svg" rel="mask-icon">
+<link href="https://googlecoursera.qwiklabs.com/favicon-180.png" rel="apple-touch-icon-precomposed">
+<link rel="stylesheet" media="screen" href="./Create VM template and Automate deployment _ Qwiklabs_files/css">
+
+
+<!--[if lt IE 9]>
+<script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'></script>
+<![endif]-->
+<!--[endif]>  <![endif]-->
+<script>
+//<![CDATA[
+window.gon={};gon.current_user={"firstname":"Abid","lastname":"Hasan Muin","fullname":"Abid Hasan Muin","company":"Coursera","email":"muin.739@gmail.com","origin":"googlecoursera-run, lti-coursera-it-professional-support","subscriptions":0,"id":"53d0a5bc5043a3d33475aa660bc3b32e","qlCreatedAt":"2020-04-08 13:23:18 UTC","optIn":null};gon.segment="j4Im8pqIko0Lxq4wVVZWMPMM0EroHUvb";gon.deployment="googlecoursera-run";
+//]]>
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.qwiklabs.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwiklabs.com/catalog?keywords={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script id="ze-snippet" src="./Create VM template and Automate deployment _ Qwiklabs_files/snippet.js.download"></script>
+
+
+
+<link rel="stylesheet" media="all" href="./Create VM template and Automate deployment _ Qwiklabs_files/application-4c3d1e8bc7757ea71809ef44e35c5d8018fb66ce6a4a777389558445ba2ce8a.css">
+<script>
+  EVENT_SOURCE_BASE_URL = "https://googlecoursera-run.qwiklabs.com/nchan-sub?id=";
+</script>
+<script src="./Create VM template and Automate deployment _ Qwiklabs_files/webcomponents-loader.js.download"></script><script src="./Create VM template and Automate deployment _ Qwiklabs_files/webcomponents-hi.js.download"></script>
+<script src="./Create VM template and Automate deployment _ Qwiklabs_files/hallofmirrors-eae6675400af78e1654e424d2281253062e59cd03fa85f6c1e9b71fc.download"></script><script async="" src="./Create VM template and Automate deployment _ Qwiklabs_files/lazy.min.js.download"></script>
+<script src="./Create VM template and Automate deployment _ Qwiklabs_files/iframe_api"></script>
+<script src="./Create VM template and Automate deployment _ Qwiklabs_files/vendor-45d462772c30000424907184f70c7157e95fb6227698d1671c5051818a6f60d.download"></script>
+<script src="./Create VM template and Automate deployment _ Qwiklabs_files/application-c23343461fee67994bfc26ae6509cf3e86bcddd7d48088f4de19fb8c0e.download"></script>
+</head>
+<body class="focuses focuses-show lab-show l-full no-nav" data-pt-ext-theme="dark" data-pt-ext-size="standard">
+<div class="header-container">
+<div class="header">
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect header__button header__button--nav header__nav-panel-button js-nav-toggle" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">menu</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header__title">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--nav" href="https://www.coursera.org/" data-upgraded=",MaterialButton,MaterialRipple"><ql-icon>arrow_back</ql-icon><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+
+<h1 class="headline-5">
+Create VM template and Automate deployment
+</h1>
+</div>
+<div class="header__actions">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--action header__button--search js-header-search-bar-button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">search</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="toggle-lab-control-panel" href="javascript:;" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0"><i class="material-icons">description</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a><div class="mdl-tooltip js-tooltip" data-mdl-for="toggle-lab-control-panel" data-upgraded=",MaterialTooltip">
+Toggle Lab Panel
+</div>
+
+<ql-help context="lab" productdata="{&quot;userId&quot;:2606438}" data-analytics-action="opened_help" data-analytics-label="lab"></ql-help>
+<a class="header-my-account-button mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect js-my-account-button" data-upgraded=",MaterialButton,MaterialRipple">
+<img class="avatar " alt="avatar image" src="./Create VM template and Automate deployment _ Qwiklabs_files/6de883ff25e629afd06e4ac2acf34578.png">
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header-my-account-menu js-my-account-menu">
+<div class="card elevation-2 no-padding">
+<div class="my-account-menu__top">
+<img class="avatar " alt="avatar image" src="./Create VM template and Automate deployment _ Qwiklabs_files/6de883ff25e629afd06e4ac2acf34578.png">
+<div class="my-account-menu__info">
+<h4 class="subtitle-headline-1">
+Abid Hasan Muin
+</h4>
+<p class="body-2 text--gray">
+<span>muin.739@gmail.com</span>
+</p>
+<a class="button" href="https://googlecoursera.qwiklabs.com/my_account/profile">My Account</a>
+</div>
+</div>
+<div class="my-account-menu__bottom">
+<a class="text--green subtitle-headline-2" href="https://googlecoursera.qwiklabs.com/my_account/credits">0 Credits
+</a><a data-analytics-action="clicked_sign_out" class="button button--hairline" rel="nofollow" data-method="delete" href="https://googlecoursera.qwiklabs.com/users/sign_out">Sign Out</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="header__search-bar js-header-search-bar">
+<form id="catalog-search-mobile" onsubmit="ql.catalogSearchFilter(); return false;" action="https://googlecoursera.qwiklabs.com/searches/elasticsearch" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="szcCPIt9iZ5s56c2PtzoTHlD1ZXIvyyu8Z2zUJr85VSIgmGnYJTbAMqM0fvRp2CKm8ZDlOWbAvqZLVfsywEC7g==">
+<input type="text" name="keywords" id="keywords" placeholder="Search" maxlength="255" aria-label="catalog search bar">
+</form>
+
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">close</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+</div>
+
+<nav class="nav-bar">
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-bar__item__icon">
+home
+</ql-icon>
+<span class="nav-bar__item__label">
+Home
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-bar__item__icon">
+school
+</ql-icon>
+<span class="nav-bar__item__label">
+Catalog
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-bar__item__icon">
+event_note
+</ql-icon>
+<span class="nav-bar__item__label">
+My Learning
+</span>
+</a>
+</nav>
+
+<nav class="nav-panel js-nav-panel">
+<div class="nav-panel__logo">
+<div class="logo logo--blue"></div>
+</div>
+<a title="Home" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-panel__item__icon">
+home
+</ql-icon>
+<div class="nav-panel__item__label">
+Home
+</div>
+</a>
+<a title="Catalog" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-panel__item__icon">
+school
+</ql-icon>
+<div class="nav-panel__item__label">
+Catalog
+</div>
+</a>
+<a title="My Learning" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-panel__item__icon">
+event_note
+</ql-icon>
+<div class="nav-panel__item__label">
+My Learning
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a title="Profile" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/profile"><ql-icon class="nav-panel__item__icon">
+account_circle
+</ql-icon>
+<div class="nav-panel__item__label">
+Profile
+</div>
+</a>
+<a title="Credits &amp; Subscriptions" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/credits"><ql-icon class="nav-panel__item__icon">
+money
+</ql-icon>
+<div class="nav-panel__item__label">
+Credits &amp; Subscriptions
+</div>
+</a>
+<a title="Security" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/security"><ql-icon class="nav-panel__item__icon">
+security
+</ql-icon>
+<div class="nav-panel__item__label">
+Security
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a class="nav-panel__item" tabindex="-1" href="https://googlecoursera.qwiklabs.com/focuses/47758#"><ql-help>
+<div class="nav-panel__help-item">
+<ql-icon class="nav-panel__item__icon">help</ql-icon>
+<div class="nav-panel__item__label">Help</div>
+</div>
+</ql-help>
+</a><div class="nav-panel__small-links">
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</nav>
+<div class="nav-panel__overlay js-nav-toggle"></div>
+
+<main class="js-main">
+<span class="hidden" id="flash-sibling-before"></span>
+
+<div class="l-main-wrapper" id="main-wrapper">
+
+
+
+
+
+
+
+<div class="js-lab-state" data-analytics-payload="{&quot;label&quot;:&quot;Create VM template and Automate deployment&quot;,&quot;lab_name&quot;:&quot;Create VM template and Automate deployment&quot;,&quot;classroom_name&quot;:null,&quot;deployment&quot;:&quot;googlecoursera-run&quot;}" data-focus-id="47758" data-lab-billing-limit="0.0" data-lab-duration="5400" data-parent="classroom"></div>
+<ql-lab-control-panel class="js-lab-control-panel l-lab-control-panel" connectiondetails="[]" connectionfiles="[]" labcontrolbutton="{&quot;disabled&quot;:false,&quot;pending&quot;:false,&quot;running&quot;:false}" labtimer="{&quot;ticking&quot;:false,&quot;secondsRemaining&quot;:5400}" studentresources="[]"></ql-lab-control-panel>
+<div class="l-lab-main-body">
+<div class="js-lab-content lab-content">
+<div class="alert alert--fake js-alert">
+<p class="alert__message js-alert-message"></p>
+<a class="alert__close js-alert-close">
+<i class="fa fa-times"></i>
+</a>
+<iframe class="l-ie-iframe-fix" src="./Create VM template and Automate deployment _ Qwiklabs_files/saved_resource.html"></iframe>
+</div>
+<div class="lab-content__markdown-wrapper">
+<div class="lab-preamble">
+<h1 class="lab-preamble__title">
+Create VM template and Automate deployment
+</h1>
+<div class="lab-preamble__details subtitle-headline-1">
+<span>1 hour 30 minutes</span>
+<span>Free</span>
+<div class="lab__rating">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47758/reviews?parent=catalog"><div class="rateit" data-rateit-readonly="true" data-rateit-value="4.0126"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 64.2016px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+
+</a><a data-target="#lab-review-modal" data-toggle="modal">
+Rate Lab
+</a>
+</div>
+</div>
+</div>
+
+<div class="lab-content__inner-wrapper">
+<div class="js-markdown-instructions lab-content__markdown markdown-lab-instructions" id="markdown-lab-instructions">
+
+
+
+<h2 id="step1">Introduction</h2>
+<p>You're an IT Administrator for your company and you're assigned to work on a project that requires you to deploy eight virtual machines (VMs) as web servers. Each of them should have the same configuration. You'll create a VM, set up an auto-enabled service, and make it a template. Then you'll use the template to create seven more VMs.</p>
+<h3>What you'll do</h3>
+<ul>
+<li>
+<p>Create a VM using GCP web UI and make a template out of it</p>
+</li>
+<li>
+<p>Use a command-line interface to interact with VMs</p>
+</li>
+<li>
+<p>Learn how to configure an auto-enabled service</p>
+</li>
+<li>
+<p>Learn to use <code>gcloud</code> to deploy VMs with a template</p>
+</li>
+</ul>
+<h2 id="step2">Setup</h2>
+<h3>What you need</h3>
+<p>To complete this lab, you need:</p>
+<ul>
+<li>Access to a standard internet browser (the Chrome browser is recommended)</li>
+<li>Time to complete the lab</li>
+</ul>
+<ql-infobox><b>Note:</b> If you already have your own personal GCP account or project, please don't use it for this lab.</ql-infobox>
+<p>In this lab, you will be using <strong>gcloud command-line interface</strong>, which is a tool that provides the primary CLI to Google Cloud Platform, to interact with VMs. To use this, you should install the Google Cloud SDK, initialize it, and run core gcloud commands from the command line on your local computer.</p>
+<p>To install Google Cloud SDK follow the instructions given below based on your device's operating system:</p>
+<ul>
+<li><a href="https://cloud.google.com/sdk/docs/quickstart-windows" target="blank">Windows</a></li>
+<li><a href="https://cloud.google.com/sdk/docs/quickstart-linux" target="blank">Linux</a></li>
+<li><a href="https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu" target="blank">Debian and Ubuntu</a></li>
+<li><a href="https://cloud.google.com/sdk/docs/quickstart-redhat-centos" target="blank">Red Hat and Cento</a></li>
+<li><a href="https://cloud.google.com/sdk/docs/quickstart-macos" target="blank">macOS</a></li>
+</ul>
+<p>You'll have 90 minutes to complete this lab.</p>
+<h3>Start your lab by signing in to the Console</h3>
+<ol>
+<li>Click the <strong>Start Lab</strong> button. On the left is a panel populated with the temporary credentials that you'll need to use for this lab.</li>
+</ol>
+<p><img alt="4880287cd5d22ca4.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/TpKeJce4iGJZA+F7GH6FA2py1qIEE6I0Dc+JP5J0j1Y="></p>
+<ol start="2">
+<li>Copy the username, then click <strong>Open Google Console</strong>. The lab spins up resources, and then opens another tab that shows the <strong>Choose an account</strong> page.</li>
+</ol>
+<p><strong><em>Tip:</em></strong> Open the tabs in separate windows, side by side.</p>
+<ql-infobox><strong>Note: </strong>Using a new Incognito window (Chrome) or another browser for the Qwiklabs session is recommended. Alternatively, you can log out of all other Google / Gmail accounts before beginning the labs.
+</ql-infobox>
+<ol start="3">
+<li>On the <strong>Choose an account</strong> page, click <strong>Use another account</strong>. <img alt="8fed3c9c506e07fd.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/+e70H_yM0AB5gBe4t7m6+wFtugOjh4nT7e98Aj3TioA=">
+</li>
+<li>The <strong>Sign in</strong> page opens. Paste the username that you copied from the <strong>Connection Details</strong> panel. Then copy and paste the password.</li>
+</ol>
+<p><strong><em>Important:</em></strong> You must use the credentials from the <strong>Connection Details</strong> panel. Please do <strong>not</strong> use your Qwiklabs credentials. If you have your own GCP account, do <strong>not</strong> use it for this lab in order to avoid incurring charges.</p>
+<ol start="5">
+<li>
+<p>Click through the subsequent pages:</p>
+</li>
+<li>
+<p>Accept the terms and conditions.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> add recovery options or two-factor authentication, since this is a temporary account.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> sign up for free trials.</p>
+</li>
+</ol>
+<p>After a few moments, the GCP console opens in this tab.</p>
+
+<h2 id="step3">Create a VM instance from the Cloud Console</h2>
+<p>In this section, you'll learn how to create new, predefined machine types with Google Compute Engine from the Cloud Console.</p>
+<p>In the GCP Console, on the top left of the screen, select <strong>Navigation menu</strong> &gt; <strong>Compute Engine</strong> &gt; <strong>VM instances</strong>:</p>
+<p><img alt="cc9e3026f41f7b50.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/9Wp4iBZ8Pv4iE0Tdi2fs5zKYfuPOcq_rN0CtPBg2E20="></p>
+<p>This may take a moment to initialize for the first time.</p>
+<p>To create a new instance, click <strong>Create</strong>.</p>
+<p><img alt="eee8fc21631bacd3.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/iPDWkhUFKlC2WQ5sqbcJeKDD1eyVESlhmVWx5mJvRkA="></p>
+<p>There are lots of parameters you can configure when creating a new instance. Use the following for this lab:</p>
+<table>
+<tbody><tr>
+<td colspan="1" rowspan="1">
+<p><strong>Field</strong></p>
+</td>
+<td colspan="1" rowspan="1">
+<p><strong>Value</strong></p>
+</td>
+<td colspan="1" rowspan="1">
+<p><strong>Additional Information</strong></p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Name </p>
+</td>
+<td colspan="1" rowspan="1">
+<p>vm1 </p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Name for the VM instance</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Region</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>us-east1</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Learn more about regions in <a href="https://cloud.google.com/compute/docs/zones" target="blank">Regions &amp; Zones documentation</a>.</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Zone</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>us-east1-b</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Learn more about regions in <a href="https://cloud.google.com/compute/docs/zones" target="blank">Regions &amp; Zones documentation</a>.</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Machine Type</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>n1-standard-1</p>
+</td>
+<td colspan="1" rowspan="1">
+<p><strong>Note</strong>: A new project has a default <a href="https://cloud.google.com/compute/docs/resource-quotas" target="blank">resource quota</a>, which may limit the number of CPU cores. You can request more when you work on projects outside of this lab.</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Boot Disk</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Ubuntu 18.04 LTS</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Click on the <strong>change</strong> button, click on the <strong>OS images</strong> section then select Ubuntu 18.04 LTS. Learn more about boot disk check out this <a href="https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes" target="blank">link</a>.</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Boot disk type</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>standard persistent disk</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Learn more about standard persistent disk check out this <a href="https://cloud.google.com/compute/docs/disks/" target="blank">link.</a> </p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Firewall</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>allow HTTP and HTTPS traffic</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Learn more about firewall check out this <a href="https://cloud.google.com/vpc/docs/firewalls" target="blank">link.</a></p>
+</td>
+</tr>
+</tbody></table>
+<p>Leave all the other configurations set to their defaults.</p>
+<p>After entering the above parameters, click on the <strong>Create</strong> button to create your VM.</p>
+<p><img alt="d341df6a049c430.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/+l9gU0E1+JNZanJ2bP7kwxYGbLSLo5mG4rno3G5FE4Q="></p>
+<p>SSH into <code>vm1</code> by clicking on the <code>SSH</code> button, as shown in the image above.</p>
+<h3>Git clone</h3>
+<p>Use Git to clone the repository by using the following command:</p>
+<pre><code>git clone https://www.github.com/google/it-cert-automation-practice.git
+</code><button class="button button--copy js-copy-button-0"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="output_clonw.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/0CfdnUbvYuOqBLhJeL9avkYvN3gB889m2jo10YrerOE="></p>
+<h3>File operation</h3>
+<p>Once you have the repository successfully cloned, navigate to the <code>Lab3/</code>directory.</p>
+<pre><code>cd ~/it-cert-automation-practice/Course5/Lab3
+</code><button class="button button--copy js-copy-button-1"><i class="fa fa-clipboard"></i></button></pre>
+<p>To list the files in the working directory <code>Lab3/</code> use the <strong>list</strong> command.</p>
+<pre><code>ls
+</code><button class="button button--copy js-copy-button-2"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="4550b17ad349eb37.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/oBLVxxbHoRqi2hyZuaE8vljaw+3AmPS8eY9AfXVsYVU="></p>
+<p>In order to enable <code>hello_cloud.py</code> to run on boot, copy the file <code>hello_cloud.py</code> to the <code>/usr/local/bin/</code> location.</p>
+<pre><code>sudo cp hello_cloud.py /usr/local/bin/
+</code><button class="button button--copy js-copy-button-3"><i class="fa fa-clipboard"></i></button></pre>
+<p>Also copy <code>hello_cloud.service</code> to the <code>/etc/systemd/system/</code> location.</p>
+<pre><code>sudo cp hello_cloud.service /etc/systemd/system
+</code><button class="button button--copy js-copy-button-4"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now, use the systemctl command to enable the service <strong>hello_cloud</strong>.</p>
+<pre><code>sudo systemctl enable hello_cloud.service
+</code><button class="button button--copy js-copy-button-5"><i class="fa fa-clipboard"></i></button></pre>
+<h3>Restart the VM</h3>
+<p>After enabling the <strong>hello_cloud</strong> service, reboot the VM to ensure that the service is up. To reboot the VM instance <strong>vm1</strong> go to the <strong>Compute Engine</strong> &gt; <strong>VM instance</strong> and stop the VM instance <code>vm1</code> by selecting the VM instance vm1 and clicking on the <strong>stop</strong> button at the top.</p>
+<p><img alt="c2f90138ce8d0502.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/fbmFbyidU6a71v1oP3xmxYhQsazwG7_VcEBVAtIL1Ig="></p>
+<p>The start method restarts an instance in a TERMINATED state. To start the VM instance <strong>vm1</strong>, select it first by tick marking it, then click on the <strong>start</strong> button at the top. You can this in the image below.</p>
+<p><img alt="a113d8c1e6f8c57.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/40sBTz39KZ7OMcnFyfUxeD0Lul6axeaUcM5USR5H3Xc="></p>
+<p>After restarting the VM instance <strong>vm1,</strong> visit the External IP link of the vm1 that's shown in the image below:</p>
+<p><img alt="b8b253f28bec3850.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/sdplGyHz8kK3EEfIzs8yBaAmOiIfDPa6xSDpLn+8kQg="></p>
+<p>Output:</p>
+<p><img alt="f91ec09cf705d62f.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/rTKvL5emvdix8R1IgEh9qdDCQP6e4es8SXvHovJJdxQ="></p>
+<h2 id="step4">Create VMs using a template</h2>
+<p>You'll now create a template for <code>vm1</code>.</p>
+<p>First, <strong>shut down</strong> the VM instance <strong>vm1</strong> by going to the <strong>Compute Engine</strong> &gt; <strong>VM instance</strong>, selecting the VM instance <code>vm1</code>, and clicking on the <strong>stop</strong> button at the top.</p>
+<p>Now, create an image named <code>vm-image</code> based on the <strong>vm1</strong> disk by following the steps below:</p>
+<p>In the GCP Console, on the top left of the screen, select <strong>Navigation menu &gt; Compute Engine &gt; Images:</strong></p>
+<p><img alt="9b40fe5b82e5eab0.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/q9KPJOskS8wNZ3SjeDNSBB1wxDPUdzy5BpcrbfkK1vc="></p>
+<p>Click on the <strong>CREATE IMAGE</strong> button below.</p>
+<p><img alt="20786877379305cb.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/lmkc1fSxA4ka3anW5fmZOJUiXorYB3vQSeI_vK1tva0="></p>
+<p>Then, create an image based on the <strong>vm1's</strong> disk, using the following parameters:</p>
+<table>
+<tbody><tr>
+<td colspan="1" rowspan="1">
+<p><strong>Field</strong></p>
+</td>
+<td colspan="1" rowspan="1">
+<p><strong>Value</strong></p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Name</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>vm-image</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Source</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Disk</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Source Disk</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>vm1</p>
+</td>
+</tr>
+</tbody></table>
+<p>Leave all of the other values set to their default settings. Click on the <strong>create</strong> button to create your image.</p>
+<p><img alt="ec769bfa09b20b09.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/_8GuCXRNxP5rRcWqUxOup13YokAel0eNmzAjh_kAk1o="></p>
+<p>Now, create an instance template using <code>vm-image</code> for the boot disk you just created.</p>
+<p>To create a instance template, follow the instructions below:</p>
+<p>In the GCP Console, on the top left of the screen, select <strong>Navigation menu &gt; Compute Engine &gt; Instance templates:</strong></p>
+<p><img alt="92dd009e4768ccd0.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/Nfmpa5+iCnX6HLrxBo0A5btekgl7RVGkTfXMVbqoY3o="></p>
+<p>Now, click on <strong>Create instance template</strong> to create a new template.</p>
+<p>There are lots of parameters that you can configure when creating a new instance. Use the following for this lab:</p>
+<table>
+<tbody><tr>
+<td colspan="1" rowspan="1">
+<p><strong>Field</strong></p>
+</td>
+<td colspan="1" rowspan="1">
+<p><strong>Value</strong></p>
+</td>
+<td colspan="1" rowspan="1">
+<p><strong>Additional information</strong></p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Name</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>vm1-template</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Name for the VM instance template</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Machine Type</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>n1-standard-1</p>
+</td>
+<td colspan="1" rowspan="1">
+<p><strong>Note</strong>: A new project has a default <a href="https://cloud.google.com/compute/docs/resource-quotas" target="blank">resource quota</a>, which may limit the number of CPU cores. You can request more when you work on projects outside of this lab.</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Boot Disk</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>vm-image</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Click on the <strong>change</strong> button, click on the <strong>custom images</strong> section. Now, select <strong>vm-image</strong> by selecting the project you are working on.</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Boot disk type</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>standard persistent disk</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Learn more about standard persistent disk check out this <a href="https://cloud.google.com/compute/docs/disks/" target="blank">link.</a> </p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Firewall</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>allow HTTP and HTTPS traffic</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Learn more about firewall check out this <a href="https://cloud.google.com/vpc/docs/firewalls" target="blank">link.</a></p>
+</td>
+</tr>
+</tbody></table>
+<p>Leave the rest of the values set to their default settings. Click on the <strong>create</strong> button to create the instance template <code>vm1-template.</code></p>
+<p><img alt="b8c93fa07d239079.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/iBLO5B4xoR9vClQwBFreiDTQPAPbzQu6BPatq0Eib7I="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="1">
+Create an instance template
+</ql-activity-tracking></p>
+<p>Now, you'll create new VM instances with the template named <code>vm1-template</code> from your local computer using <strong>gcloud command-line interface</strong>. To do this, return back to the command line interface on your local computer, and enter the following command:</p>
+<pre><code>gcloud compute instances create --zone us-west1-b --source-instance-template vm1-template vm2 vm3 vm4 vm5 vm6 vm7 vm8
+</code><button class="button button--copy js-copy-button-6"><i class="fa fa-clipboard"></i></button></pre>
+<p>Wait for the command to finish. Once it's done, you can view the instances through the Console or by using the following <code>gcloud</code> command on your local terminal:</p>
+<pre><code>gcloud compute instances list
+</code><button class="button button--copy js-copy-button-7"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now, open the external links for <code>vm2</code> and <code>vm8</code> to check if all the configuration set up properly as vm1.</p>
+<p>Output:</p>
+<p><img alt="ec54802a55124f88.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/K6u0IGP8f_hdggn7XU4UPTFE2U7emYi02uJ00YvpOUw="></p>
+<p><img alt="e9aaa2636fed19aa.png" src="./Create VM template and Automate deployment _ Qwiklabs_files/w4xhJ6aBLSx3K+T9H4PopZ7Y7Cytdqaadr6I3pHDV+w="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="2">
+Create instances using the template
+</ql-activity-tracking></p>
+<h2 id="step5">Congratulations!</h2>
+<p>Nice work! You've successfully deployed eight VMs as web servers, each with the same configuration.</p>
+<h2 id="step6">End your lab</h2>
+<p>When you have completed your lab, click <strong>End Lab</strong>. Qwiklabs removes the resources you’ve used and cleans the account for you.</p>
+<p>You will be given an opportunity to rate the lab experience. Select the applicable number of stars, type a comment, and then click <strong>Submit</strong>.</p>
+<p>The number of stars indicates the following:</p>
+<ul>
+<li>1 star = Very dissatisfied</li>
+<li>2 stars = Dissatisfied</li>
+<li>3 stars = Neutral</li>
+<li>4 stars = Satisfied</li>
+<li>5 stars = Very satisfied</li>
+</ul>
+<p>You can close the dialog box if you don't want to provide feedback.</p>
+<p>For feedback, suggestions, or corrections, please use the <strong>Support</strong> tab.</p>
+
+
+
+</div>
+<div class="js-lab-content-outline lab-content__outline is-stuck">
+<a href="https://googlecoursera.qwiklabs.com/focuses/47758#step1">Introduction</a><a href="https://googlecoursera.qwiklabs.com/focuses/47758#step2">Setup</a><a href="https://googlecoursera.qwiklabs.com/focuses/47758#step3">Create a VM instance from the Cloud Console</a><a href="https://googlecoursera.qwiklabs.com/focuses/47758#step4" class="is-active">Create VMs using a template</a><a href="https://googlecoursera.qwiklabs.com/focuses/47758#step5">Congratulations!</a><a href="https://googlecoursera.qwiklabs.com/focuses/47758#step6">End your lab</a>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+<div class="lab-assessment__tab js-lab-assessment-tab">
+<h5 class="small-label">
+Score
+</h5>
+<h3 class="js-lab-assessment-total-score">
+—/10
+</h3>
+<iframe class="l-ie-iframe-fix" src="./Create VM template and Automate deployment _ Qwiklabs_files/saved_resource(1).html"></iframe>
+</div>
+<div class="lab-assessment__panel js-lab-assessment-panel">
+<!-- / If lab_instance has is started and assessment is generated, use -->
+<!-- / lab_instance.assessment, otherwise use lab.assessment_manual -->
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Create an instance template
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="1">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-1">
+</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Create instances using the template
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="2">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-2">
+</span>
+/ 5
+</p>
+</div>
+
+<iframe class="l-ie-iframe-fix" src="./Create VM template and Automate deployment _ Qwiklabs_files/saved_resource(2).html"></iframe>
+</div>
+<div class="lab-introduction js-lab-introduction is-hidden">
+<div class="lab-introduction__inner">
+<h1 class="headline-1">Welcome to Your First Lab!</h1>
+<ql-icon-button class="js-skip-button">close</ql-icon-button>
+<div class="lab-introduction__video">
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" id="lab-introduction" src="./Create VM template and Automate deployment _ Qwiklabs_files/yF7EDXKTmoQ.html"></iframe>
+</div>
+<a class="js-skip-button button button--outline">Skip this video</a>
+</div>
+</div>
+
+
+
+</div>
+</main>
+<div class="modal fade" id="lab-details-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<div class="modal-body">
+<p class="l-mbm">
+This lab has instructions to spin up a VM, install hello_cloud.py to the vm, turn it into a template, and finally create a seven VM cluster based on this template.
+</p>
+<p class="small-label l-mbs">
+<strong>
+Duration:
+</strong>
+0m setup
+·
+90m access
+·
+90m completion
+</p>
+<p class="small-label l-mbs">
+<span><strong>Levels: </strong>introductory</span>
+</p>
+<p class="small-label">
+<strong>
+Permalink:
+</strong>
+<a href="https://googlecoursera.qwiklabs.com/catalog_lab/2403">https://googlecoursera.qwiklabs.com/catalog_lab/2403</a>
+</p>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Got It
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Create VM template and Automate deployment _ Qwiklabs_files/saved_resource(3).html"></iframe>
+</div>
+<div class="modal fade" id="lab-review-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<form class="simple_form js-lab-review-form" id="new_lab_review" action="https://googlecoursera.qwiklabs.com/lab_reviews" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><div class="modal-body">
+<p class="label">
+How satisfied are you with this lab?*
+</p>
+<div class="rateit js-rateit" data-rateit-max="5" data-rateit-min="0" data-rateit-resetable="false" data-rateit-step="1" data-rateit-value="0"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 0px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+<div class="l-mtm">
+
+<div class="control-group hidden lab_review_user_id"><div class="controls"><input class="hidden" type="hidden" value="2606438" name="lab_review[user_id]" id="lab_review_user_id"></div></div>
+<div class="control-group hidden lab_review_classroom_id"><div class="controls"><input class="hidden" type="hidden" value="6102" name="lab_review[classroom_id]" id="lab_review_classroom_id"></div></div>
+<div class="control-group hidden lab_review_lab_id"><div class="controls"><input class="hidden" type="hidden" value="2403" name="lab_review[lab_id]" id="lab_review_lab_id"></div></div>
+<div class="control-group hidden lab_review_focus_id"><div class="controls"><input class="hidden" type="hidden" value="47758" name="lab_review[focus_id]" id="lab_review_focus_id"></div></div>
+<div class="control-group hidden lab_review_rating"><div class="controls"><input class="hidden js-rating-input" type="hidden" name="lab_review[rating]" id="lab_review_rating"></div></div>
+<div class="control-group text optional lab_review_comment"><label class="text optional control-label" for="lab_review_comment">Comment</label><div class="controls"><textarea class="text optional" name="lab_review[comment]" id="lab_review_comment"></textarea></div></div>
+</div>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Cancel
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<input type="submit" name="commit" value="Submit" disabled="disabled" class="btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" id="submit" data-disabled="false" data-disable-with="Submit" data-upgraded=",MaterialButton,MaterialRipple"><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></input>
+</div>
+</form>
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Create VM template and Automate deployment _ Qwiklabs_files/saved_resource(4).html"></iframe>
+</div>
+
+<script>
+  $( function() {
+    ql.initMaterialInputs();
+    initChosen();
+    initSearch();
+    initTabs();
+    ql.list.init();
+    ql.favoriting.init();
+    ql.header.myAccount.init();
+    initTooltips();
+    ql.autocomplete.init();
+    ql.modals.init();
+    ql.toggleButtons.init();
+    ql.analytics.init();
+    initLabContent( );
+  ql.labOutline.links.init();
+  ql.labOutline.layout.init();
+  initLabReviewModal();
+  ql.labAssessment.init();
+  ql.labIntroduction.init( true );
+  ql.labData.init();
+  initLabTranslations( {"are_you_sure":"All done? If you end this lab, you will lose all your work. You may not be able to restart the lab if there is a quota limit. Are you sure you want to end this lab?\n","in_progress":"*In Progress*","ending":"*Ending*","starting":"*Starting, please wait*","end_concurrent_labs":"Sorry, you can only run one lab at a time. To start this lab, please confirm that you want all of your existing labs to end.\n","copied":"Copied","no_resource":"Error retrieving resource.","no_support":"No Support","mac_press":"Press ⌘-C to copy","thanks_review":"Thanks for reviewing this lab.","windows_press":"Press Ctrl-C to copy","days":"days"} );
+  ql.labRun.init();
+  ql.initHeader();
+  ql.navigation.init();
+  ql.navPanel.init();
+  ql.navigation.init();
+  
+  });
+</script>
+<style>
+  .mdl-layout__container {
+    position: static
+  }
+</style>
+
+
+<iframe data-product="web_widget" title="No content" tabindex="-1" aria-hidden="true" src="./Create VM template and Automate deployment _ Qwiklabs_files/saved_resource(5).html" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;"></iframe><div></div><div><iframe title="Opens a widget where you can chat to one of our agents" id="launcher" tabindex="0" class="zEWidget-launcher zEWidget-launcher--active" style="border: none; background: transparent; z-index: 999998; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 1; height: 50px; max-height: 551px; min-height: 50px; margin: 10px 20px; right: 0px; bottom: 0px; width: 112px;width: 112px;" src="./Create VM template and Automate deployment _ Qwiklabs_files/saved_resource(6).html"></iframe></div><div><iframe title="Find more information here" id="webWidget" tabindex="-1" class="zEWidget-webWidget " style="border: none; background: transparent; z-index: 999999; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 0; width: 357px; height: 100%; max-height: 565px; min-height: 150px; margin-left: 8px; margin-right: 8px; top: -9999px; visibility: hidden;" src="./Create VM template and Automate deployment _ Qwiklabs_files/saved_resource(7).html"></iframe></div></body></html>
