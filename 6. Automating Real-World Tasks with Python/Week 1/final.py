@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+#https://stackoverflow.com/questions/44997339/convert-python-image-to-single-channel-from-rgb-using-pil-or-scipy
+
 from PIL import Image
 import os, glob
 
