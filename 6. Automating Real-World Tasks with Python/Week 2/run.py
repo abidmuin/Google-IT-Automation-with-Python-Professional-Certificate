@@ -17,15 +17,15 @@ print()
 
 for file in feedback_files:
     feedback_dict = {}
-    header = ['title', 'name', 'date', 'feedback']
+    dict_key = ['title', 'name', 'date', 'feedback']
     i = 0
 
     try:
         with open(file, 'r') as f:
             lines = f.readlines()
 
-        for i in range(len(header)):
-            feedback_dict[header[i]] = lines[i].rstrip("\n")
+        for i in range(len(dict_key)):
+            feedback_dict[dict_key[i]] = lines[i].rstrip("\n")
         print(feedback_dict)
 
     except:
