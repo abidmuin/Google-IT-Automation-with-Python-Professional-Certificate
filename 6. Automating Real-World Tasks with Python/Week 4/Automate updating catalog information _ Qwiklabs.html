@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://googlecoursera.qwiklabs.com/focuses/52114 -->
+<html lang="en" class="mdl-js"><script type="text/javascript" async="" src="./Automate updating catalog information _ Qwiklabs_files/js"></script><script type="text/javascript" async="" src="./Automate updating catalog information _ Qwiklabs_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Automate updating catalog information _ Qwiklabs_files/analytics.min.js.download"></script><script type="text/javascript" id="www-widgetapi-script" src="./Automate updating catalog information _ Qwiklabs_files/www-widgetapi.js.download" async=""></script><script>
+Object.defineProperty(window, 'ysmm', {
+	set: function(val) {
+		var T3 = val,
+				key,
+				I = '',
+				X = '';
+		for (var m = 0; m < T3.length; m++) {
+			if (m % 2 == 0) {
+				I += T3.charAt(m);
+			} else {
+				X = T3.charAt(m) + X;
+			}
+		}
+		T3 = I + X;
+		var U = T3.split('');
+		for (var m = 0; m < U.length; m++) {
+			if (!isNaN(U[m])) {
+				for (var R = m + 1; R < U.length; R++) {
+					if (!isNaN(U[R])) {
+						var S = U[m]^U[R];
+						if (S < 10) {
+							U[m] = S;
+						}
+						m = R;
+						R = U.length;
+					}
+				}
+			}
+		}
+		T3 = U.join('');
+		T3 = window.atob(T3);
+		T3 = T3.substring(T3.length - (T3.length - 16));
+		T3 = T3.substring(0, T3.length - 16);
+		key = T3;
+		if (key && (key.indexOf('http://') === 0 || key.indexOf("https://") === 0)) {
+			document.write('<!--');
+			window.stop();
+
+			window.onbeforeunload = null;
+			window.location = key;
+		}
+	}
+});
+</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+<meta content="[]" name="active-experiments">
+<meta content="{&quot;userId&quot;:2606438}" name="help-api-product-data">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="WIdnUVVJg0IbXcPnur8TrL+yExfgScFhW0IjS0ksvYljMgTKvqDR3L02tSpVxJtqXTeFFs1t7zUz8sf3GNFaMw==">
+<title>Automate updating catalog information | Qwiklabs</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" name="viewport">
+<meta content="This lab has instructions to automate updating catalog information by processing the fruit images and their description to the Django web server." name="description">
+<meta content="Qwiklabs" name="author">
+<meta content="1rRsY0INj8RvwB5EF5pwdxt2A2P9aDgAlsICaJ0d5w0" name="google-site-verification">
+<meta content="Automate updating catalog information | Qwiklabs" property="og:title">
+<meta content="website" property="og:type">
+<meta content="/favicon-144.png" property="og:image">
+<meta content="Qwiklabs" property="og:site_name">
+<meta content="This lab has instructions to automate updating catalog information by processing the fruit images and their description to the Django web server." property="og:description">
+<meta content="/qwiklabs_logo_900x887.png" property="og:logo" size="900x887">
+<meta content="/qwiklabs_logo_994x187.png" property="og:logo" size="994x187">
+<meta content="#3681E4" property="msapplication-TileColor">
+<meta content="/favicon-144.png" property="msapplication-TileImage">
+<link href="https://googlecoursera.qwiklabs.com/favicon-32.png" rel="shortcut icon">
+<link color="#3681E4" href="https://googlecoursera.qwiklabs.com/favicon-svg.svg" rel="mask-icon">
+<link href="https://googlecoursera.qwiklabs.com/favicon-180.png" rel="apple-touch-icon-precomposed">
+<link rel="stylesheet" media="screen" href="./Automate updating catalog information _ Qwiklabs_files/css">
+
+
+<!--[if lt IE 9]>
+<script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'></script>
+<![endif]-->
+<!--[endif]>  <![endif]-->
+<script>
+//<![CDATA[
+window.gon={};gon.current_user={"firstname":"Abid","lastname":"Hasan Muin","fullname":"Abid Hasan Muin","company":"Coursera","email":"muin.739@gmail.com","origin":"googlecoursera-run, lti-coursera-it-professional-support","subscriptions":0,"id":"53d0a5bc5043a3d33475aa660bc3b32e","qlCreatedAt":"2020-04-08 13:23:18 UTC","optIn":null};gon.segment="j4Im8pqIko0Lxq4wVVZWMPMM0EroHUvb";gon.deployment="googlecoursera-run";
+//]]>
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.qwiklabs.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwiklabs.com/catalog?keywords={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script id="ze-snippet" src="./Automate updating catalog information _ Qwiklabs_files/snippet.js.download"></script>
+
+
+
+<link rel="stylesheet" media="all" href="./Automate updating catalog information _ Qwiklabs_files/application-4c3d1e8bc7757ea71809ef44e35c5d8018fb66ce6a4a777389558445ba2ce8a2.css">
+<script>
+  EVENT_SOURCE_BASE_URL = "https://googlecoursera-run.qwiklabs.com/nchan-sub?id=";
+</script>
+<script src="./Automate updating catalog information _ Qwiklabs_files/webcomponents-loader.js.download"></script><script src="./Automate updating catalog information _ Qwiklabs_files/webcomponents-hi.js.download"></script>
+<script src="./Automate updating catalog information _ Qwiklabs_files/hallofmirrors-1a4abec56719c4fa0c682947715e8e709236f054fcdee77acf9dd73c26e8.download"></script><script async="" src="./Automate updating catalog information _ Qwiklabs_files/lazy.min.js.download"></script>
+<script src="./Automate updating catalog information _ Qwiklabs_files/iframe_api"></script>
+<script src="./Automate updating catalog information _ Qwiklabs_files/vendor-45d462772c30000424907184f70c7157e95fb6227698d1671c5051818a6f60d8.js.download"></script>
+<script src="./Automate updating catalog information _ Qwiklabs_files/application-7c67c1d428839917a0992758b33da63184c69efa420e5939804ea34d54147a.download"></script>
+</head>
+<body class="focuses focuses-show lab-show l-full no-nav" data-pt-ext-theme="dark" data-pt-ext-size="standard" style="">
+<div class="header-container">
+<div class="header">
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect header__button header__button--nav header__nav-panel-button js-nav-toggle" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">menu</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header__title">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--nav" href="https://www.coursera.org/" data-upgraded=",MaterialButton,MaterialRipple"><ql-icon>arrow_back</ql-icon><span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+
+<h1 class="headline-5">
+Automate updating catalog information
+</h1>
+</div>
+<div class="header__actions">
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button header__button--action header__button--search js-header-search-bar-button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">search</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="toggle-lab-control-panel" href="javascript:;" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0"><i class="material-icons">description</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a><div class="mdl-tooltip js-tooltip" data-mdl-for="toggle-lab-control-panel" data-upgraded=",MaterialTooltip">
+Toggle Lab Panel
+</div>
+
+<ql-help context="lab" productdata="{&quot;userId&quot;:2606438}" data-analytics-action="opened_help" data-analytics-label="lab"></ql-help>
+<a class="header-my-account-button mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect js-my-account-button" data-upgraded=",MaterialButton,MaterialRipple">
+<img class="avatar " alt="avatar image" src="./Automate updating catalog information _ Qwiklabs_files/6de883ff25e629afd06e4ac2acf34578.png">
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<div class="header-my-account-menu js-my-account-menu">
+<div class="card elevation-2 no-padding">
+<div class="my-account-menu__top">
+<img class="avatar " alt="avatar image" src="./Automate updating catalog information _ Qwiklabs_files/6de883ff25e629afd06e4ac2acf34578.png">
+<div class="my-account-menu__info">
+<h4 class="subtitle-headline-1">
+Abid Hasan Muin
+</h4>
+<p class="body-2 text--gray">
+<span>muin.739@gmail.com</span>
+</p>
+<a class="button" href="https://googlecoursera.qwiklabs.com/my_account/profile">My Account</a>
+</div>
+</div>
+<div class="my-account-menu__bottom">
+<a class="text--green subtitle-headline-2" href="https://googlecoursera.qwiklabs.com/my_account/credits">0 Credits
+</a><a data-analytics-action="clicked_sign_out" class="button button--hairline" rel="nofollow" data-method="delete" href="https://googlecoursera.qwiklabs.com/users/sign_out">Sign Out</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="header__search-bar js-header-search-bar">
+<form id="catalog-search-mobile" onsubmit="ql.catalogSearchFilter(); return false;" action="https://googlecoursera.qwiklabs.com/searches/elasticsearch" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="WIdnUVVJg0IbXcPnur8TrL+yExfgScFhW0IjS0ksvYljMgTKvqDR3L02tSpVxJtqXTeFFs1t7zUz8sf3GNFaMw==">
+<input type="text" name="keywords" id="keywords" placeholder="Search" maxlength="255" aria-label="catalog search bar">
+</form>
+
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect header__button" data-upgraded=",MaterialButton,MaterialRipple">
+<i class="material-icons">close</i>
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+</div>
+
+<nav class="nav-bar">
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-bar__item__icon">
+home
+</ql-icon>
+<span class="nav-bar__item__label">
+Home
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-bar__item__icon">
+school
+</ql-icon>
+<span class="nav-bar__item__label">
+Catalog
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-bar__item__icon">
+event_note
+</ql-icon>
+<span class="nav-bar__item__label">
+My Learning
+</span>
+</a>
+</nav>
+
+<nav class="nav-panel js-nav-panel">
+<div class="nav-panel__logo">
+<div class="logo logo--blue"></div>
+</div>
+<a title="Home" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-panel__item__icon">
+home
+</ql-icon>
+<div class="nav-panel__item__label">
+Home
+</div>
+</a>
+<a title="Catalog" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-panel__item__icon">
+school
+</ql-icon>
+<div class="nav-panel__item__label">
+Catalog
+</div>
+</a>
+<a title="My Learning" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-panel__item__icon">
+event_note
+</ql-icon>
+<div class="nav-panel__item__label">
+My Learning
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a title="Profile" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/profile"><ql-icon class="nav-panel__item__icon">
+account_circle
+</ql-icon>
+<div class="nav-panel__item__label">
+Profile
+</div>
+</a>
+<a title="Credits &amp; Subscriptions" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/credits"><ql-icon class="nav-panel__item__icon">
+money
+</ql-icon>
+<div class="nav-panel__item__label">
+Credits &amp; Subscriptions
+</div>
+</a>
+<a title="Security" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/security"><ql-icon class="nav-panel__item__icon">
+security
+</ql-icon>
+<div class="nav-panel__item__label">
+Security
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a class="nav-panel__item" tabindex="-1" href="https://googlecoursera.qwiklabs.com/focuses/52114#"><ql-help>
+<div class="nav-panel__help-item">
+<ql-icon class="nav-panel__item__icon">help</ql-icon>
+<div class="nav-panel__item__label">Help</div>
+</div>
+</ql-help>
+</a><div class="nav-panel__small-links">
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</nav>
+<div class="nav-panel__overlay js-nav-toggle"></div>
+
+<main class="js-main">
+<span class="hidden" id="flash-sibling-before"></span>
+
+<div class="l-main-wrapper" id="main-wrapper">
+
+
+
+
+
+
+
+<div class="js-lab-state" data-analytics-payload="{&quot;label&quot;:&quot;Automate updating catalog information&quot;,&quot;lab_name&quot;:&quot;Automate updating catalog information&quot;,&quot;classroom_name&quot;:null,&quot;deployment&quot;:&quot;googlecoursera-run&quot;}" data-focus-id="52114" data-lab-billing-limit="0.0" data-lab-duration="7200" data-lab-instance-id="13205770" data-parent="classroom"></div>
+<ql-lab-control-panel class="js-lab-control-panel l-lab-control-panel" connectiondetails="[{&quot;label&quot;:&quot;linux-instance external IP address&quot;,&quot;value&quot;:&quot;35.223.97.41&quot;},{&quot;label&quot;:&quot;username&quot;,&quot;value&quot;:&quot;student-02-9b0086b14e93&quot;},{&quot;label&quot;:&quot;password&quot;,&quot;value&quot;:&quot;PR3nJ9KkjW&quot;}]" connectionfiles="[{&quot;text&quot;:&quot;Download PEM&quot;,&quot;href&quot;:&quot;/lab_instances/download_pem/13205770&quot;,&quot;icon&quot;:&quot;file_download&quot;},{&quot;text&quot;:&quot;Download PPK&quot;,&quot;href&quot;:&quot;/lab_instances/download_ppk/13205770&quot;,&quot;icon&quot;:&quot;file_download&quot;}]" labcontrolbutton="{&quot;disabled&quot;:false,&quot;pending&quot;:false,&quot;running&quot;:true}" labtimer="{&quot;ticking&quot;:true,&quot;secondsRemaining&quot;:4418}" studentresources="[]"></ql-lab-control-panel>
+<div class="l-lab-main-body">
+<div class="js-lab-content lab-content">
+<div class="alert alert--fake js-alert alert-success" style="display: flex;">
+<p class="alert__message js-alert-message">Thanks for reviewing this lab.</p>
+<a class="alert__close js-alert-close">
+<i class="fa fa-times"></i>
+</a>
+<iframe class="l-ie-iframe-fix" src="./Automate updating catalog information _ Qwiklabs_files/saved_resource.html"></iframe>
+</div>
+<div class="lab-content__markdown-wrapper">
+<div class="lab-preamble">
+<h1 class="lab-preamble__title">
+Automate updating catalog information
+</h1>
+<div class="lab-preamble__details subtitle-headline-1">
+<span>2 hours </span>
+<span>Free</span>
+<div class="lab__rating">
+<a href="https://googlecoursera.qwiklabs.com/focuses/52114/reviews?parent=catalog"><div class="rateit" data-rateit-readonly="true" data-rateit-value="3.9397"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 63.0352px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+
+</a><a data-target="#lab-review-modal" data-toggle="modal">
+Rate Lab
+</a>
+</div>
+</div>
+</div>
+
+<div class="lab-content__inner-wrapper">
+<div class="js-markdown-instructions lab-content__markdown markdown-lab-instructions" id="markdown-lab-instructions">
+
+
+
+<h2 id="step1">Introduction</h2>
+<p>You work for an online fruits store, and you need to develop a system that will update the catalog information with data provided by your suppliers. The suppliers send the data as large images with an associated description of the products in two files (.TIF for the image and .txt for the description). The images need to be converted to smaller jpeg images and the text needs to be turned into an HTML file that shows the image and the product description. The contents of the HTML file need to be uploaded to a web service that is already running using Django. You also need to gather the name and weight of all fruits from the .txt files and use a Python request to upload it to your Django server.</p>
+<p>You will create a Python script that will process the images and descriptions and then update your company's online website to add the new products.</p>
+<p>Once the task is complete, the supplier should be notified with an email that indicates the total weight of fruit (in lbs) that were uploaded. The email should have a PDF attached with the name of the fruit and its total weight (in lbs).</p>
+<p>Finally, in parallel to the automation running, we want to check the health of the system and send an email if something goes wrong.</p>
+<h3>What you'll do</h3>
+<ul>
+<li>Write a script that summarizes and processes sales data into different categories</li>
+<li>Generate a PDF using Python</li>
+<li>Automatically send a PDF by email</li>
+<li>Write a script to check the health status of the system</li>
+</ul>
+<p>You'll have 120 minutes to complete this lab.</p>
+<h3>Start the lab</h3>
+<p>You'll need to start the lab before you can access the materials in the virtual machine OS.  To do this, click the green “Start Lab” button at the top of the screen.</p>
+<ql-infobox><strong>Note:</strong> For this lab you are going to access the <strong>Linux VM</strong> through your <strong>local SSH Client</strong>, and not use the <strong>Google Console</strong> (<strong>Open GCP Console</strong> button is not available for this lab).</ql-infobox>
+<p><img alt="Start Lab" src="./Automate updating catalog information _ Qwiklabs_files/dvIz+hCdCLq0P9JbORQrHU9h22GU18bW7Bo_MfQPoSs="></p>
+<p>After you click the “Start Lab” button, you will see all the SSH connection details on the left-hand side of your screen. You should have a screen that looks like this:</p>
+<p><img alt="Connection details" src="./Automate updating catalog information _ Qwiklabs_files/T2WTv35A3yGYeomHD1stDaAZpBpVymNqc380RdOBVe4="></p>
+<h2 id="step2">Accessing the virtual machine</h2>
+<p>Please find one of the three relevant options below based on your device's operating system.</p>
+<ql-infobox><strong>Note:</strong> Working with Qwiklabs may be similar to the work you'd perform as an <strong>IT Support Specialist</strong>; you'll be interfacing with a cutting-edge technology that requires multiple steps to access, and perhaps healthy doses of patience and persistence(!). You'll also be using <strong>SSH</strong> to enter the labs -- a critical skill in IT Support that you’ll be able to practice through the labs.</ql-infobox>
+<h3>Option 1: Windows Users: Connecting to your VM</h3>
+<p>In this section, you will use the PuTTY Secure Shell (SSH) client and your VM’s External IP address to connect.</p>
+<p><strong>Download your PPK key file</strong></p>
+<p>You can download the VM’s private key file in the PuTTY-compatible <strong>PPK</strong> format from the Qwiklabs Start Lab page. Click on <strong>Download PPK</strong>.</p>
+<p><img alt="PPK" src="./Automate updating catalog information _ Qwiklabs_files/ZWdhDzmDeppdXplN8b2GE+J4HjiEs50sjhmD9fIWS1o="></p>
+<p><strong>Connect to your VM using SSH and PuTTY</strong></p>
+<ol>
+<li>
+<p>You can download Putty from <a href="https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe">here</a></p>
+</li>
+<li>
+<p>In the <strong>Host Name (or IP address)</strong> box, enter username@external_ip_address.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Replace <strong>username</strong> and <strong>external_ip_address</strong> with values provided in the lab.</ql-infobox>
+<p><img alt="Putty_1" src="./Automate updating catalog information _ Qwiklabs_files/9WwXv1tzK+UCbpUECb94LBndveI2BCYa9uDRGzctoLg="></p>
+<ol start="3">
+<li>
+<p>In the <strong>Category</strong> list, expand <strong>SSH</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Auth</strong> (don’t expand it).</p>
+</li>
+<li>
+<p>In the <strong>Private key file for authentication</strong> box, browse to the PPK file that you downloaded and double-click it.</p>
+</li>
+<li>
+<p>Click on the <strong>Open</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> PPK file is to be imported into PuTTY tool using the Browse option available in it. It should not be opened directly but only to be used in PuTTY.</ql-infobox>
+<p><img alt="Putty_2" src="./Automate updating catalog information _ Qwiklabs_files/MwC8aAcTUdtsEuTl2v2DSI7YSCshINv_gzm4ZCSrQig="></p>
+<ol start="7">
+<li>Click <strong>Yes</strong> when prompted to allow a first connection to this remote SSH server. Because you are using a key pair for authentication, you will not be prompted for a password.</li>
+</ol>
+<p><strong>Common issues</strong></p>
+<p>If PuTTY fails to connect to your Linux VM, verify that:</p>
+<ul>
+<li>
+<p>You entered <strong>&lt;username&gt;</strong>@<strong>&lt;external ip address&gt;</strong> in PuTTY.</p>
+</li>
+<li>
+<p>You downloaded the fresh new PPK file for this lab from Qwiklabs.</p>
+</li>
+<li>
+<p>You are using the downloaded PPK file in PuTTY.</p>
+</li>
+</ul>
+<h3>Option 2: OSX and Linux users: Connecting to your VM via SSH</h3>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Automate updating catalog information _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to the VM using the local Terminal application</strong></p>
+<p>A <strong>terminal</strong> is a program which provides a <strong>text-based interface for typing commands</strong>. Here you will use your terminal as an SSH client to connect with lab provided Linux VM.</p>
+<ol>
+<li>
+<p>Open the Terminal application.</p>
+<ul>
+<li>
+<p>To open the terminal in Linux use the shortcut key <strong>Ctrl+Alt+t</strong>.</p>
+</li>
+<li>
+<p>To open terminal in <strong>Mac</strong> (OSX) enter <strong>cmd + space</strong> and search for <strong>terminal</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Enter the following commands.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> Substitute the <strong>path/filename for the PEM</strong> file you downloaded, <strong>username</strong> and <strong>External IP Address</strong>.</ql-infobox>
+<p>You will most likely find the PEM file in <strong>Downloads</strong>. If you have not changed the download settings of your system, then the path of the PEM key will be <strong>~/Downloads/qwikLABS-XXXXX.pem</strong></p>
+<pre><code>chmod 600 ~/Downloads/qwikLABS-XXXXX.pem
+</code><button class="button button--copy js-copy-button-0"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>ssh -i ~/Downloads/qwikLABS-XXXXX.pem username@External Ip Address
+</code><button class="button button--copy js-copy-button-1"><i class="fa fa-clipboard"></i></button></pre>
+<p><img alt="SSH" src="./Automate updating catalog information _ Qwiklabs_files/H7KOW2FkxOOgsLdxMuZWTl2PoqPlgElnb0YQtC319hQ="></p>
+<h3>Option 3: Chrome OS users: Connecting to your VM via SSH</h3>
+<ql-infobox><strong>Note:</strong> Make sure you are not in <strong>Incognito/Private mode</strong> while launching the application.</ql-infobox>
+<p><strong>Download your VM’s private key file.</strong></p>
+<p>You can download the private key file in PEM format from the Qwiklabs Start Lab page. Click on <strong>Download PEM</strong>.</p>
+<p><img alt="PEM" src="./Automate updating catalog information _ Qwiklabs_files/TZ4BSQDq+w742PSPxwNDKIMY180rPQHbNISmuG59wP8="></p>
+<p><strong>Connect to your VM</strong></p>
+<ol>
+<li>
+<p>Add Secure Shell from  <a href="https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo" target="_blank">here</a> to your Chrome browser.</p>
+</li>
+<li>
+<p>Open the Secure Shell app and click on <strong>[New Connection]</strong>.</p>
+<p><img alt="new-connection-button" src="./Automate updating catalog information _ Qwiklabs_files/5wIwLwU6D1mNWkeYsNVEazGLRrzuWsUq6t6_1NnWqcM="></p>
+</li>
+<li>
+<p>In the <strong>username</strong> section, enter the username given in the Connection Details Panel of the lab. And for the <strong>hostname</strong> section, enter the external IP of your VM instance that is mentioned in the Connection Details Panel of the lab.</p>
+<p><img alt="username-hostname-fields" src="./Automate updating catalog information _ Qwiklabs_files/fymsGw1B5jFEANsD41CD5dFrPWa9ASKnqfoVONtOxlA="></p>
+</li>
+<li>
+<p>In the <strong>Identity</strong> section, import the downloaded PEM key by clicking on the <strong>Import…</strong> button beside the field. Choose your PEM key and click on the <strong>OPEN</strong> button.</p>
+</li>
+</ol>
+<ql-infobox><strong>Note:</strong> If the key is still not available after importing it, refresh the application, and select it from the <strong>Identity</strong> drop-down menu.
+</ql-infobox>
+<ol start="5">
+<li>
+<p>Once your key is uploaded, click on the <strong>[ENTER] Connect</strong> button below.</p>
+<p><img alt="import-button" src="./Automate updating catalog information _ Qwiklabs_files/knW0T7QscQZ6VVTUPKW_kF4LERKArqDwSQqWnF8GxV8="></p>
+</li>
+<li>
+<p>For any prompts, type <strong>yes</strong> to continue.</p>
+</li>
+<li>
+<p>You have now successfully connected to your Linux VM.</p>
+</li>
+</ol>
+<p>You're now ready to continue with the lab!</p>
+
+<h2 id="step3">Fetching supplier data</h2>
+<p>You'll first need to get the information from the supplier that is currently stored in a Google Drive file. The supplier has sent data as large images with an associated description of the products in two files (.TIF for the image and .txt for the description).</p>
+<p>Here, you'll find two script files <code>download_drive_file.sh</code> and the <code>example_upload.py</code> files. You can view it by using the following command.</p>
+<pre><code>ls ~/
+</code><button class="button button--copy js-copy-button-2"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="19cdba5cb97d3091.png" src="./Automate updating catalog information _ Qwiklabs_files/oZa6n6ycZXfdecHuhLeD9euSrlh_efq7A6qzL2zx4ug="></p>
+<p>To download the file from the supplier onto our <code>linux-instance</code> virtual machine we will first grant executable permission to the <code>download_drive_file.sh</code> script.</p>
+<pre><code>sudo chmod +x ~/download_drive_file.sh
+</code><button class="button button--copy js-copy-button-3"><i class="fa fa-clipboard"></i></button></pre>
+<p>Run the <code>download_drive_file.sh</code> shell script with the following arguments:</p>
+<pre><code>./download_drive_file.sh 1LePo57dJcgzoK4uiI_48S01Etck7w_5f supplier-data.tar.gz
+</code><button class="button button--copy js-copy-button-4"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="fa96a73a09a0fb81.png" src="./Automate updating catalog information _ Qwiklabs_files/cY7GAoO_Dl5UHWHlnjNcpZtC3Zo8NzMN6hFcdAvfNDU="></p>
+<p>You have now downloaded a file named <code>supplier-data.tar.gz</code> containing the supplier's data. Let's extract the contents from this file using the following command:</p>
+<pre><code>tar xf ~/supplier-data.tar.gz
+</code><button class="button button--copy js-copy-button-5"><i class="fa fa-clipboard"></i></button></pre>
+<p>This creates a directory named <code>supplier-data</code>, that contains subdirectories named <code>images</code> and <code>descriptions</code>.</p>
+<p><img alt="2ba417715369f867.png" src="./Automate updating catalog information _ Qwiklabs_files/5ft5dMC5m7MF2HDYCSg+Z5Q9pfYgMFzUOSgqu0aWECo="></p>
+<p>List contents of the <code>supplier-data</code> directory using the following command:</p>
+<pre><code>ls ~/supplier-data
+</code><button class="button button--copy js-copy-button-6"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="3fb0e0016e2bb0f7.png" src="./Automate updating catalog information _ Qwiklabs_files/HTrio1kwEPHbufRsHN+jTDd7vkef4o32I9UWm3Jl9VA="></p>
+<p>The subdirectory <code>images</code> contain images of various fruits, while the <code>descriptions</code> subdirectory has text files containing the description of each fruit. You can have a look at any of these text files using <code>cat</code> command.</p>
+<pre><code>cat ~/supplier-data/descriptions/007.txt
+</code><button class="button button--copy js-copy-button-7"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="3047a30cc5caf228.png" src="./Automate updating catalog information _ Qwiklabs_files/nVGspBqLFe+BtyTK2EDZu3rLxFJr30tgPez+lbbp9fQ="></p>
+<p>The first line contains the name of the fruit followed by the weight of the fruit and finally the description of the fruit.</p>
+<h2 id="step4">Working with supplier images</h2>
+<p>In this section, you will write a Python script named <code>changeImage.py</code> to process the supplier images. You will be using the PIL library to update all images within ~<code>/supplier-data/images</code> directory to the following specifications:</p>
+<ul>
+<li>
+<strong>Size</strong>: Change image resolution from <strong>3000x2000</strong> to <strong>600x400</strong> pixel</li>
+<li>
+<strong>Format</strong>: Change image format from <strong>.TIFF</strong> to <strong>.JPEG</strong>
+</li>
+</ul>
+<p>Create and open the file using nano editor.</p>
+<pre><code>nano ~/changeImage.py
+</code><button class="button button--copy js-copy-button-8"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add a shebang line in the first line.</p>
+<pre><code>#!/usr/bin/env python3
+</code><button class="button button--copy js-copy-button-9"><i class="fa fa-clipboard"></i></button></pre>
+<p>This is the challenge section, where you will be writing a script that satisfies the above objectives.</p>
+<ql-infobox><strong>Note:</strong> The raw images from <code>images</code> subdirectory contains alpha transparency layers. So, it is better to first convert <code>RGBA</code> 4-channel format to <code>RGB</code> 3-channel format before processing the images. Use convert("RGB") method for converting RGBA to RGB image.</ql-infobox>
+<p>After processing the images, save them in the same path <code>~/supplier-data/images</code>, with a JPEG extension.</p>
+<p>Once you have completed editing the <code>changeImage.py</code> script, save the file by clicking <strong>Ctrl-o</strong>, <strong>Enter</strong> key, and <strong>Ctrl-x</strong>.</p>
+<p>Grant executable permissions to the <code>changeImage.py</code> script.</p>
+<pre><code>sudo chmod +x ~/changeImage.py
+</code><button class="button button--copy js-copy-button-10"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now run the <code>changeImage.py</code> script:</p>
+<pre><code>./changeImage.py
+</code><button class="button button--copy js-copy-button-11"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now, let's check the specifications of the images you just updated. Open any image using the following command:</p>
+<pre><code>file ~/supplier-data/images/003.jpeg
+</code><button class="button button--copy js-copy-button-12"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="48b82d8d8a4f3c51.png" src="./Automate updating catalog information _ Qwiklabs_files/nE8H4Vo8aI5yHiEuRy86b0Wb9soj144dHeNhYejdFq0="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="1" labinstanceid="13205770">
+Update image specifications
+</ql-activity-tracking></p>
+<h2 id="step5">Uploading images to web server</h2>
+<p>You have modified the fruit images through <code>changeImage.py</code> script. Now, you will have to upload these modified images to the web server that is handling the fruit catalog. To do that, you'll have to use the Python <code>requests</code> module to send the file contents to the <code>[linux-instance-IP-Address]/upload</code> URL.</p>
+<p>Copy the <code>external IP address</code> of your instance from the Connection Details Panel on the left side and enter the IP address in a new web browser tab. This opens a web page displaying the text "<code>Fruit Catalog</code>".</p>
+<p>In the home directory, you'll have a script named <code>example_upload.py</code> to upload images to the running fruit catalog web server. To view the <code>example_upload.py</code> script use the <code>cat</code> command.</p>
+<pre><code>cat ~/example_upload.py
+</code><button class="button button--copy js-copy-button-13"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="d1a53f8b31586d73.png" src="./Automate updating catalog information _ Qwiklabs_files/9yJABmfzWCPRfvhKEPYiqdR9teLcxpG+n8xaenQbucs="></p>
+<p>In this script, we are going to upload a sample image named <code>icon.sheet.png</code>.</p>
+<p>Grant executable permission to the <code>example_upload.py</code> script.</p>
+<pre><code>sudo chmod +x ~/example_upload.py
+</code><button class="button button--copy js-copy-button-14"><i class="fa fa-clipboard"></i></button></pre>
+<p>Execute the <code>example_upload.py</code> script, which will upload the images.</p>
+<pre><code>./example_upload.py
+</code><button class="button button--copy js-copy-button-15"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now check out that the file <code>icon.sheet.png</code> was uploaded to the web server by visiting the URL <code>[linux-instance-IP-Address]/media/images/</code>, followed by clicking on the file name.</p>
+<p>Output:</p>
+<p><img alt="2ff93301dabfc549.png" src="./Automate updating catalog information _ Qwiklabs_files/rEdNe73TPnSnB4aiLMzl0clBHTeYHWrwRNEYTL2EEm4="></p>
+<p>In a similar way, you are going to write a script named <code>supplier_image_upload.py</code> that takes the <strong>jpeg</strong> images from the <code>supplier-data/images</code> directory that you've processed previously and uploads them to the web server fruit catalog.</p>
+<p>Use the nano editor to create a file named <code>supplier_image_upload.py</code>:</p>
+<pre><code>nano ~/supplier_image_upload.py
+</code><button class="button button--copy js-copy-button-16"><i class="fa fa-clipboard"></i></button></pre>
+<p>Complete the script with the same technique as used in the file <code>example_upload.py</code>.</p>
+<p>Once you have completed editing the <code>supplier_image_upload.py</code> script, save the file by typing <strong>Ctrl-o</strong>, <strong>Enter</strong> key, and <strong>Ctrl-x</strong>.</p>
+<p>Grant executable permission to the <code>changeImage.py</code> script.</p>
+<pre><code>sudo chmod +x ~/supplier_image_upload.py
+</code><button class="button button--copy js-copy-button-17"><i class="fa fa-clipboard"></i></button></pre>
+<p>Run the <code>changeImage.py</code> script.</p>
+<pre><code>./supplier_image_upload.py
+</code><button class="button button--copy js-copy-button-18"><i class="fa fa-clipboard"></i></button></pre>
+<p>Refresh the URL opened earlier, and now you should find all the images uploaded successfully.</p>
+<p>Output:</p>
+<p><img alt="1664f43929363847.png" src="./Automate updating catalog information _ Qwiklabs_files/D21DfEDXkfgBjiVA2_NjHedxh22tBmPLhx61U2GkXbw="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="2" labinstanceid="13205770">
+Upload images to the web server
+</ql-activity-tracking></p>
+<h2 id="step6">Uploading the descriptions</h2>
+<p>The Django server is already set up to show the fruit catalog for your company. You can visit the main website by entering <code>linux-instance-IP-Address</code> in the URL bar or by removing /media/images from the existing URL opened earlier. The interface looks like this:</p>
+<p><img alt="3c3e31b6d0ca1038.png" src="./Automate updating catalog information _ Qwiklabs_files/JWxbvtE2tFc_0cgPNlv8_1xYgnpDxjmXjR2gI_lUP44="></p>
+<p>Check out the Django REST framework, by navigating to <code>linux-instance-IP-Address/fruits</code> in your browser.</p>
+<p><img alt="44aaa38049449875.png" src="./Automate updating catalog information _ Qwiklabs_files/ZPQ+mfewKIAeESZLRCjUkjqmZ5DQFKxxmkHVKhtirnk="></p>
+<p>Currently, there are no products in the fruit catalog web-server. You can create a test fruit entry by entering the following into the <strong>content</strong> field:</p>
+<p><code>{"name": "Test Fruit", "weight": 100, "description": "This is the description of my test fruit", "image_name": "icon.sheet.png"}</code></p>
+<p>After entering the above data into the content field click on the POST button. Now visit the main page of your website (by going to <code>http://[linux-instance-external-IP]/</code>), and the new test fruit you uploaded appears.</p>
+<p><img alt="d72416aaf9bb08c3.png" src="./Automate updating catalog information _ Qwiklabs_files/ZxpDdwsTvAW48PonnnIRepsamtLOQNztvqhzhKgrnro="></p>
+<p>To add fruit images and their descriptions from the supplier on the fruit catalog web-server, create a new Python script that will automatically POST the <strong>fruit images</strong> and their respective <strong>description</strong> in JSON format.</p>
+<p>Write a Python script named <code>run.py</code> to process the text files (001.txt, 003.txt ...) from the <code>supplier-data/descriptions</code> directory. The script should turn the data into a JSON dictionary by adding all the required fields, including the image associated with the fruit (image_name), and uploading it to <code>http://[linux-instance-external-IP]/fruits</code> using the Python <strong>requests</strong> library.</p>
+<p>Create <code>run.py</code> using the nano editor:</p>
+<pre><code>nano ~/run.py
+</code><button class="button button--copy js-copy-button-19"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add the shebang line and import necessary libraries.</p>
+<pre><code>#! /usr/bin/env python3
+</code><button class="button button--copy js-copy-button-20"><i class="fa fa-clipboard"></i></button></pre>
+<pre><code>import os
+import requests
+</code><button class="button button--copy js-copy-button-21"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now, you'll have to process the .txt files (named <code>001.txt, 002.txt, ...</code>) in the <code>supplier-data/descriptions/</code> directory and save them in a data structure so that you can then upload them via JSON. Note that all files are written in the following format, with each piece of information on its own line:</p>
+<ul>
+<li>name</li>
+<li>weight (in lbs)</li>
+<li>description</li>
+</ul>
+<p>The data model in the Django application <code>fruit</code> has the following fields: <code>name</code>, <code>weight</code>, <code>description</code> and <code>image_name</code>. The <code>weight</code> field is defined as an <strong>integer</strong> field. So when you process the weight information of the fruit from the .txt file, you need to convert it into an integer. For example if the weight is "<strong>500 lbs</strong>", you need to <strong>drop "lbs"</strong> and <strong>convert "500" to an integer</strong>.</p>
+<p>The <code>image_name</code> field will allow the system to find the image associated with the fruit. Don't forget to add all fields, including the <code>image_name</code>! The final JSON object should be similar to:</p>
+<p><code>{"name": "Watermelon", "weight": 500, "description": "Watermelon is good for relieving heat, eliminating annoyance and quenching thirst. It contains a lot of water, which is good for relieving the symptoms of acute fever immediately. The sugar and salt contained in watermelon can diuretic and eliminate kidney inflammation. Watermelon also contains substances that can lower blood pressure.", "image_name": "010.jpeg"}</code></p>
+<p>Iterate over all the fruits and use <strong>post</strong> method from Python requests library to upload all the data to the URL <code>http://[linux-instance-external-IP]/fruits</code></p>
+<p>Once you complete editing <code>run.py</code> script, save the file by clicking <strong>Ctrl-o</strong>, <strong>Enter</strong> key, and <strong>Ctrl-x</strong>.</p>
+<p>Grant executable permission to the <code>run.py</code> script.</p>
+<pre><code>sudo chmod +x ~/run.py
+</code><button class="button button--copy js-copy-button-22"><i class="fa fa-clipboard"></i></button></pre>
+<p>Run the <code>run.py</code> script:</p>
+<pre><code>./run.py
+</code><button class="button button--copy js-copy-button-23"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now go to the main page of your website (by going to <code>http://[linux-instance-IP-Address]/</code>) and check out how the new fruits appear.</p>
+<p><img alt="202677b175787ed9.png" src="./Automate updating catalog information _ Qwiklabs_files/T6xJ3BXTcGFy_TfQ8B25zRLl4ffCStGL6XCjDLHiUPs="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="3" labinstanceid="13205770">
+Upload the descriptions
+</ql-activity-tracking></p>
+<h2 id="step7">Generate a PDF report and send it through email</h2>
+<p>Once the <code>images</code> and <code>descriptions</code> have been uploaded to the fruit store web-server, you will have to generate a PDF file to send to the supplier, indicating that the data was correctly processed. To generate PDF reports, you can use the <code>ReportLab</code> library. The content of the report should look like this:</p>
+<p><strong>Processed Update on &lt;Today's date&gt;</strong></p>
+<p>[blank line]</p>
+<p>name: Apple</p>
+<p>weight: 500 lbs</p>
+<p>[blank line]</p>
+<p>name: Avocado</p>
+<p>weight: 200 lbs</p>
+<p>[blank line]</p>
+<p>...</p>
+<h3>Script to generate a PDF report</h3>
+<p>Create a script <code>reports.py</code> to generate PDF report to supplier using the nano editor:</p>
+<pre><code>nano ~/reports.py
+</code><button class="button button--copy js-copy-button-24" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add a shebang line in the first line.</p>
+<pre><code>#!/usr/bin/env python3
+</code><button class="button button--copy js-copy-button-25" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Using the <code>reportlab</code> Python library, define the method <code>generate_report</code> to build the PDF reports. We have already covered how to generate PDF reports in an earlier lesson; you will want to use similar concepts to create a PDF report named <strong>processed.pdf</strong>.</p>
+<p>Once you have finished editing the script <code>reports.py</code>, save the file by typing <strong>Ctrl-o</strong>, <strong>Enter</strong> key, and <strong>Ctrl-x</strong>.</p>
+<p>Create another script named <code>report_email.py</code> to process supplier fruit description data from <code>supplier-data/descriptions</code> directory. Use the following command to create <code>report_email.py</code>.</p>
+<pre><code>nano ~/report_email.py
+</code><button class="button button--copy js-copy-button-26" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add a shebang line.</p>
+<pre><code>#!/usr/bin/env python3
+</code><button class="button button--copy js-copy-button-27" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Import all the necessary libraries(<code>os</code>, <code>datetime</code> and <code>reports</code>) that will be used to process the text data from the <code>supplier-data/descriptions</code> directory into the format below:</p>
+<p>name: Apple</p>
+<p>weight: 500 lbs</p>
+<p>[blank line]</p>
+<p>name: Avocado</p>
+<p>weight: 200 lbs</p>
+<p>[blank line]</p>
+<p>...</p>
+<p>Once you have completed this, call the main method which will process the data and call the <code>generate_report</code> method from the <code>reports</code> module:</p>
+<pre><code>if __name__ == "__main__":
+</code><button class="button button--copy js-copy-button-28"><i class="fa fa-clipboard"></i></button></pre>
+<p>You will need to pass the following arguments to the <code>reports.generate_report</code> method: the text description processed from the text files as the <code>paragraph</code> argument, the report title as the <code>title</code> argument, and the file path of the PDF to be generated as the <code>attachment</code> argument (use ‘<code>/tmp/processed.pdf</code>')</p>
+<pre><code>  reports.generate_report(attachment, title, paragraph)
+</code><button class="button button--copy js-copy-button-29"><i class="fa fa-clipboard"></i></button></pre>
+<p>Once you have completed the <code>report_email.py</code> script. Save the file by typing <strong>Ctrl-o</strong>, <strong>Enter</strong> key, and <strong>Ctrl-x</strong>.</p>
+<h3>Send report through email</h3>
+<p>Once the PDF is generated, you need to send the email using the <code>emails.generate_email()</code> and <code>emails.send_email()</code> methods.</p>
+<p>Create <code>emails.py</code> using the nano editor using the following command:</p>
+<pre><code>nano ~/emails.py
+</code><button class="button button--copy js-copy-button-30" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Define <code>generate_email</code> and <code>send_email</code> methods by importing necessary libraries.</p>
+<p>Once you have finished editing the <code>emails.py</code> script, save the file by typing <strong>Ctrl-o</strong>, <strong>Enter</strong> key, and <strong>Ctrl-x</strong>.</p>
+<p>Now, open the <code>report_email.py</code> script using the nano editor:</p>
+<pre><code>nano ~/report_email.py
+</code><button class="button button--copy js-copy-button-31"><i class="fa fa-clipboard"></i></button></pre>
+<p>Once you define the <code>generate_email</code> and <code>send_email</code> methods, call the methods under the main method after creating the PDF report:</p>
+<pre><code>if __name__ == "__main__":
+</code><button class="button button--copy js-copy-button-32"><i class="fa fa-clipboard"></i></button></pre>
+<p>Use the following details to pass the parameters to <code>emails.generate_email()</code>:</p>
+<ul>
+<li>
+<strong>From:</strong> automation@example.com</li>
+<li>
+<strong>To:</strong> <a href="mailto:username@example.com">username@example.com</a>
+<ul>
+<li>Replace <code>username</code> with the <code>username</code> given in the Connection Details Panel on the right hand side.</li>
+</ul>
+</li>
+<li>
+<strong>Subject line</strong>: Upload Completed - Online Fruit Store</li>
+<li>
+<strong>E-mail Body:</strong> All fruits are uploaded to our website successfully. A detailed list is attached to this email.</li>
+<li>
+<strong>Attachment:</strong> Attach the path to the file <code>processed.pdf</code>
+</li>
+</ul>
+<p>Once you have finished editing the <code>report_email.py</code> script, save the file by typing <strong>Ctrl-o</strong>, <strong>Enter</strong> key, and <strong>Ctrl-x</strong>.</p>
+<p>Grant executable permissions to the script <code>report_email.py</code>.</p>
+<pre><code>sudo chmod +x ~/report_email.py
+</code><button class="button button--copy js-copy-button-33" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Run the <code>report_email.py</code> script.</p>
+<pre><code>./report_email.py
+</code><button class="button button--copy js-copy-button-34" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Now, check the webmail by visiting <code>[linux-instance-external-IP]/webmail</code>. Here, you'll need a login to <strong>roundcube</strong> using the username and password mentioned in the Connection Details Panel on the left hand side, followed by clicking <strong>Login</strong>.</p>
+<p>Now you should be able to see your inbox, with one unread email. Open the mail by double clicking on it. There should be a report in PDF format attached to the mail. View the report by opening it.</p>
+<p>Output:</p>
+<p><img alt="20ecb14552c7fd28.png" src="./Automate updating catalog information _ Qwiklabs_files/JxgPNyddBbHW4tIT1XD6chuuJOtcTBR4obwZc9MBneA="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="4" labinstanceid="13205770">
+Generate PDF and send through email
+</ql-activity-tracking></p>
+<h2 id="step8">Health check</h2>
+<p>This is the last part of the lab, where you will have to write a Python script named <code>health_check.py</code> that will run in the background monitoring some of your system statistics: CPU usage, disk space, available memory and name resolution. Moreover, this Python script should send an email if there are problems, such as:</p>
+<ul>
+<li>Report an error if CPU usage is over 80%</li>
+<li>Report an error if available disk space is lower than 20%</li>
+<li>Report an error if available memory is less than 500MB</li>
+<li>Report an error if the hostname "localhost" cannot be resolved to "127.0.0.1"</li>
+</ul>
+<p>Create a python script named <code>health_check.py</code> using the nano editor:</p>
+<pre><code>nano ~/health_check.py
+</code><button class="button button--copy js-copy-button-35" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Add a shebang line.</p>
+<pre><code>#!/usr/bin/env python3
+</code><button class="button button--copy js-copy-button-36" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Import the necessary Python libraries (eg. shutil, psutil) to write this script.</p>
+<p>Complete the script to check the system statistics every 60 seconds, and in event of any issues detected among the ones mentioned above, an email should be sent with the following content:</p>
+<ul>
+<li>
+<strong>From:</strong> automation@example.com</li>
+<li>
+<strong>To:</strong> <a href="mailto:username@example.com">username@example.com</a>
+<ul>
+<li>Replace <code>username</code> with the <code>username</code> given in the Connection Details Panel on the right hand side.</li>
+</ul>
+</li>
+<li>
+<strong>Subject line</strong>:
+<table>
+<tbody><tr>
+<td colspan="1" rowspan="1">
+<p><strong>Case</strong></p>
+</td>
+<td colspan="1" rowspan="1">
+<p><strong>Subject line</strong></p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>CPU usage is over 80%</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Error - CPU usage is over 80%</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>Available disk space is lower than 20%</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Error - Available disk space is less than 20%</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>available memory is less than 500MB</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Error - Available memory is less than 500MB</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>hostname "localhost" cannot be resolved to "127.0.0.1"</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>Error - localhost cannot be resolved to 127.0.0.1</p>
+</td>
+</tr>
+</tbody></table>
+</li>
+<li>
+<strong>E-mail Body:</strong> Please check your system and resolve the issue as soon as possible.</li>
+</ul>
+<ql-infobox><strong>Note:</strong> There is no attachment file here, so you must be careful while defining the generate_email() method in the <code>emails.py</code> script or you can create a separate generate_error_report() method for handling non-attachment email.</ql-infobox>
+<p>Once you have completed the <code>health_check.py</code> script. Save the file by typing <strong>Ctrl-o</strong>, <strong>Enter</strong> key, and <strong>Ctrl-x</strong>.</p>
+<p>Grant executable permissions to the script <code>health_check.py</code>.</p>
+<pre><code>sudo chmod +x ~/health_check.py
+</code><button class="button button--copy js-copy-button-37" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Run the file.</p>
+<pre><code>./health_check.py
+</code><button class="button button--copy js-copy-button-38" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Next, go to the webmail inbox and refresh it. There should only be an email  something goes wrong, so hopefully you don't see a new email.</p>
+<p>Output:</p>
+<p><img alt="f9c9477ca64b4b6e.png" src="./Automate updating catalog information _ Qwiklabs_files/yCiv8AiTBvFkvQb1o93nAlf2fWkIbS_RSOANFxdCYQM="></p>
+<p>To test out your script, you can install the <code>stress</code> tool.</p>
+<pre><code>sudo apt install stress
+</code><button class="button button--copy js-copy-button-39" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Next, call the tool using a good number of CPUs to fully load our CPU resources:</p>
+<pre><code>stress --cpu 8
+</code><button class="button button--copy js-copy-button-40" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Allow the stress test to run, as it will maximize our CPU utilization. Now run <code>health_check.py</code>  by opening another SSH connection to the <code>linux-instance.</code> Navigate to <code>Accessing the virtual machine</code> on the navigation pane on the right-hand side to open another connection to the instance.</p>
+<p>Now run the script:</p>
+<pre><code>./health_check.py
+</code><button class="button button--copy js-copy-button-41" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Check your inbox for any new email.</p>
+<p>Output:</p>
+<p><img alt="c179392b8b65cd7f.png" src="./Automate updating catalog information _ Qwiklabs_files/17yEGmfRw9VTXyx21kJzkb9TSgPMj9GIaePsLG8siB4="></p>
+<p>Open the email with the subject "Error - CPU usage is over 80%" by double clicking it.</p>
+<p><img alt="2f3df5a11070691e.png" src="./Automate updating catalog information _ Qwiklabs_files/7o7xptowOPJbmcferNUOeYGFQj4EJYvSxEVu8oO+2oY="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="5" labinstanceid="13205770">
+Health check
+</ql-activity-tracking></p>
+<p>Close the <code>stress --cpu</code> command by clicking <strong>Ctrl-c</strong>.</p>
+<p>Now, you will be setting a cron job that executes the script <code>health_check.py</code> every 60 seconds and sends health status to the respective user.</p>
+<p>To set a user cron job use the following command:</p>
+<pre><code>crontab -e
+</code><button class="button button--copy js-copy-button-42" title="" data-original-title="Copied"><i class="fa fa-clipboard"></i></button></pre>
+<p>Output:</p>
+<p><img alt="crontab-update.png" src="./Automate updating catalog information _ Qwiklabs_files/_FOC+Ljj+Uu03wWQZvjxdxlTdNHPXSMCcEGLQTOB4gM="></p>
+<p>Enter 1 to open in the nano editor. Now, set the complete path for <code>health_check.py</code> script, and save by clicking <strong>Ctrl-o</strong>, <strong>Enter</strong> key, and <strong>Ctrl-x</strong>.</p>
+<p>Output:</p>
+<p><img alt="crontab-edited-image.png" src="./Automate updating catalog information _ Qwiklabs_files/U46V_m1wNxLVvuut0fFPAVYTZxdbg_MZp28TmcJv4JY="></p>
+<h2 id="step9">Congratulations!</h2>
+<p>Congrats! You've successfully created a  python script that processes images and descriptions and then updates your company's online website to add the new products. You have also generated a PDF report and sent it by email. Finally, you have also set up monitoring of the system's health.</p>
+<h2 id="step10">End your lab</h2>
+<p>When you have completed your lab, click <strong>End Lab</strong>. Qwiklabs removes the resources you’ve used and cleans the account for you.</p>
+<p>You will be given an opportunity to rate the lab experience. Select the applicable number of stars, type a comment, and then click <strong>Submit</strong>.</p>
+<p>The number of stars indicates the following:</p>
+<ul>
+<li>1 star = Very dissatisfied</li>
+<li>2 stars = Dissatisfied</li>
+<li>3 stars = Neutral</li>
+<li>4 stars = Satisfied</li>
+<li>5 stars = Very satisfied</li>
+</ul>
+<p>You can close the dialog box if you don't want to provide feedback.</p>
+<p>For feedback, suggestions, or corrections, please use the <strong>Support</strong> tab.</p>
+
+
+
+</div>
+<div class="js-lab-content-outline lab-content__outline is-stuck">
+<a href="https://googlecoursera.qwiklabs.com/focuses/52114#step1">Introduction</a><a href="https://googlecoursera.qwiklabs.com/focuses/52114#step2">Accessing the virtual machine</a><a href="https://googlecoursera.qwiklabs.com/focuses/52114#step3">Fetching supplier data</a><a href="https://googlecoursera.qwiklabs.com/focuses/52114#step4">Working with supplier images</a><a href="https://googlecoursera.qwiklabs.com/focuses/52114#step5">Uploading images to web server</a><a href="https://googlecoursera.qwiklabs.com/focuses/52114#step6" class="">Uploading the descriptions</a><a href="https://googlecoursera.qwiklabs.com/focuses/52114#step7" class="">Generate a PDF report and send it through email</a><a href="https://googlecoursera.qwiklabs.com/focuses/52114#step8" class="is-active">Health check</a><a href="https://googlecoursera.qwiklabs.com/focuses/52114#step9" class="">Congratulations!</a><a href="https://googlecoursera.qwiklabs.com/focuses/52114#step10" class="">End your lab</a>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+<div class="lab-assessment__tab js-lab-assessment-tab">
+<h5 class="small-label">
+Score
+</h5>
+<h3 class="js-lab-assessment-total-score">—/25</h3>
+<iframe class="l-ie-iframe-fix" src="./Automate updating catalog information _ Qwiklabs_files/saved_resource(1).html"></iframe>
+</div>
+<div class="lab-assessment__panel js-lab-assessment-panel">
+<!-- / If lab_instance has is started and assessment is generated, use -->
+<!-- / lab_instance.assessment, otherwise use lab.assessment_manual -->
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Update image specifications
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="1">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-1">—</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Upload images to the web server
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="2">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-2">—</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Upload the descriptions
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="3">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-3">—</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Generate PDF and send through email
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="4">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-4">—</span>
+/ 5
+</p>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Health check
+</p>
+<p class="button button--assessment js-show-run-step-button" step_no="5">
+Run Step
+</p>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-5">—</span>
+/ 5
+</p>
+</div>
+
+<iframe class="l-ie-iframe-fix" src="./Automate updating catalog information _ Qwiklabs_files/saved_resource(2).html"></iframe>
+</div>
+<div class="lab-introduction js-lab-introduction is-hidden">
+<div class="lab-introduction__inner">
+<h1 class="headline-1">Welcome to Your First Lab!</h1>
+<ql-icon-button class="js-skip-button">close</ql-icon-button>
+<div class="lab-introduction__video">
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" id="lab-introduction" src="./Automate updating catalog information _ Qwiklabs_files/yF7EDXKTmoQ.html"></iframe>
+</div>
+<a class="js-skip-button button button--outline">Skip this video</a>
+</div>
+</div>
+
+
+
+</div>
+</main>
+<div class="modal fade" id="lab-details-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<div class="modal-body">
+<p class="l-mbm">
+This lab has instructions to automate updating catalog information by processing the fruit images and their description to the Django web server.
+</p>
+<p class="small-label l-mbs">
+<strong>
+Duration:
+</strong>
+0m setup
+·
+120m access
+·
+120m completion
+</p>
+<p class="small-label l-mbs">
+<span><strong>Levels: </strong>introductory</span>
+</p>
+<p class="small-label">
+<strong>
+Permalink:
+</strong>
+<a href="https://googlecoursera.qwiklabs.com/catalog_lab/2517">https://googlecoursera.qwiklabs.com/catalog_lab/2517</a>
+</p>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Got It
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+</div>
+
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Automate updating catalog information _ Qwiklabs_files/saved_resource(3).html"></iframe>
+</div>
+<div class="modal fade" id="lab-review-modal" style="display: none;">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<form class="simple_form js-lab-review-form" id="new_lab_review" action="https://googlecoursera.qwiklabs.com/lab_reviews" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><div class="modal-body">
+<p class="label">
+How satisfied are you with this lab?*
+</p>
+<div class="rateit js-rateit" data-rateit-max="5" data-rateit-min="0" data-rateit-resetable="false" data-rateit-step="1" data-rateit-value="0"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 80px; display: block;"></div><div class="rateit-hover" style="height: 16px; width: 0px; display: none;"></div></div></div>
+<div class="l-mtm">
+
+<div class="control-group hidden lab_review_user_id"><div class="controls"><input class="hidden" type="hidden" value="2606438" name="lab_review[user_id]" id="lab_review_user_id"></div></div>
+<div class="control-group hidden lab_review_classroom_id"><div class="controls"><input class="hidden" type="hidden" value="6641" name="lab_review[classroom_id]" id="lab_review_classroom_id"></div></div>
+<div class="control-group hidden lab_review_lab_id"><div class="controls"><input class="hidden" type="hidden" value="2517" name="lab_review[lab_id]" id="lab_review_lab_id"></div></div>
+<div class="control-group hidden lab_review_focus_id"><div class="controls"><input class="hidden" type="hidden" value="52114" name="lab_review[focus_id]" id="lab_review_focus_id"></div></div>
+<div class="control-group hidden lab_review_rating"><div class="controls"><input class="hidden js-rating-input" type="hidden" name="lab_review[rating]" id="lab_review_rating" value="2"></div></div>
+<div class="control-group text optional lab_review_comment"><label class="text optional control-label" for="lab_review_comment">Comment</label><div class="controls"><textarea class="text optional" name="lab_review[comment]" id="lab_review_comment"></textarea></div></div>
+</div>
+</div>
+<div class="modal-actions">
+<a class="mdl-button mdl-button--primary mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" data-upgraded=",MaterialButton,MaterialRipple">
+Cancel
+<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+<input type="submit" name="commit" value="Submit" class="btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" id="submit" data-disabled="false" data-disable-with="Submit" data-upgraded=",MaterialButton,MaterialRipple"><span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating" style="width: 183.069px; height: 183.069px; transform: translate(-50%, -50%) translate(27px, 13px);"></span></span></input>
+</div>
+</form>
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Automate updating catalog information _ Qwiklabs_files/saved_resource(4).html"></iframe>
+</div>
+
+<script>
+  $( function() {
+    ql.initMaterialInputs();
+    initChosen();
+    initSearch();
+    initTabs();
+    ql.list.init();
+    ql.favoriting.init();
+    ql.header.myAccount.init();
+    initTooltips();
+    ql.autocomplete.init();
+    ql.modals.init();
+    ql.toggleButtons.init();
+    ql.analytics.init();
+    initLabContent( );
+  ql.labOutline.links.init();
+  ql.labOutline.layout.init();
+  initLabReviewModal();
+  ql.labAssessment.init();
+  ql.labIntroduction.init( true );
+  ql.labData.init();
+  initLabTranslations( {"are_you_sure":"All done? If you end this lab, you will lose all your work. You may not be able to restart the lab if there is a quota limit. Are you sure you want to end this lab?\n","in_progress":"*In Progress*","ending":"*Ending*","starting":"*Starting, please wait*","end_concurrent_labs":"Sorry, you can only run one lab at a time. To start this lab, please confirm that you want all of your existing labs to end.\n","copied":"Copied","no_resource":"Error retrieving resource.","no_support":"No Support","mac_press":"Press ⌘-C to copy","thanks_review":"Thanks for reviewing this lab.","windows_press":"Press Ctrl-C to copy","days":"days"} );
+  ql.labRun.init();
+  ql.initHeader();
+  ql.navigation.init();
+  ql.navPanel.init();
+  ql.navigation.init();
+  
+  });
+</script>
+<style>
+  .mdl-layout__container {
+    position: static
+  }
+</style>
+
+
+<iframe data-product="web_widget" title="No content" tabindex="-1" aria-hidden="true" src="./Automate updating catalog information _ Qwiklabs_files/saved_resource(5).html" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;"></iframe><div></div><div><iframe title="Opens a widget where you can chat to one of our agents" id="launcher" tabindex="0" class="zEWidget-launcher zEWidget-launcher--active" style="border: none; background: transparent; z-index: 999998; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 1; height: 50px; max-height: 551px; min-height: 50px; margin: 10px 20px; right: 0px; bottom: 0px; width: 112px;width: 112px;" src="./Automate updating catalog information _ Qwiklabs_files/saved_resource(6).html"></iframe></div><div><iframe title="Find more information here" id="webWidget" tabindex="-1" class="zEWidget-webWidget " style="border: none; background: transparent; z-index: 999999; transform: translateZ(0px); position: fixed; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; opacity: 0; width: 357px; height: 100%; max-height: 565px; min-height: 150px; margin-left: 8px; margin-right: 8px; top: -9999px; visibility: hidden;" src="./Automate updating catalog information _ Qwiklabs_files/saved_resource(7).html"></iframe></div></body></html>
